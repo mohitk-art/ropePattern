@@ -1,0 +1,218 @@
+:root {
+    --primary: #1e90ff;
+}
+
+.text-primary{
+    color:var(--primary) !important;
+}
+
+@import "./mixins";
+
+
+.colorred{
+    background-color: red;
+}
+
+.colorgreen{
+    background-color: green;
+}
+
+.row_box_wrapper{
+    display: flex;
+    // align-items: center;
+}
+
+
+.verticle_slider{
+    text-align: center;
+}
+
+.verticle_slider .color_slider{
+    padding: 3px;
+}
+
+.verticle_slider .color_slider > *{
+    height: 40px;
+    width: 100%;
+    display: block;
+    background-color: #000;
+    cursor: pointer;
+    box-shadow: 0 0 5px #00000070;
+}
+
+.verticle_slider .number_slider > *{
+    display: block;
+    line-height: 40px;
+    font-size: 28px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.verticle_slider .number_slider > .active{
+    font-weight: 800;
+}
+
+.verticle_slider .pattren_slider > img{
+    cursor: pointer;
+    width: 100%;
+    height: 175px;
+}
+
+.verticle_slider .pattren_slider > .active,
+.verticle_slider .color_slider > .active{
+    border:2px solid red;
+}
+
+.verticle_slider .slick-arrow {
+    position: initial;
+    color: #000;
+    display: inline-block;
+    transform: rotate(90deg);
+}
+
+.verticle_slider .slick-arrow::before {
+    color: inherit;
+} 
+
+.verticle_slider{
+    max-width: 60px;
+}
+
+.vertical__pattren_crousel{
+    max-width: 55px;
+}
+
+
+/* ##### Color Image Start */
+
+// @include RopeBoxColor('Gray');
+// @include RopeBoxColor('BlueMagenta');
+// @include RopeBoxColor('Violet');
+// @include RopeBoxColor('Orange');
+// @include RopeBoxColor('SkyBlue');
+// @include RopeBoxColor('Green');
+// @include RopeBoxColor('LightGreen');
+// @include RopeBoxColor('Brown');
+// @include RopeBoxColor('Red');
+
+/* ##### Color Image End */
+
+
+.newPattren{
+    max-width: 260px;
+    position: relative;
+    max-height: 953px;
+    overflow: hidden;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+
+    &[size="8"]{
+        transform: scale(.9);
+    }
+
+    &[size="6"]{
+        transform: scale(.8);
+    }
+
+    &[size="5"]{
+        transform: scale(.7);
+    }
+
+    &::before, &::after{
+        content: "";
+        width: 100%;
+        z-index: 1;
+        height: 2px;
+        position: absolute;
+        background-color: #000;
+    }
+
+    &::before{
+        left: 0;
+        top: 0;
+    }
+
+    &::after{
+        left: 0;
+        bottom: 0;
+    }
+
+    .ropeBG{
+        width: 100%;
+      }
+}
+  
+  .newPattern_row_wrapper{
+    position: absolute;
+    top: 13px;
+
+
+    .newPattern_row {
+        position: relative;
+        height: 56.7px;
+    
+        > * {
+            position: absolute;
+            display: none;
+            fill:red;
+    
+            svg{
+                width:100%;
+                height: auto;
+            }
+    
+            path{
+                fill:inherit;
+            }
+    
+            &:nth-child(1){
+                display: inline-block;
+                width: 15.5px;
+                left: 2px;
+                top: 11px;
+            }
+    
+            &:nth-child(2){
+                display: inline-block;
+                width: 57.5px;
+                left: 6px;
+                top: -38.5px;
+            }
+    
+            &:nth-child(3){
+                display: inline-block;
+                width: 87px;
+                left: 41px;
+                top: -10px;
+            }
+    
+            &:nth-child(4){
+                display: inline-block;
+                width: 94px;
+                left: 98.5px;
+                top: -38.5px;
+            }
+    
+            &:nth-child(5){
+                display: inline-block;
+                width: 75px;
+                left: 164.5px;
+                top: -10px;
+            }
+    
+            &:nth-child(6){
+                display: inline-block;
+                width: 36px;
+                left: 222px;
+                top: -36px;
+            }
+          }
+      }
+
+  }
+
+  
+
+  
+  

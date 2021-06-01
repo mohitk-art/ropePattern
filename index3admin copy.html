@@ -1,0 +1,296 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+<style>
+    .rope_box {
+        /* overflow: hidden; */
+        display: inline-block;
+        width: 100%;
+        height: 679px;
+        position: relative;
+    }
+
+
+    .rope_box::before,
+    .rope_box::after {
+        content: '';
+        position: absolute;
+        height: 1px;
+        background-color: #000;
+        z-index: 1;
+    }
+
+    .rope_box::before {
+        width: calc(100% - 9px);
+        top: 0;
+        left: 0;
+    }
+
+    .rope_box::after {
+        width: calc(100% - 18px);
+        bottom: 0;
+        left: 9px;
+    }
+
+
+
+
+    .rope_box_wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .rope_box_wrapper .rope_row:not(:first-child) {
+        /* margin-left: 10px; */
+    }
+
+
+
+    .colorred {
+        background-color: red;
+    }
+
+    .colorgreen {
+        background-color: green;
+    }
+
+    .rope_row {
+        display: flex;
+        /* flex-wrap: wrap; */
+        height: 22px;
+        margin-top: 12px;
+        padding-left: 6px;
+        transform: rotate(-14deg);
+    }
+
+    .rope_row>input {
+        display: none;
+        width: 60px;
+        width: 60px;
+        height: 30px;
+        border: 1px solid #000;
+        position: absolute;
+        padding: 6px 9px;
+        font-size: 14px;
+        outline: none;
+        border-radius: 0;
+        text-align: center;
+    }
+
+    .rope_row>input:nth-child(1) {
+        display: inline-block;
+        transform: rotate(45deg) skew(-20deg);
+        top: 0;
+        left: 0;
+        border-bottom-left-radius: 30px;
+    }
+
+    .rope_row>input:nth-child(2) {
+        display: inline-block;
+        transform: rotate(-25deg) skew(20deg);
+        top: 26px;
+        left: 44.5px;
+    }
+
+    .rope_row>input:nth-child(3) {
+        transform: rotate(45deg) skew(-20deg);
+        display: inline-block;
+        top: 17px;
+        left: 95px;
+    }
+
+    .rope_row>input:nth-child(4) {
+        display: inline-block;
+        transform: rotate(-25deg) skew(20deg);
+        top: 43px;
+        left: 139.5px;
+    }
+
+    .rope_row>input:nth-child(5) {
+        display: inline-block;
+        transform: rotate(45deg) skew(-20deg);
+        top: 34px;
+        left: 190px;
+    }
+
+    .rope_row>input:nth-child(6) {
+        display: inline-block;
+        border-bottom-right-radius: 30px;
+        transform: rotate(-19deg) skew(20deg);
+        top: 60px;
+        left: 230.5px;
+    }
+</style>
+
+<div class="inner_rope py-3" id="test">
+    <div class="rope_box">
+        <div class="rope_box_wrapper">
+            <div class="rope_row">
+                <input type="text" value="" id="1">
+                <input type="text" value="" id="2">
+                <input type="text" value="" id="3">
+                <input type="text" value="" id="4">
+
+                <input type="text" value="" id="5">
+                <input type="text" value="" id="6">
+            </div>
+
+
+
+            <div class="rope_row">
+                <input type="text" value="" id="7" />
+                <input type="text" value="" id="8" />
+                <input type="text" value="" id="9" />
+                <input type="text" value="" id="10" />
+                <input type="text" value="" id="11" />
+                <input type="text" value="" id="12" />
+            </div>
+
+            <div class="rope_row">
+                <input type="text" value="" id="13" />
+                <input type="text" value="" id="14" />
+                <input type="text" value="" id="15" />
+                <input type="text" value="" id="16" />
+                <input type="text" value="" id="17" />
+                <input type="text" value="" id="18" />
+            </div>
+
+
+            <div class="rope_row">
+                <input type="text" value="" id="19" />
+                <input type="text" value="" id="20" />
+                <input type="text" value="" id="21" />
+                <input type="text" value="" id="22" />
+                <input type="text" value="" id="23" />
+                <input type="text" value="" id="24" />
+            </div>
+
+            <div class="rope_row">
+                <input type="text" value="" id="25" />
+                <input type="text" value="" id="26" />
+                <input type="text" value="" id="27" />
+                <input type="text" value="" id="28" />
+                <input type="text" value="" id="29" />
+                <input type="text" value="" id="30" />
+            </div>
+
+
+
+            <div class="rope_row">
+                <input type="text" value="" id="31" />
+                <input type="text" value="" id="32" />
+                <input type="text" value="" id="33" />
+                <input type="text" value="" id="34" />
+                <input type="text" value="" id="35" />
+                <input type="text" value="" id="36" />
+            </div>
+
+            <div class="rope_row">
+                <input type="text" value="" id="37" />
+                <input type="text" value="" id="38" />
+                <input type="text" value="" id="39" />
+                <input type="text" value="" id="40" />
+                <input type="text" value="" id="41" />
+                <input type="text" value="" id="42" />
+            </div>
+
+            <div class="rope_row">
+                <input type="text" value="" id="43" />
+                <input type="text" value="" id="44" />
+                <input type="text" value="" id="45" />
+                <input type="text" value="" id="46" />
+                <input type="text" value="" id="47" />
+                <input type="text" value="" id="48" />
+            </div>
+
+            <div class="rope_row">
+                <input type="text" value="" id="49" />
+                <input type="text" value="" id="50" />
+                <input type="text" value="" id="51" />
+                <input type="text" value="" id="52" />
+                <input type="text" value="" id="53" />
+                <input type="text" value="" id="54" />
+            </div>
+
+            <div class="rope_row">
+                <input type="text" value="" id="55" />
+                <input type="text" value="" id="56" />
+                <input type="text" value="" id="57" />
+                <input type="text" value="" id="58" />
+                <input type="text" value="" id="59" />
+                <input type="text" value="" id="60" />
+            </div>
+
+
+            <!-- 
+            <div class="rope_row">
+                <input type="text" value="" id="61" />
+                <input type="text" value="" id="62" />
+                <input type="text" value="" id="63" />
+                <input type="text" value="" id="64" />
+                <input type="text" value="" id="65" />
+                <input type="text" value="" id="66" />
+            </div>
+
+            <div class="rope_row">
+                <input type="text" value="" id="67" />
+                <input type="text" value="" id="68" />
+                <input type="text" value="" id="69" />
+                <input type="text" value="" id="70" />
+                <input type="text" value="" id="71" />
+                <input type="text" value="" id="72" />
+            </div>
+
+            <div class="rope_row">
+                <input type="text" value="" id="73" />
+                <input type="text" value="" id="74" />
+                <input type="text" value="" id="75" />
+                <input type="text" value="" id="76" />
+                <input type="text" value="" id="77" />
+                <input type="text" value="" id="78" />
+            </div>
+
+            <div class="rope_row">
+                <input type="text" value="" id="79" />
+                <input type="text" value="" id="80" />
+                <input type="text" value="" id="81" />
+                <input type="text" value="" id="82" />
+                <input type="text" value="" id="83" />
+                <input type="text" value="" id="84" />
+            </div>
+
+            <div class="rope_row">
+                <input type="text" value="" id="85" />
+                <input type="text" value="" id="86" />
+                <input type="text" value="" id="87" />
+                <input type="text" value="" id="88" />
+                <input type="text" value="" id="89" />
+                <input type="text" value="" id="90" />
+            </div>
+
+            <div class="rope_row">
+                <input type="text" value="" id="91" />
+                <input type="text" value="" id="92" />
+                <input type="text" value="" id="93" />
+                <input type="text" value="" id="94" />
+                <input type="text" value="" id="95" />
+                <input type="text" value="" id="96" />
+            </div>
+
+            <div class="rope_row">
+                <input type="text" value="" id="97" />
+                <input type="text" value="" id="98" />
+                <input type="text" value="" id="99" />
+                <input type="text" value="" id="100" />
+                <input type="text" value="" id="101" />
+                <input type="text" value="" id="102" />
+            </div> -->
+
+
+
+
+        </div>
+
+
+    </div>
+</div>

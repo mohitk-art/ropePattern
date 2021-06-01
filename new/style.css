@@ -1,0 +1,170 @@
+.rope_box {
+    overflow: hidden;
+    display: inline-block;
+    border: 1px solid #000;
+}
+
+.colorred {
+    background-color: red;
+}
+
+.colorgreen {
+    background-color: green;
+}
+
+.rope_row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.rope_row>input {
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+    border: 1px solid #000;
+    position: relative;
+    padding: 6px 9px;
+    font-size: 14px;
+    outline: none;
+    border-radius: 0;
+    text-align: center;
+}
+
+.rope_row>input:nth-child(odd) {
+    transform: rotate(45deg);
+    top: -21px;
+    left: -15px;
+}
+
+
+.rope_row>input:nth-child(even) {
+    transform: rotate(-45deg)
+}
+
+.rope_row>input:nth-child(even):not(:first-child) {
+    margin-left: -30px;
+}
+
+
+
+
+/* fontend  start */
+.rope_box {
+    max-width: 260px;
+    position: relative;
+    max-height: 953px;
+    overflow: hidden;
+    border: 0;
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+
+.rope_row>input {
+    display: none !important;
+}
+
+.rope_box::before,
+.rope_box::after {
+    content: "";
+    width: 100%;
+    z-index: 1;
+    height: 2px;
+    position: absolute;
+    background-color: #000;
+}
+
+.rope_box::before {
+    left: 0;
+    top: 0;
+}
+
+.rope_box::after {
+    left: 0;
+    bottom: 0;
+}
+
+.rope_box .ropeBG {
+    width: 100%;
+}
+
+.rope_box_wrapper {
+    position: absolute;
+    top: 13px;
+}
+
+.rope_box_wrapper .rope_row {
+    position: relative;
+    height: 56.7px;
+    margin-top: 0;
+}
+
+.rope_box_wrapper .rope_row>span {
+    position: absolute;
+    display: none;
+    fill: red;
+}
+
+.rope_box_wrapper .rope_row svg {
+    width: 100%;
+    height: auto;
+}
+
+.rope_box_wrapper .rope_row svg path {
+    fill: inherit;
+}
+
+.rope_box_wrapper .rope_row>span {
+    position: absolute;
+    display: none;
+    fill: white;
+}
+
+.rope_box_wrapper .rope_row>span:nth-of-type(1) {
+    display: inline-block;
+    width: 15.5px;
+    left: 2px;
+    top: 11px;
+}
+
+.rope_box_wrapper .rope_row>span:nth-of-type(2) {
+    display: inline-block;
+    width: 57.5px;
+    left: 6px;
+    top: -38.5px;
+}
+
+.rope_box_wrapper .rope_row>span:nth-of-type(3) {
+    display: inline-block;
+    width: 87px;
+    left: 41px;
+    top: -10px;
+}
+
+.rope_box_wrapper .rope_row>span:nth-of-type(4) {
+    display: inline-block;
+    width: 94px;
+    left: 98.5px;
+    top: -38.5px;
+}
+
+.rope_box_wrapper .rope_row>span:nth-of-type(5) {
+    display: inline-block;
+    width: 75px;
+    left: 164.5px;
+    top: -10px;
+}
+
+.rope_box_wrapper .rope_row>span:nth-of-type(6) {
+    display: inline-block;
+    width: 36px;
+    left: 222px;
+    top: -36px;
+}
+
+/* fontend end */

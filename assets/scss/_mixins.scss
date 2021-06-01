@@ -1,0 +1,22 @@
+@import "./variables";
+
+@mixin RopeBoxColor($color) {
+
+    .rope_img_row{
+        > img[color=#{$color}]:first-child,
+        > img[color=#{$color}]:last-child{
+            content:url('../../pattern/pattren6#{$color}.png');
+        }
+        
+        > img[color=#{$color}]:nth-child(2),
+        > img[color=#{$color}]:nth-last-child(2) {
+            content:url('../../pattern/pattren5#{$color}.png');
+        }
+        
+        > img[color=#{$color}]:nth-child(3),
+        > img[color=#{$color}]:nth-last-child(3) {
+            content:url('../../pattern/pattren4#{$color}.png');
+        }
+    }
+
+}
