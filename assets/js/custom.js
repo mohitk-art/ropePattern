@@ -22,6 +22,8 @@ function loadData(mainclass = '') {
                 let title = jQuery(`.${mainclass} .rope_box_wrapper .rope_row:nth-child(${j}) > input:nth-child(${i})`).attr("title");
                 cls = jQuery(`.${mainclass} .rope_box_wrapper .rope_row:nth-child(${j}) > input:nth-child(${i})`).attr("class");
                 let style = jQuery(`.${mainclass} .rope_box_wrapper .rope_row:nth-child(${j}) > input:nth-child(${i})`).attr("style");
+
+
                 jQuery(`.${mainclass} .rope_box_wrapper .rope_row:nth-child(${j})`).append(`<span id="${id ? id : ''}" value="${value ? value : ''}" class="${cls ? cls : ''}" style="${style}"></span>`);
 
             }
@@ -41,9 +43,6 @@ function loadData(mainclass = '') {
         }
     }
 
-
-    // loadSvg()
-
 }
 
 
@@ -51,16 +50,11 @@ function loadData(mainclass = '') {
 
 
 // Rope SVG Start
-
+loadSvg();
 function loadSvg() {
-    for (let i = 1; i <= 6; i++) {
-        // let hiddenPatternHTML = jQuery(`#hiddenPattren > *:nth-child(${i})`).html();
-        // jQuery(`.rope_box_wrapper .rope_row span:nth-of-type(${i})`).append(hiddenPatternHTML);
-
-        // loadSvgData(1,i)
-
-
-    }
+    let hiddenSvgHTML = jQuery('#hiddenFullRope').html();
+    jQuery('.svg_wrapper').append(hiddenSvgHTML);
+    ropeSvgId();
 }
 
 function loadSvgData(row, col, cls = '') {
@@ -75,9 +69,13 @@ function loadSvgData(row, col, cls = '') {
 }
 
 
+function ropeSvgId() {
+    for (let i = 1; i <= 40; i++) {
+        jQuery(`.svg_inner svg:nth-child(${i}) path`).attr('id', `svg${i}`);
+        jQuery(`.svg_inner svg:nth-child(${i}) path`).attr('title', `svg${i}`);
+    }
+}
+
 // Rope SVG End
 
 
-function pathClick(cls) {
-    window.alert(cls)
-}

@@ -1,14 +1,14 @@
 var colorArray = [
-  { code: '#fff', name: '' },
-  { code: '#1f0331', name: 'BlueMagenta' },
-  { code: '#310232', name: 'Violet' },
-  { code: '#2f4f4f', name: 'Gray' },
-  { code: '#ff8c00', name: 'Orange' },
-  { code: '#00bfff', name: 'SkyBlue' },
-  { code: '#023102', name: 'Green' },
-  { code: '#08640b', name: 'LightGreen' },
-  { code: '#64640f', name: 'Brown' },
-  { code: 'red', name: 'Red' }
+  { code: '#828282' },
+  { code: '#787276' },
+  { code: '#88807d' },
+  { code: '#d9dddc' },
+  { code: '#d6cfc7' },
+  { code: '#c7c6c1' },
+  { code: '#bebdb8' },
+  { code: '#beb8ac' },
+  { code: '#999ea1' },
+  { code: '#767b7e' }
 ]
 
 var colorSliders = [
@@ -85,10 +85,8 @@ colorArray.map(item => {
       title="${item.name}" code="${item.code}"></span>
   </div>`);
   })
-
 })
 // Color Slider End
-
 
 
 
