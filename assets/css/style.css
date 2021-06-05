@@ -62,7 +62,8 @@
   max-width: 55px; }
 
 path:hover {
-  fill-opacity: 0.5 !important; }
+  fill-opacity: 0.5 !important;
+  cursor: pointer; }
 
 path {
   stroke: #000;
@@ -115,3 +116,8 @@ svg.svg_row {
 
 .svg_wrapper[size="5"] {
   max-width: 180px; }
+
+.sub_pattern_nav {
+  display: none; }
+  .sub_pattern_nav.active {
+    display: block; }

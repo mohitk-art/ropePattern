@@ -89,7 +89,7 @@
   
   path:hover {
     fill-opacity: 0.5 !important;
-
+    cursor: pointer;
   }
 
   path {
@@ -156,4 +156,12 @@
 
 .svg_wrapper[size="5"]{
     max-width:180px;
+}
+
+.sub_pattern_nav{
+    display: none;
+
+    &.active{
+        display: block;
+    }
 }

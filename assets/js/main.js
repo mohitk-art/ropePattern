@@ -32,6 +32,21 @@ function SizeJs(index) {
 }
 
 
+function parentPattern(id) {
+  jQuery(".pattren_sliderJS1").removeClass("active")
+  jQuery(`.pattren_sliderJS1[title='${id}']`).addClass("active")
+
+  jQuery(".sub_pattern_nav").removeClass("active")
+  jQuery(`#${id}`).addClass("active");
+
+  SetPattren(id);
+  // document.getElementById(id).click();
+  jQuery(`#${id} .slick-prev`).click();
+  jQuery(`#${id} .slick-track > *:first-child .pattren_sliderJS`).click();
+
+}
+
+
 function SetPattren(index) {
   jQuery(".svg_wrapper").attr('pattern', index);
   jQuery(".pattren_sliderJS").removeClass("active")
@@ -102,6 +117,7 @@ function ropeSvgId() {
   }
 }
 
+
 loadIndex()
 
 function loadIndex(mainclass = '') {
@@ -158,21 +174,26 @@ function defaultColorClass() {
 
 }
 
-jQuery('.vertical__long_crousel').slick({
-  infinite: false,
-  vertical: true,
-  verticalSwiping: true,
-  slidesToShow: 8,
-  slidesToScroll: 8
-});
 
-jQuery('.vertical__pattren_crousel').slick({
-  infinite: false,
-  vertical: true,
-  verticalSwiping: true,
-  slidesToShow: 2,
-  slidesToScroll: 2
-});
+loadSliders()
+function loadSliders() {
+
+  jQuery('.vertical__long_crousel').slick({
+    infinite: false,
+    vertical: true,
+    verticalSwiping: true,
+    slidesToShow: 8,
+    slidesToScroll: 8
+  });
+
+  jQuery('.vertical__pattren_crousel').slick({
+    infinite: false,
+    vertical: true,
+    verticalSwiping: true,
+    slidesToShow: 2,
+    slidesToScroll: 2
+  });
+}
 getData()
 
 
