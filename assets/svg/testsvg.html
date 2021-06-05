@@ -22,15 +22,20 @@
     }
 
     path {
-      fill: red;
       stroke: #000;
       stroke-width: 38px;
+    }
+
+    .svg_inner g,
+    .svg_inner path {
+      fill: inherit !important;
     }
 
     .svg_wrapper {
       position: relative;
       width: 100%;
       max-width: 600px;
+      color: #fff;
     }
 
     .svg_inner {
@@ -38,8 +43,12 @@
       width: 100%;
       height: auto;
       left: 0;
+      fill: #fff;
       top: 0;
       position: absolute;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     svg.svg_row {
@@ -49,12 +58,456 @@
     .ropeBG {
       width: 100%;
     }
+
+    .verticle_slider {
+      width: 100%;
+      text-align: center;
+    }
+
+    .verticle_slider .color_slider {
+      padding: 3px;
+      display: inline-block;
+      width: 60px;
+    }
+
+    .verticle_slider .color_slider>* {
+      height: 40px;
+      width: 100%;
+      display: block;
+      background-color: #000;
+      cursor: pointer;
+      box-shadow: 0 0 5px #00000070;
+    }
+
+    .verticle_slider .pattren_slider>.active,
+    .verticle_slider .color_slider>.active {
+      border: 2px solid red;
+    }
   </style>
 
 
-  <object data="./testsvg.svg" height="auto" class="d-none" id="ropesvg"></object>
+  <div class="d-none">
+    <div class="inner_rope child_1_190">
+      <div class="rope_box">
+        <div class="rope_box_wrapper">
+          <div class="rope_row">
+            <input type="text" value="1" id="1" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="2" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="" id="3" readonly="">
+            <input type="text" value="3" id="4" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+
+            <input type="text" value="" id="5" readonly="">
+            <input type="text" value="" id="6" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="7" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="8" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="" id="9" readonly="">
+            <input type="text" value="3" id="10" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="" id="11" readonly="">
+            <input type="text" value="" id="12" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="13" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="14" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="" id="15" readonly="">
+            <input type="text" value="3" id="16" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="" id="17" readonly="">
+            <input type="text" value="" id="18" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="19" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="" id="20" readonly="">
+            <input type="text" value="" id="21" readonly="">
+            <input type="text" value="" id="22" readonly="">
+            <input type="text" value="" id="23" readonly="">
+            <input type="text" value="" id="24" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="" id="25" readonly="">
+            <input type="text" value="" id="26" readonly="">
+            <input type="text" value="" id="27" readonly="">
+            <input type="text" value="3" id="28" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="" id="29" readonly="">
+            <input type="text" value="" id="30" readonly="">
+          </div>
+
+
+
+          <div class="rope_row">
+            <input type="text" value="" id="31" readonly="">
+            <input type="text" value="2" id="32" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="2" id="33" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="34" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="" id="35" readonly="">
+            <input type="text" value="" id="36" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="" id="37" readonly="">
+            <input type="text" value="2" id="38" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="2" id="39" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="40" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="" id="41" readonly="">
+            <input type="text" value="" id="42" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="" id="43" readonly="">
+            <input type="text" value="" id="44" readonly="">
+            <input type="text" value="" id="45" readonly="">
+            <input type="text" value="4" id="46" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="" id="47" readonly="">
+            <input type="text" value="" id="48" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="" id="49" readonly="">
+            <input type="text" value="" id="50" readonly="">
+            <input type="text" value="4" id="51" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="4" id="52" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="" id="53" readonly="">
+            <input type="text" value="" id="54" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="" id="55" readonly="">
+            <input type="text" value="4" id="56" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="4" id="57" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="" id="58" readonly="">
+            <input type="text" value="" id="59" readonly="">
+            <input type="text" value="" id="60" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="" id="61" readonly="">
+            <input type="text" value="" id="62" readonly="">
+            <input type="text" value="" id="63" readonly="">
+            <input type="text" value="" id="64" readonly="">
+            <input type="text" value="" id="65" readonly="">
+            <input type="text" value="" id="66" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="" id="67" readonly="">
+            <input type="text" value="" id="68" readonly="">
+            <input type="text" value="" id="69" readonly="">
+            <input type="text" value="" id="70" readonly="">
+            <input type="text" value="" id="71" readonly="">
+            <input type="text" value="" id="72" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="" id="73" readonly="">
+            <input type="text" value="" id="74" readonly="">
+            <input type="text" value="" id="75" readonly="">
+            <input type="text" value="" id="76" readonly="">
+            <input type="text" value="" id="77" readonly="">
+            <input type="text" value="" id="78" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="" id="79" readonly="">
+            <input type="text" value="" id="80" readonly="">
+            <input type="text" value="" id="81" readonly="">
+            <input type="text" value="" id="82" readonly="">
+            <input type="text" value="" id="83" readonly="">
+            <input type="text" value="" id="84" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="" id="85" readonly="">
+            <input type="text" value="" id="86" readonly="">
+            <input type="text" value="" id="87" readonly="">
+            <input type="text" value="" id="88" readonly="">
+            <input type="text" value="" id="89" readonly="">
+            <input type="text" value="" id="90" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="" id="91" readonly="">
+            <input type="text" value="" id="92" readonly="">
+            <input type="text" value="" id="93" readonly="">
+            <input type="text" value="" id="94" readonly="">
+            <input type="text" value="" id="95" readonly="">
+            <input type="text" value="" id="96" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="" id="97" readonly="">
+            <input type="text" value="" id="98" readonly="">
+            <input type="text" value="" id="99" readonly="">
+            <input type="text" value="" id="100" readonly="">
+            <input type="text" value="" id="101" readonly="">
+            <input type="text" value="" id="102" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="" id="103" readonly="">
+            <input type="text" value="" id="104" readonly="">
+            <input type="text" value="" id="105" readonly="">
+            <input type="text" value="" id="106" readonly="">
+            <input type="text" value="" id="107" readonly="">
+            <input type="text" value="" id="108" readonly="">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="" id="109" readonly="">
+            <input type="text" value="" id="110" readonly="">
+            <input type="text" value="" id="111" readonly="">
+            <input type="text" value="" id="112" readonly="">
+            <input type="text" value="" id="113" readonly="">
+            <input type="text" value="" id="114" readonly="">
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="inner_rope child_2_190">
+      <div class="rope_box">
+        <div class="rope_box_wrapper">
+          <div class="rope_row">
+            <input type="text" value="1" id="1" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="2" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="3" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="4" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+
+            <input type="text" value="5" id="5" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="6" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="7" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="8" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="9" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="10" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="11" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="12" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="13" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="14" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="15" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="16" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="17" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="18" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="19" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="20" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="21" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="22" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="23" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="24" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="25" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="26" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="27" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="28" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="29" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="30" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+
+
+          <div class="rope_row">
+            <input type="text" value="1" id="31" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="32" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="33" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="34" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="35" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="36" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="37" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="38" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="39" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="40" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="41" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="42" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="43" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="44" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="45" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="46" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="47" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="48" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="49" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="50" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="51" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="52" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="53" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="54" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="55" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="56" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="57" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="58" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="59" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="60" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="61" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="62" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="63" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="64" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="65" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="66" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="67" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="68" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="69" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="70" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="71" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="72" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="73" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="74" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="75" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="76" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="77" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="78" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="79" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="80" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="81" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="82" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="83" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="84" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="85" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="86" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="87" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="88" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="89" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="90" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="91" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="92" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="93" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="94" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="95" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="96" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="97" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="98" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="99" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="100" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="101" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="102" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="103" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="104" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="105" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="106" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="107" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="108" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+          <div class="rope_row">
+            <input type="text" value="1" id="109" class="1" readonly="" style="fill: rgb(120, 114, 118);">
+            <input type="text" value="2" id="110" class="2" readonly="" style="fill: rgb(136, 128, 125);">
+            <input type="text" value="3" id="111" class="3" readonly="" style="fill: rgb(214, 207, 199);">
+            <input type="text" value="4" id="112" class="4" readonly="" style="fill: rgb(199, 198, 193);">
+            <input type="text" value="5" id="113" class="5" readonly="" style="fill: rgb(190, 189, 184);">
+            <input type="text" value="6" id="114" class="6" readonly="" style="fill: rgb(190, 184, 172);">
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+
 
   <div class="container">
+
+
+    <div class="vertical__color_crousel1 verticle_slider mx-2 mb-3">
+
+
+      <div class="color_slider">
+        <span style="background-color:#2b0fb8;" onclick="ColorJs('#2b0fb8', 1)" class="color_sliderJS1"
+          code="#2b0fb8"></span>
+      </div>
+
+
+      <div class="color_slider">
+        <span style="background-color:#780bd0;" onclick="ColorJs('#780bd0', 1)" class="color_sliderJS1"
+          code="#780bd0"></span>
+      </div>
+
+
+      <div class="color_slider">
+        <span style="background-color:#46d5d8;" onclick="ColorJs('#46d5d8', 1)" class="color_sliderJS1"
+          code="#46d5d8"></span>
+      </div>
+
+
+      <div class="color_slider">
+        <span style="background-color:#1475db;" onclick="ColorJs('#1475db', 1)" class="color_sliderJS1"
+          code="#1475db"></span>
+      </div>
+
+
+      <div class="color_slider">
+        <span style="background-color:#260d82;" onclick="ColorJs('#260d82', 1)" class="color_sliderJS1"
+          code="#260d82"></span>
+      </div>
+
+
+      <div class="color_slider">
+        <span style="background-color:#2ca923;" onclick="ColorJs('#2ca923', 1)" class="color_sliderJS1"
+          code="#2ca923"></span>
+      </div>
+    </div>
+
+    <div class="mt-2">
+      <button class="btn btn-primary mr-3" onclick="loadIndex('child_1_190')">Pattern 1</button>
+      <button class="btn btn-primary mr-3" onclick="loadIndex('child_2_190')">Pattern 2</button>
+    </div>
+
     <div class="svg_wrapper">
       <svg class="svg_inner" version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1471.5 5403">
 
@@ -2114,6 +2567,42 @@
 
   <script>
 
+    var lightColorArray = [
+      '#828282',
+      '#787276',
+      '#88807d',
+      '#d9dddc',
+      '#d6cfc7',
+      '#c7c6c1',
+      '#bebdb8',
+      '#beb8ac',
+      '#999ea1',
+      '#767b7e'
+    ]
+
+
+    var picked_color;
+
+    function SetColor(color, slider) {
+      picked_color = color;
+      jQuery(`.vertical__color_crousel${slider}`).attr(`color`, color);
+
+      jQuery(`.color_sliderJS${slider}`).removeClass('active')
+      jQuery(`.color_sliderJS${slider}[code='${color}']`).addClass('active')
+
+    }
+
+    function ColorJs(color, slider) {
+      SetColor(color, slider);
+    }
+
+    function pathClick(cls) {
+      //window.alert(cls)
+      jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('style', `fill:${picked_color}`);
+      jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('style', `fill:#fff`);
+    }
+
+
     ropeSvgId();
     function ropeSvgId() {
       for (let i = 1; i <= 150; i++) {
@@ -2122,27 +2611,64 @@
       }
     }
 
+    loadIndex()
 
+    function loadIndex(mainclass = '') {
 
-    function loadIndex() {
-      for (let j = 1; j <= 17; j++) {
+      jQuery(`.svg_inner svg`).removeAttr('onclick');
+      jQuery(`.svg_inner svg`).removeAttr('class');
+      jQuery(`.svg_inner svg`).removeAttr('style');
+
+      for (let j = 1; j <= 19; j++) {
         for (let i = 5; i >= 0; i--) {
 
           let svgIndex = (j * 6) - i;
           let col = 6 - i;
-          console.log("svgIndex", svgIndex, "col", col, "row", j)
+
+          var cls1 = '';
+
+
+          if (mainclass != '') {
+            cls1 = jQuery(`.${mainclass} .rope_box_wrapper .rope_row:nth-child(${j}) > input:nth-child(${col})`).attr("class") || '';
+          }
+
+          else {
+            cls1 = jQuery(`.rope_box_wrapper .rope_row:nth-child(${j}) > input:nth-child(${col})`).attr("class") || '';
+          }
+
+          jQuery(`.svg_inner svg:nth-child(${svgIndex})`).attr('class', `svg_class_${cls1}`);
+          jQuery(`.svg_inner svg:nth-child(${svgIndex}) path`).attr('onclick', `pathClick('svg_class_${cls1}')`);
 
         }
       }
-    }
 
-    loadIndex()
-
-    function loadSvghtml() {
-      let hiddenPatternHTML = jQuery(`#ropesvg`).html();
-      jQuery().append(hiddenPatternHTML);
+      defaultColorClass();
 
     }
+
+
+
+
+    function defaultColorClass() {
+
+      let svgclassinex = 0;
+      let list = [];
+
+      $(`.svg_wrapper .svg_inner svg`).each(function (e) {
+        var value = $(this).attr("class");
+
+        if (list.indexOf(value) === -1) {
+          console.log("index", svgclassinex, "class", value)
+          jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('style', `fill:${lightColorArray[svgclassinex]}`);
+          list.push(value);
+          svgclassinex++
+        }
+        jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('style', `fill:#fff`);
+      });
+
+    }
+
+
   </script>
 
 </body>

@@ -1,119 +1,162 @@
 var colorArray = [
-  { code: '#828282' },
-  { code: '#787276' },
-  { code: '#88807d' },
-  { code: '#d9dddc' },
-  { code: '#d6cfc7' },
-  { code: '#c7c6c1' },
-  { code: '#bebdb8' },
-  { code: '#beb8ac' },
+  { code: 'red' },
+  { code: 'green' },
+  { code: 'chocolate' },
+  { code: 'yellow' },
+  { code: '#fff' },
+  { code: '#000' },
+  { code: 'orange' },
+  { code: 'brown' },
   { code: '#999ea1' },
   { code: '#767b7e' }
 ]
 
-var colorSliders = [
-  { name: "1" },
-  { name: "2" },
-  { name: "3" }
+
+var lightColorArray = [
+  '#828282',
+  '#787276',
+  '#88807d',
+  '#d9dddc',
+  '#d6cfc7',
+  '#c7c6c1',
+  '#bebdb8',
+  '#beb8ac',
+  '#999ea1',
+  '#767b7e'
 ]
 
-
-
-
-
 function SizeJs(index) {
-  jQuery(".newPattren").attr('size', index);
+  jQuery(".svg_wrapper").attr('size', index);
   jQuery(".number_sliderJS").removeClass("active")
   jQuery(`.number_sliderJS[title='${index}']`).addClass("active")
 }
 
 
 function SetPattren(index) {
-  jQuery(".newPattren").attr('pattern', index);
+  jQuery(".svg_wrapper").attr('pattern', index);
   jQuery(".pattren_sliderJS").removeClass("active")
   jQuery(`.pattren_sliderJS[title='${index}']`).addClass("active")
 }
 
 function PattrenJs(index) {
   SetPattren(index);
-  let color1 = getProperties().colorname1;
-  let color2 = getProperties().colorname2;
-  let color3 = getProperties().colorname3;
-  SetColor(color1, 1);
-  SetColor(color2, 2);
-  SetColor(color3, 3);
 }
 
-function SetColor(color, slider) {
-  jQuery(".newPattren").attr(`color${slider}`, color);
-
-  jQuery(`.color_sliderJS${slider}`).removeClass('active')
-  jQuery(`.color_sliderJS${slider}[code='${color}']`).addClass('active')
-
-  let patternName = getProperties().patternName;
-  // console.log("patt", patternName)
-  jQuery(`.newPattern_row > *.p${patternName}-${slider}`).attr('style', `fill:${color}`);
+var picked_color;
+function SetColor(color) {
+  picked_color = color;
+  jQuery(".svg_wrapper").attr(`color`, color);
+  jQuery(`.color_sliderJS`).removeClass('active');
+  jQuery(`.color_sliderJS[code='${color}']`).addClass('active');
 }
 
-function ColorJs(color, slider) {
-  SetColor(color, slider);
+function ColorJs(color) {
+  SetColor(color);
 }
 
-
-
-// Rope html Start
-// let ropeRowHTML = jQuery('#rope_img_row').html();
-// for (let i = 1; i <= 16; i++) {
-//   jQuery("#rope_img_row").append(ropeRowHTML);
-// }
-// Rope html End
-
-// Rope SVG Start
-for (let i = 1; i <= 6; i++) {
-  let hiddenPatternHTML = jQuery(`#hiddenPattren > *:nth-child(${i})`).html();
-  jQuery(`.newPattern_row > *:nth-child(${i})`).append(hiddenPatternHTML);
+function pathClick(cls) {
+  //window.alert(cls)
+  picked_color = getProperties().colorName;
+  jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('style', `fill:${picked_color}`);
+  jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('style', `fill:#fff`);
 }
-// Rope SVG End
 
 
 // Color Slider Start
 colorArray.map(item => {
-  colorSliders.map((itm, i) => {
-    let index = i + 1;
-    jQuery(`.vertical__color_crousel${index}`).append(`<div class="color_slider">
-    <span style="background-color: ${item.code};" onClick="ColorJs('${item.code}', ${index})" class="color_sliderJS${index}"
+
+  jQuery(`.vertical__color_crousel`).append(`<div class="color_slider">
+    <span style="background-color: ${item.code};" onClick="ColorJs('${item.code}')" class="color_sliderJS"
       title="${item.name}" code="${item.code}"></span>
   </div>`);
-  })
+
 })
 // Color Slider End
 
 
 
+
 function getProperties() {
-  let sizeJS = jQuery(".newPattren").attr('size');
-  let patternName = jQuery(".newPattren").attr('pattern');
-  let colorname1 = jQuery(".newPattren").attr('color1');
-  let colorname2 = jQuery(".newPattren").attr('color2');
-  let colorname3 = jQuery(".newPattren").attr('color3');
-  return { sizeJS, patternName, colorname1, colorname2, colorname3 }
+  let sizeJS = jQuery(".svg_wrapper").attr('size');
+  let patternName = jQuery(".svg_wrapper").attr('pattern');
+  let colorName = jQuery(".svg_wrapper").attr('color');
+  return { sizeJS, patternName, colorName }
 }
 
 
 function getData() {
   let sizeJS = getProperties().sizeJS;
   let patternJS = getProperties().patternName;
-  let colorname1 = getProperties().colorname1;
-  let colorname2 = getProperties().colorname2;
-  let colorname3 = getProperties().colorname3;
+  let colorName = getProperties().colorName;
 
   SizeJs(sizeJS);
   SetPattren(patternJS);
-  SetColor(colorname1, 1);
-  SetColor(colorname2, 2);
-  SetColor(colorname3, 3);
+  SetColor(colorName);
 }
 
+ropeSvgId();
+function ropeSvgId() {
+  for (let i = 1; i <= 150; i++) {
+    jQuery(`.svg_inner svg:nth-child(${i})`).attr('id', `svg${i}`);
+    jQuery(`.svg_inner svg:nth-child(${i})`).attr('title', `svg${i}`);
+  }
+}
+
+loadIndex()
+
+function loadIndex(mainclass = '') {
+
+  jQuery(`.svg_inner svg`).removeAttr('onclick');
+  jQuery(`.svg_inner svg`).removeAttr('class');
+  jQuery(`.svg_inner svg`).removeAttr('style');
+
+  SetPattren(mainclass)
+
+  for (let j = 1; j <= 19; j++) {
+    for (let i = 5; i >= 0; i--) {
+
+      let svgIndex = (j * 6) - i;
+      let col = 6 - i;
+
+      var cls1 = '';
+
+
+      if (mainclass != '') {
+        cls1 = jQuery(`.${mainclass} .rope_box_wrapper .rope_row:nth-child(${j}) > input:nth-child(${col})`).attr("class") || '';
+      }
+
+      else {
+        cls1 = jQuery(`.rope_box_wrapper .rope_row:nth-child(${j}) > input:nth-child(${col})`).attr("class") || '';
+      }
+
+      jQuery(`.svg_inner svg:nth-child(${svgIndex})`).attr('class', `svg_class_${cls1}`);
+      jQuery(`.svg_inner svg:nth-child(${svgIndex}) path`).attr('onclick', `pathClick('svg_class_${cls1}')`);
+
+    }
+  }
+
+  defaultColorClass();
+
+}
+
+function defaultColorClass() {
+
+  let svgclassinex = 0;
+  let list = [];
+
+  $(`.svg_wrapper .svg_inner svg`).each(function (e) {
+    var value = $(this).attr("class");
+
+    if (list.indexOf(value) === -1) {
+      console.log("index", svgclassinex, "class", value)
+      jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('style', `fill:${lightColorArray[svgclassinex]}`);
+      list.push(value);
+      svgclassinex++
+    }
+    jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('style', `fill:#fff`);
+  });
+
+}
 
 jQuery('.vertical__long_crousel').slick({
   infinite: false,

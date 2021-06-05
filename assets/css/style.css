@@ -61,83 +61,57 @@
 .vertical__pattren_crousel {
   max-width: 55px; }
 
-/* ##### Color Image Start */
-/* ##### Color Image End */
-.newPattren {
-  max-width: 260px;
-  position: relative;
-  max-height: 953px;
-  overflow: hidden;
-  -webkit-user-select: none;
-  /* Safari */
-  -ms-user-select: none;
-  /* IE 10 and IE 11 */
-  user-select: none;
-  /* Standard syntax */ }
-  .newPattren[size="8"] {
-    transform: scale(0.9); }
-  .newPattren[size="6"] {
-    transform: scale(0.8); }
-  .newPattren[size="5"] {
-    transform: scale(0.7); }
-  .newPattren::before, .newPattren::after {
-    content: "";
-    width: 100%;
-    z-index: 1;
-    height: 2px;
-    position: absolute;
-    background-color: #000; }
-  .newPattren::before {
-    left: 0;
-    top: 0; }
-  .newPattren::after {
-    left: 0;
-    bottom: 0; }
-  .newPattren .ropeBG {
-    width: 100%; }
+path:hover {
+  fill-opacity: 0.5 !important; }
 
-.newPattern_row_wrapper {
+path {
+  stroke: #000;
+  stroke-width: 38px; }
+
+.svg_inner g,
+.svg_inner path {
+  fill: inherit !important; }
+
+.svg_wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  color: #fff; }
+
+.svg_inner {
+  width: 100%;
+  height: auto;
+  left: 0;
+  fill: #fff;
+  top: 0;
   position: absolute;
-  top: 13px; }
-  .newPattern_row_wrapper .newPattern_row {
-    position: relative;
-    height: 56.7px; }
-    .newPattern_row_wrapper .newPattern_row > * {
-      position: absolute;
-      display: none;
-      fill: red; }
-      .newPattern_row_wrapper .newPattern_row > * svg {
-        width: 100%;
-        height: auto; }
-      .newPattern_row_wrapper .newPattern_row > * path {
-        fill: inherit; }
-      .newPattern_row_wrapper .newPattern_row > *:nth-child(1) {
-        display: inline-block;
-        width: 15.5px;
-        left: 2px;
-        top: 11px; }
-      .newPattern_row_wrapper .newPattern_row > *:nth-child(2) {
-        display: inline-block;
-        width: 57.5px;
-        left: 6px;
-        top: -38.5px; }
-      .newPattern_row_wrapper .newPattern_row > *:nth-child(3) {
-        display: inline-block;
-        width: 87px;
-        left: 41px;
-        top: -10px; }
-      .newPattern_row_wrapper .newPattern_row > *:nth-child(4) {
-        display: inline-block;
-        width: 94px;
-        left: 98.5px;
-        top: -38.5px; }
-      .newPattern_row_wrapper .newPattern_row > *:nth-child(5) {
-        display: inline-block;
-        width: 75px;
-        left: 164.5px;
-        top: -10px; }
-      .newPattern_row_wrapper .newPattern_row > *:nth-child(6) {
-        display: inline-block;
-        width: 36px;
-        left: 222px;
-        top: -36px; }
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+svg.svg_row {
+  overflow: initial !important; }
+
+.ropeBG {
+  width: 100%; }
+
+.svg_wrapper[size="16"] {
+  max-width: 320px; }
+
+.svg_wrapper[size="14"] {
+  max-width: 300px; }
+
+.svg_wrapper[size="12"] {
+  max-width: 280px; }
+
+.svg_wrapper[size="10"] {
+  max-width: 250px; }
+
+.svg_wrapper[size="8"] {
+  max-width: 230px; }
+
+.svg_wrapper[size="6"] {
+  max-width: 200px; }
+
+.svg_wrapper[size="5"] {
+  max-width: 180px; }
