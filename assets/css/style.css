@@ -11,7 +11,9 @@
   background-color: green; }
 
 .row_box_wrapper {
-  display: flex; }
+  display: flex;
+  flex-wrap: wrap;
+ }
 
 .verticle_slider {
   text-align: center; }
@@ -77,7 +79,8 @@ path {
   position: relative;
   width: 100%;
   max-width: 600px;
-  color: #fff; }
+  color: #fff; 
+}
 
 .svg_inner {
   width: 100%;

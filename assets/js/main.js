@@ -111,7 +111,7 @@ function getData() {
 
 ropeSvgId();
 function ropeSvgId() {
-  for (let i = 1; i <= 150; i++) {
+  for (let i = 2; i <= 150; i++) {
     jQuery(`.svg_inner svg:nth-child(${i})`).attr('id', `svg${i}`);
     jQuery(`.svg_inner svg:nth-child(${i})`).attr('title', `svg${i}`);
   }
@@ -136,6 +136,8 @@ function loadIndex(mainclass = '') {
 
       var cls1 = '';
 
+      // console.log("index", svgIndex, "col", col, "row", j)
+
 
       if (mainclass != '') {
         cls1 = jQuery(`.${mainclass} .rope_box_wrapper .rope_row:nth-child(${j}) > input:nth-child(${col})`).attr("class") || '';
@@ -145,8 +147,8 @@ function loadIndex(mainclass = '') {
         cls1 = jQuery(`.rope_box_wrapper .rope_row:nth-child(${j}) > input:nth-child(${col})`).attr("class") || '';
       }
 
-      jQuery(`.svg_inner svg:nth-child(${svgIndex})`).attr('class', `svg_class_${cls1}`);
-      jQuery(`.svg_inner svg:nth-child(${svgIndex}) path`).attr('onclick', `pathClick('svg_class_${cls1}')`);
+      jQuery(`.svg_inner svg:nth-child(${svgIndex + 1})`).attr('class', `svg_class_${cls1}`);
+      jQuery(`.svg_inner svg:nth-child(${svgIndex + 1}) path`).attr('onclick', `pathClick('svg_class_${cls1}')`);
 
     }
   }
@@ -164,7 +166,7 @@ function defaultColorClass() {
     var value = $(this).attr("class");
 
     if (list.indexOf(value) === -1) {
-      console.log("index", svgclassinex, "class", value)
+      // console.log("index", svgclassinex, "class", value)
       jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('style', `fill:${lightColorArray[svgclassinex]}`);
       list.push(value);
       svgclassinex++
