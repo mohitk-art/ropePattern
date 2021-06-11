@@ -69,11 +69,54 @@ function ColorJs(color) {
   SetColor(color);
 }
 
+
+
 function pathClick(cls) {
   //window.alert(cls)
   picked_color = getProperties().colorName;
   jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('style', `fill:${picked_color}`);
+  jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('color', `${picked_color}`);
   jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('style', `fill:#fff`);
+  jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('color', `#fff`);
+
+  // let atpos = cls.indexOf("svg_class_");
+  // let domain = cls.split("svg_class_")[1];
+
+  // let isinvalid = false;
+  // selectedColors.map(item => {
+  //   if (item.name == domain) {
+  //     isinvalid = true;
+  //     item.value = picked_color;
+  //   }
+  // })
+
+
+
+  // if (!isinvalid) {
+  //   selectedColors.push({ name: domain, value: picked_color })
+  // }
+
+  // console.log("colors", selectedColors, "domain", domain, "atpos", atpos)
+
+}
+
+
+var selectedColors = [];
+function getColors() {
+  let list = []
+  selectedColors = [];
+  $(`.svg_wrapper .svg_inner svg`).each(function (e) {
+    var value = $(this).attr("class");
+
+    if (list.indexOf(value) === -1) {
+      // console.log("index", svgclassinex, "class", value)
+      list.push(value);
+      let colorcode = jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('color');
+      selectedColors.push({ name: value, value: colorcode })
+    }
+  });
+
+  console.log("selecrf color", selectedColors)
 }
 
 
@@ -87,8 +130,6 @@ colorArray.map(item => {
 
 })
 // Color Slider End
-
-
 
 
 function getProperties() {
@@ -105,7 +146,7 @@ function getData() {
   let colorName = getProperties().colorName;
 
   SizeJs(sizeJS);
-  SetPattren(patternJS);
+  parentPattern('parent_pattern2');
   SetColor(colorName);
 }
 
@@ -118,7 +159,26 @@ function ropeSvgId() {
 }
 
 
-loadIndex()
+jQuery(".qty_plus").click(function () {
+  let value = jQuery("#qty_value").val()
+
+  if (parseInt(value) >= 10) {
+    return
+  }
+  jQuery("#qty_value").val(parseInt(value) + 1)
+})
+
+jQuery(".qty_minus").click(function () {
+  let value = jQuery("#qty_value").val()
+
+  if (parseInt(value) <= 0) {
+    return
+  }
+  jQuery("#qty_value").val(parseInt(value) - 1)
+})
+
+
+loadIndex();
 
 function loadIndex(mainclass = '') {
 
@@ -148,6 +208,7 @@ function loadIndex(mainclass = '') {
       }
 
       jQuery(`.svg_inner svg:nth-child(${svgIndex + 1})`).attr('class', `svg_class_${cls1}`);
+      jQuery(`.svg_inner svg:nth-child(${svgIndex + 1})`).attr('pattern', `${cls1}`);
       jQuery(`.svg_inner svg:nth-child(${svgIndex + 1}) path`).attr('onclick', `pathClick('svg_class_${cls1}')`);
 
     }
@@ -168,10 +229,12 @@ function defaultColorClass() {
     if (list.indexOf(value) === -1) {
       // console.log("index", svgclassinex, "class", value)
       jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('style', `fill:${lightColorArray[svgclassinex]}`);
+      jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('color', `${lightColorArray[svgclassinex]}`);
       list.push(value);
       svgclassinex++
     }
     jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('style', `fill:#fff`);
+    jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('color', `#fff`);
   });
 
 }

@@ -4,6 +4,12 @@
 .text-primary {
   color: var(--primary) !important; }
 
+.btn {
+  border-radius: 0;
+  padding: 6px 16px;
+  line-height: normal;
+  font-size: 14px; }
+
 .colorred {
   background-color: red; }
 
@@ -11,9 +17,7 @@
   background-color: green; }
 
 .row_box_wrapper {
-  display: flex;
-  flex-wrap: wrap;
- }
+  display: flex; }
 
 .verticle_slider {
   text-align: center; }
@@ -64,7 +68,6 @@
   max-width: 55px; }
 
 path:hover {
-  fill-opacity: 0.5 !important;
   cursor: pointer; }
 
 path {
@@ -79,8 +82,7 @@ path {
   position: relative;
   width: 100%;
   max-width: 600px;
-  color: #fff; 
-}
+  color: #fff; }
 
 .svg_inner {
   width: 100%;
@@ -124,3 +126,72 @@ svg.svg_row {
   display: none; }
   .sub_pattern_nav.active {
     display: block; }
+
+.sub_pattern_crousel .slick-list, .sub_pattern_crousel .slick-track {
+  min-height: 354px; }
+
+.pattren_slider {
+  min-width: 55px; }
+
+.cart_item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  justify-content: space-between;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 10px; }
+  .cart_item .cart_img {
+    max-width: 40px;
+    width: 100%;
+    object-fit: cover;
+    height: 90px;
+    object-position: top center;
+    vertical-align: top; }
+  .cart_item b {
+    font-weight: 700; }
+
+.cart_bar .card_item_row {
+  max-height: 220px;
+  overflow: auto; }
+
+.qty_input {
+  display: inline-flex;
+  justify-content: space-between; }
+  .qty_input > input {
+    width: 40px;
+    line-height: normal;
+    font-size: 14px;
+    padding: 6px 8px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    outline: none;
+    box-shadow: none;
+    text-align: center;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  .qty_input > i {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 6px 5px;
+    font-size: 14px;
+    line-height: normal;
+    color: #007bff;
+    border: 1px solid #000;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+
+.price_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 7px; }
+  .price_item > * {
+    font-weight: 400; }
+  .price_item.total_item > * {
+    font-weight: 700; }
