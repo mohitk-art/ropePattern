@@ -72,51 +72,11 @@ function ColorJs(color) {
 
 
 function pathClick(cls) {
-  //window.alert(cls)
   picked_color = getProperties().colorName;
   jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('style', `fill:${picked_color}`);
   jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('color', `${picked_color}`);
   jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('style', `fill:#fff`);
   jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('color', `#fff`);
-
-  // let atpos = cls.indexOf("svg_class_");
-  // let domain = cls.split("svg_class_")[1];
-
-  // let isinvalid = false;
-  // selectedColors.map(item => {
-  //   if (item.name == domain) {
-  //     isinvalid = true;
-  //     item.value = picked_color;
-  //   }
-  // })
-
-
-
-  // if (!isinvalid) {
-  //   selectedColors.push({ name: domain, value: picked_color })
-  // }
-
-  // console.log("colors", selectedColors, "domain", domain, "atpos", atpos)
-
-}
-
-
-var selectedColors = [];
-function getColors() {
-  let list = []
-  selectedColors = [];
-  $(`.svg_wrapper .svg_inner svg`).each(function (e) {
-    var value = $(this).attr("class");
-
-    if (list.indexOf(value) === -1) {
-      // console.log("index", svgclassinex, "class", value)
-      list.push(value);
-      let colorcode = jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('color');
-      selectedColors.push({ name: value, value: colorcode })
-    }
-  });
-
-  console.log("selecrf color", selectedColors)
 }
 
 
@@ -171,7 +131,7 @@ jQuery(".qty_plus").click(function () {
 jQuery(".qty_minus").click(function () {
   let value = jQuery("#qty_value").val()
 
-  if (parseInt(value) <= 0) {
+  if (parseInt(value) <= 1) {
     return
   }
   jQuery("#qty_value").val(parseInt(value) - 1)
@@ -238,6 +198,96 @@ function defaultColorClass() {
   });
 
 }
+
+
+
+var selectedColors = [];
+function getColors() {
+  let list = []
+  selectedColors = [];
+  $(`.svg_wrapper .svg_inner svg`).each(function (e) {
+    var value = $(this).attr("pattern");
+
+    if (list.indexOf(value) === -1) {
+      // console.log("index", svgclassinex, "class", value)
+      if(value){
+      list.push(value);
+      let colorcode = jQuery(`.svg_wrapper .svg_inner svg[pattern='${value}']`).attr('color');
+      selectedColors.push({ name: value, value: colorcode })
+      }
+    }
+  });
+  console.log("selecrf color", selectedColors)
+}
+
+
+var cartArray = [];
+function addToCart(){
+  getColors();
+  let title =  jQuery(".svg_wrapper").attr(`pattern`);
+  let size =  jQuery(".svg_wrapper").attr(`size`);
+  let qty = jQuery("#qty_value").val();
+  cartArray.push({
+    title,
+    size,
+    qty,
+    color:selectedColors,
+    price :"434"
+  })
+
+  console.log("cartarray", cartArray)
+  fetchArray();
+}
+
+
+
+function fetchArray(){
+  $("#cart_row .cart_item").remove();
+
+  if(cartArray.length <= 0){
+    jQuery("#checkoutbtn").attr(`disabled`,true);
+  }
+  else{
+    jQuery("#checkoutbtn").removeAttr("disabled")
+  }
+  
+  let totalPrice = 0;
+  cartArray.map((item,i)=>{
+    $("#cart_row").append(`<div class="cart_item">
+                <div>
+                <img src="./assets/img/ropep1.png" class="cart_img mr-2" />
+                <span class="d-inline-block colors_div">
+                  <h5>${item.title}</h5>
+                  ${item.color.map(itm=>{
+                    return `<span><b>Color ${itm.name}:</b> ${itm.value}</span>`
+                  })}
+                </span>
+                
+                </div>
+                <span class="cart_size">${item.size}mm - 200m</span>
+                <span class="card_price">$${item.price}X${item.qty}</span>
+
+                <a class="remove_btn" onclick="removeArray(${i})">Remove</a>
+              </div>`);
+
+        totalPrice = (parseInt(item.price)*parseInt(item.qty))+totalPrice
+  })
+
+
+
+  jQuery("#total_price").html(`$${totalPrice}`);
+  
+}
+
+
+function removeArray(i){
+  if(window.confirm("Do you want to delete this row")){
+        cartArray = cartArray.filter((item, j) => i !== j);
+        fetchArray();
+    }
+}
+
+
 
 
 loadSliders()

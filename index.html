@@ -425,7 +425,7 @@
     <div class="container py-4">
 
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-6">
           <div class="row_box_wrapper text-center">
 
             <div class="svg_wrapper" size="10">
@@ -3541,15 +3541,15 @@
           </div>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-6">
           <div class="mb-3">
             <section class="qty_input mb-3 mr-2">
               <i class="fa fa-minus qty_minus"></i>
-              <input type="text" readonly id="qty_value" value="0" />
+              <input type="text" readonly id="qty_value" value="1" />
               <i class="fa fa-plus qty_plus"></i>
             </section>
 
-            <button class="btn btn-primary" type="button" onclick="getColors()">Add To Cart - 454.00</button>
+            <button class="btn btn-primary" type="button" onclick="addToCart()">Add To Cart</button>
           </div>
 
 
@@ -3558,81 +3558,41 @@
             <div class="card-body">
             <h3 class="mb-3">Cart</h3>
             <div class="card_item_row mb-3">
-              <div class="cart_item">
+            <div class="card_row" id="cart_row">
+              <!-- <div class="cart_item">
                 <div>
                 <img src="./assets/img/ropep1.png" class="cart_img mr-2" />
-                <span class="d-inline-block">
+                <span class="d-inline-block colors_div">
                   <h5>Pattern1</h5>
-                  <span><b>Color 1:</b> #FFF</span><br/>
-                  <span><b>Color 2:</b> #FFF</span><br/>
+                  <span><b>Color 1:</b> #FFF</span>
+                  <span><b>Color 2:</b> #FFF</span>
                   <span><b>Color 3:</b> #FFF</span>
                 </span>
                 
                 </div>
                 <span class="cart_size">6mm - 200m</span>
                 <span class="card_price">$546.64</span>
+
+                <a class="remove_btn">Remove</a>
+              </div> -->
               </div>
 
-              <div class="cart_item">
-                <div>
-                <img src="./assets/img/ropep1.png" class="cart_img mr-2" />
-                <span class="d-inline-block">
-                  <h5>Pattern1</h5>
-                  <span><b>Color 1:</b> #FFF</span><br/>
-                  <span><b>Color 2:</b> #FFF</span><br/>
-                  <span><b>Color 3:</b> #FFF</span>
-                </span>
-                
-                </div>
-                <span class="cart_size">6mm - 200m</span>
-                <span class="card_price">$546.64</span>
-              </div>
-
-              <div class="cart_item">
-                <div>
-                <img src="./assets/img/ropep1.png" class="cart_img mr-2" />
-                <span class="d-inline-block">
-                  <h5>Pattern1</h5>
-                  <span><b>Color 1:</b> #FFF</span><br/>
-                  <span><b>Color 2:</b> #FFF</span><br/>
-                  <span><b>Color 3:</b> #FFF</span>
-                </span>
-                
-                </div>
-                <span class="cart_size">6mm - 200m</span>
-                <span class="card_price">$546.64</span>
-              </div>
-
-              <div class="cart_item">
-                <div>
-                <img src="./assets/img/ropep1.png" class="cart_img mr-2" />
-                <span class="d-inline-block">
-                  <h5>Pattern1</h5>
-                  <span><b>Color 1:</b> #FFF</span><br/>
-                  <span><b>Color 2:</b> #FFF</span><br/>
-                  <span><b>Color 3:</b> #FFF</span>
-                </span>
-                
-                </div>
-                <span class="cart_size">6mm - 200m</span>
-                <span class="card_price">$546.64</span>
-              </div>
             </div>
 
             <hr/>
 
             <div class="price_item">
             <b>Flight</b> 
-            <span>$333.56</span>
+            <span>$34.56</span>
             </div>
 
             <div class="price_item total_item">
             <b>Total</b> 
-            <span>$334.56</span>
+            <span id="total_price">$0</span>
             </div>
 
 
-            <button class="btn btn-primary w-100">Checkout</button>
+            <button class="btn btn-primary w-100" id="checkoutbtn" disabled>Checkout</button>
 
 
             </div>

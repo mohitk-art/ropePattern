@@ -119,10 +119,7 @@
   .svg_inner {
     width: 100%;
     height: auto;
-    left: 0;
     fill: #fff;
-    top: 0;
-    position: absolute;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -190,12 +187,14 @@
     font-weight: 600;
     justify-content: space-between;
     border-bottom: 1px solid #dee2e6;
-    margin-bottom:  10px;
+    position:relative;
+    padding-bottom:20px;
+    margin-bottom:  20px;
     .cart_img{
         max-width: 40px;
         width: 100%;
         object-fit: cover;
-        height: 90px;
+        // height: 90px;
         object-position: top center;
         vertical-align: top;
     }
@@ -203,11 +202,35 @@
     b{
         font-weight:700;
     }
+
+    .colors_div{
+        font-size:0;
+        >*{
+            font-size: 14px;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        h5{
+           font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 7px;
+        }
+    }
+
+    .remove_btn{
+        position: absolute;
+    bottom: 5px;
+    left: 0;
+    cursor: pointer;
+    line-height: normal;
+    color: red;
+    }
 }
 
 .cart_bar{
     .card_item_row{
-        max-height: 220px;
+        max-height: 388px;
         overflow: auto;
     }
 }
