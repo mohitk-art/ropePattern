@@ -446,6 +446,90 @@
         <div class="col-md-8">
           <div class="row_box_wrapper text-center">
 
+
+            <div class="mx-2">
+              <h5>Size</h5>
+              <div class="vertical__long_crousel verticle_slider mx-2">
+                <div class="number_slider">
+                  <span class="number_sliderJS active" onClick="SizeJs(5)" title="5">5</span>
+                </div>
+                <div class="number_slider">
+                  <span class="number_sliderJS" onClick="SizeJs(6)" title="6">6</span>
+                </div>
+                <div class="number_slider">
+                  <span class="number_sliderJS" onClick="SizeJs(8)" title="8">8</span>
+                </div>
+                <div class="number_slider">
+                  <span class="number_sliderJS" onClick="SizeJs(10)" title="10">10</span>
+                </div>
+                <div class="number_slider">
+                  <span class="number_sliderJS" onClick="SizeJs(12)" title="12">12</span>
+                </div>
+                <div class="number_slider">
+                  <span class="number_sliderJS" onClick="SizeJs(14)" title="14">14</span>
+                </div>
+                <div class="number_slider">
+                  <span class="number_sliderJS" onClick="SizeJs(16)" title="16">16</span>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="mx-2 d-none">
+              <h5>Pattern</h5>
+              <div class="vertical__pattren_crousel verticle_slider">
+                <div class="pattren_slider">
+                  <img src="./assets/img/ropep1.png" class="pattren_sliderJS1 active" title="parent_pattern1"
+                    onClick="parentPattern('parent_pattern1')" />
+                </div>
+                <div class="pattren_slider">
+                  <img src="./assets/img/ropep2.png" class="pattren_sliderJS1" title="parent_pattern2"
+                    onClick="parentPattern('parent_pattern2')" />
+                </div>
+                <div class="pattren_slider">
+                  <img src="./assets/img/ropep2.png" class="pattren_sliderJS1" title="parent_pattern1"
+                    onClick="parentPattern('parent_pattern1')" />
+                </div>
+
+              </div>
+            </div>
+
+            <div class="mx-2 sub_pattern_nav active sub_pattern_crousel" id="parent_pattern1">
+              <h5>Pattern</h5>
+              <div class="vertical__pattren_crousel verticle_slider">
+                <div class="pattren_slider">
+                  <img src="./assets/img/ropep1.png" class="pattren_sliderJS" title="child_1_190"
+                    onClick="loadIndex('child_1_190')" />
+                </div>
+              </div>
+            </div>
+
+            <div class="mx-2 sub_pattern_nav sub_pattern_crousel" id="parent_pattern2">
+              <h5>Pattern</h5>
+              <div class="vertical__pattren_crousel verticle_slider">
+                <div class="pattren_slider">
+                  <img src="./assets/img/ropep1.png" class="pattren_sliderJS" title="child_2_190"
+                    onClick="loadIndex('child_2_190')" />
+                </div>
+
+                <div class="pattren_slider">
+                  <img src="./assets/img/ropep1.png" class="pattren_sliderJS" title="child_1_190"
+                    onClick="loadIndex('child_1_190')" />
+                </div>
+              </div>
+            </div>
+
+            <div class="mx-2">
+              <h5 class="text-center">Color</h5>
+              <div class="vertical__long_crousel vertical__color_crousel verticle_slider">
+                <!-- <div class="color_slider">
+              <span style="background-color: #fff;" onclick="ColorJs('#fff')" class="color_sliderJS" code="#fff"></span>
+            </div> -->
+
+
+              </div>
+            </div>
+
             <div class="svg_wrapper" size="10">
               <svg class="svg_inner" version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1471.5 5403">
                 <svg version="1.1" width="1479.5" height="auto" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -3472,90 +3556,6 @@
             </div>
 
 
-            <div class="mx-2">
-              <h5>Size</h5>
-              <div class="vertical__long_crousel verticle_slider mx-2">
-                <div class="number_slider">
-                  <span class="number_sliderJS active" onClick="SizeJs(5)" title="5">5</span>
-                </div>
-                <div class="number_slider">
-                  <span class="number_sliderJS" onClick="SizeJs(6)" title="6">6</span>
-                </div>
-                <div class="number_slider">
-                  <span class="number_sliderJS" onClick="SizeJs(8)" title="8">8</span>
-                </div>
-                <div class="number_slider">
-                  <span class="number_sliderJS" onClick="SizeJs(10)" title="10">10</span>
-                </div>
-                <div class="number_slider">
-                  <span class="number_sliderJS" onClick="SizeJs(12)" title="12">12</span>
-                </div>
-                <div class="number_slider">
-                  <span class="number_sliderJS" onClick="SizeJs(14)" title="14">14</span>
-                </div>
-                <div class="number_slider">
-                  <span class="number_sliderJS" onClick="SizeJs(16)" title="16">16</span>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="mx-2 d-none">
-              <h5>Pattern</h5>
-              <div class="vertical__pattren_crousel verticle_slider">
-                <div class="pattren_slider">
-                  <img src="./assets/img/ropep1.png" class="pattren_sliderJS1 active" title="parent_pattern1"
-                    onClick="parentPattern('parent_pattern1')" />
-                </div>
-                <div class="pattren_slider">
-                  <img src="./assets/img/ropep2.png" class="pattren_sliderJS1" title="parent_pattern2"
-                    onClick="parentPattern('parent_pattern2')" />
-                </div>
-                <div class="pattren_slider">
-                  <img src="./assets/img/ropep2.png" class="pattren_sliderJS1" title="parent_pattern1"
-                    onClick="parentPattern('parent_pattern1')" />
-                </div>
-
-              </div>
-            </div>
-
-            <div class="mx-2 sub_pattern_nav active sub_pattern_crousel" id="parent_pattern1">
-              <h5>Pattern</h5>
-              <div class="vertical__pattren_crousel verticle_slider">
-                <div class="pattren_slider">
-                  <img src="./assets/img/ropep1.png" class="pattren_sliderJS" title="child_1_190"
-                    onClick="loadIndex('child_1_190')" />
-                </div>
-              </div>
-            </div>
-
-            <div class="mx-2 sub_pattern_nav sub_pattern_crousel" id="parent_pattern2">
-              <h5>Pattern</h5>
-              <div class="vertical__pattren_crousel verticle_slider">
-                <div class="pattren_slider">
-                  <img src="./assets/img/ropep1.png" class="pattren_sliderJS" title="child_2_190"
-                    onClick="loadIndex('child_2_190')" />
-                </div>
-
-                <div class="pattren_slider">
-                  <img src="./assets/img/ropep1.png" class="pattren_sliderJS" title="child_1_190"
-                    onClick="loadIndex('child_1_190')" />
-                </div>
-              </div>
-            </div>
-
-            <div class="mx-2">
-              <h5 class="text-center">Color</h5>
-              <div class="vertical__long_crousel vertical__color_crousel verticle_slider">
-                <!-- <div class="color_slider">
-              <span style="background-color: #fff;" onclick="ColorJs('#fff')" class="color_sliderJS" code="#fff"></span>
-            </div> -->
-
-
-              </div>
-            </div>
-
-
           </div>
         </div>
 
@@ -3583,7 +3583,7 @@
               <hr />
 
               <div class="price_item">
-                <b>Flight</b>
+                <b>Fright charges</b>
                 <span>$34.56</span>
               </div>
 
