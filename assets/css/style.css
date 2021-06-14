@@ -140,18 +140,15 @@ svg.svg_row {
   position: relative;
   padding-bottom: 20px;
   margin-bottom: 20px; }
-  .cart_item .cart_img {
-    max-width: 40px;
-    width: 100%;
-    object-fit: cover;
-    object-position: top center;
-    vertical-align: top; }
   .cart_item b {
     font-weight: 700; }
   .cart_item h5 {
     font-weight: 700;
     font-size: 16px;
     margin-bottom: 7px; }
+  .cart_item .cart_svg {
+    width: 46px;
+    margin-right: 10px; }
   .cart_item .cart_size {
     display: block;
     font-size: 13px;

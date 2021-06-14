@@ -113,8 +113,8 @@ function getData() {
 ropeSvgId();
 function ropeSvgId() {
   for (let i = 2; i <= 150; i++) {
-    jQuery(`.svg_inner svg:nth-child(${i})`).attr('id', `svg${i}`);
-    jQuery(`.svg_inner svg:nth-child(${i})`).attr('title', `svg${i}`);
+    jQuery(`.svg_wrapper .svg_inner svg:nth-child(${i})`).attr('id', `svg${i}`);
+    jQuery(`.svg_wrapper .svg_inner svg:nth-child(${i})`).attr('title', `svg${i}`);
   }
 }
 
@@ -142,9 +142,9 @@ loadIndex();
 
 function loadIndex(mainclass = '') {
 
-  jQuery(`.svg_inner svg`).removeAttr('onclick');
-  jQuery(`.svg_inner svg`).removeAttr('class');
-  jQuery(`.svg_inner svg`).removeAttr('style');
+  jQuery(`.svg_wrapper .svg_inner svg`).removeAttr('onclick');
+  jQuery(`.svg_wrapper .svg_inner svg`).removeAttr('class');
+  jQuery(`.svg_wrapper .svg_inner svg`).removeAttr('style');
 
   SetPattren(mainclass)
 
@@ -167,9 +167,9 @@ function loadIndex(mainclass = '') {
         cls1 = jQuery(`.rope_box_wrapper .rope_row:nth-child(${j}) > input:nth-child(${col})`).attr("class") || '';
       }
 
-      jQuery(`.svg_inner svg:nth-child(${svgIndex + 1})`).attr('class', `svg_class_${cls1}`);
-      jQuery(`.svg_inner svg:nth-child(${svgIndex + 1})`).attr('pattern', `${cls1}`);
-      jQuery(`.svg_inner svg:nth-child(${svgIndex + 1}) path`).attr('onclick', `pathClick('svg_class_${cls1}')`);
+      jQuery(`.svg_wrapper .svg_inner svg:nth-child(${svgIndex + 1})`).attr('class', `svg_class_${cls1}`);
+      jQuery(`.svg_wrapper .svg_inner svg:nth-child(${svgIndex + 1})`).attr('pattern', `${cls1}`);
+      jQuery(`.svg_wrapper .svg_inner svg:nth-child(${svgIndex + 1}) path`).attr('onclick', `pathClick('svg_class_${cls1}')`);
 
     }
   }
@@ -228,11 +228,15 @@ function addToCart() {
   let size = jQuery(".svg_wrapper").attr(`size`);
   let qty = jQuery("#qty_value").val();
   let price = jQuery(`.${title} .priceDivJS[size='${size}']`).val();
+  let img = jQuery(`.${title} .tamplateImageJS`).attr("src");
+  let svghtml = jQuery(".svg_wrapper").html();
 
   cartArray.push({
     title,
+    img,
     size,
     qty,
+    svghtml,
     color: selectedColors,
     price: price
   })
@@ -257,7 +261,10 @@ function fetchArray() {
   cartArray.map((item, i) => {
     $("#cart_row").append(`<div class="cart_item">
     <div class="d-flex">
-      <img src="./assets/img/ropep1.png" class="cart_img mr-2" />
+      <!-- <img src="${item.img}" class="cart_img mr-2" /> -->
+      <div class="cart_svg">
+      ${item.svghtml}
+      </div>
       <span class="d-inline-block">
         <h5>${item.title}</h5>
 
