@@ -214,6 +214,7 @@
      .cart_svg {
         width: 46px;
         margin-right: 10px;
+        pointer-events: none;
     }
 
      .cart_size{
@@ -262,8 +263,8 @@
         padding: 6px 8px;
         border-left: 0;
         border-right: 0;
-        border-top:1px solid #000;
-        border-bottom: 1px solid #000;
+        border-top:1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
         outline: none;
         box-shadow: none;
         text-align: center;
@@ -280,7 +281,7 @@
         font-size: 14px;
         line-height: normal;
         color:#007bff;
-        border:1px solid #000;
+        border:1px solid #dee2e6;
         -webkit-user-select: none;
         -ms-user-select: none;
         user-select: none;
@@ -303,4 +304,13 @@
         }
         
     }
+}
+
+.checkout_breadcrumb{
+    padding: 0;
+    background-color: transparent;
+}
+
+a[disabled]{
+    pointer-events: none;
 }

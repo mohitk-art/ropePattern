@@ -120,21 +120,21 @@ function ropeSvgId() {
 
 
 jQuery(".qty_plus").click(function () {
-  let value = jQuery("#qty_value").val()
+  let value = parseInt(jQuery("#qty_value").val())
 
-  if (parseInt(value) >= 10) {
+  if (value >= 10) {
     return
   }
-  jQuery("#qty_value").val(parseInt(value) + 1)
+  jQuery("#qty_value").val(value + 1)
 })
 
 jQuery(".qty_minus").click(function () {
-  let value = jQuery("#qty_value").val()
+  let value = parseInt(jQuery("#qty_value").val())
 
-  if (parseInt(value) <= 1) {
+  if (value <= 1) {
     return
   }
-  jQuery("#qty_value").val(parseInt(value) - 1)
+  jQuery("#qty_value").val(value - 1)
 })
 
 
@@ -278,12 +278,13 @@ function fetchArray() {
 
     </div>
 
-    <span class="card_price">$${item.price}.64X${item.qty}</span>
+    <span class="card_price">$${item.price}X${item.qty}</span>
 
     <a class="remove_btn" onclick="removeArray(${i})">Remove</a>
   </div>`);
 
-    totalPrice = (parseInt(item.price) * parseInt(item.qty)) + totalPrice
+    console.log("total", item.price, item.qty)
+    totalPrice = (item.price * item.qty) + totalPrice
   })
 
 
