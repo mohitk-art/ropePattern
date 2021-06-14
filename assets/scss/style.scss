@@ -245,6 +245,9 @@
     .card_item_row{
         max-height: 388px;
         overflow: auto;
+        .card_row:empty{
+            display: none;
+        }
     }
 }
 

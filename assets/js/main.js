@@ -270,7 +270,7 @@ function fetchArray() {
 
         <span class="cart_size">Size: ${item.size}mm - 200m</span>
         <div class="colors_div">
-        ${item.color.map((itm, i) => {
+        ${item.color.map((itm) => {
       return `<span>Color ${itm.name}: ${itm.value}</span>`
     })}
         </div>
@@ -280,7 +280,7 @@ function fetchArray() {
 
     <span class="card_price">$${item.price}.64X${item.qty}</span>
 
-    <a class="remove_btn">Remove</a>
+    <a class="remove_btn" onclick="removeArray(${i})">Remove</a>
   </div>`);
 
     totalPrice = (parseInt(item.price) * parseInt(item.qty)) + totalPrice

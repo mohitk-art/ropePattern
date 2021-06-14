@@ -170,6 +170,8 @@ svg.svg_row {
 .cart_bar .card_item_row {
   max-height: 388px;
   overflow: auto; }
+  .cart_bar .card_item_row .card_row:empty {
+    display: none; }
 
 .qty_input {
   display: inline-flex;
