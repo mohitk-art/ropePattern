@@ -210,10 +210,10 @@ function getColors() {
 
     if (list.indexOf(value) === -1) {
       // console.log("index", svgclassinex, "class", value)
-      if(value){
-      list.push(value);
-      let colorcode = jQuery(`.svg_wrapper .svg_inner svg[pattern='${value}']`).attr('color');
-      selectedColors.push({ name: value, value: colorcode })
+      if (value) {
+        list.push(value);
+        let colorcode = jQuery(`.svg_wrapper .svg_inner svg[pattern='${value}']`).attr('color');
+        selectedColors.push({ name: value, value: colorcode })
       }
     }
   });
@@ -222,17 +222,19 @@ function getColors() {
 
 
 var cartArray = [];
-function addToCart(){
+function addToCart() {
   getColors();
-  let title =  jQuery(".svg_wrapper").attr(`pattern`);
-  let size =  jQuery(".svg_wrapper").attr(`size`);
+  let title = jQuery(".svg_wrapper").attr(`pattern`);
+  let size = jQuery(".svg_wrapper").attr(`size`);
   let qty = jQuery("#qty_value").val();
+  let price = jQuery(`.${title} .priceDivJS[size='${size}']`).val();
+
   cartArray.push({
     title,
     size,
     qty,
-    color:selectedColors,
-    price :"434"
+    color: selectedColors,
+    price: price
   })
 
   console.log("cartarray", cartArray)
@@ -241,50 +243,54 @@ function addToCart(){
 
 
 
-function fetchArray(){
+function fetchArray() {
   $("#cart_row .cart_item").remove();
 
-  if(cartArray.length <= 0){
-    jQuery("#checkoutbtn").attr(`disabled`,true);
+  if (cartArray.length <= 0) {
+    jQuery("#checkoutbtn").attr(`disabled`, true);
   }
-  else{
+  else {
     jQuery("#checkoutbtn").removeAttr("disabled")
   }
-  
-  let totalPrice = 0;
-  cartArray.map((item,i)=>{
+
+  var totalPrice = 0;
+  cartArray.map((item, i) => {
     $("#cart_row").append(`<div class="cart_item">
-                <div>
-                <img src="./assets/img/ropep1.png" class="cart_img mr-2" />
-                <span class="d-inline-block colors_div">
-                  <h5>${item.title}</h5>
-                  ${item.color.map(itm=>{
-                    return `<span><b>Color ${itm.name}:</b> ${itm.value}</span>`
-                  })}
-                </span>
-                
-                </div>
-                <span class="cart_size">${item.size}mm - 200m</span>
-                <span class="card_price">$${item.price}X${item.qty}</span>
+    <div class="d-flex">
+      <img src="./assets/img/ropep1.png" class="cart_img mr-2" />
+      <span class="d-inline-block">
+        <h5>${item.title}</h5>
 
-                <a class="remove_btn" onclick="removeArray(${i})">Remove</a>
-              </div>`);
+        <span class="cart_size">Size: ${item.size}mm - 200m</span>
+        <div class="colors_div">
+        ${item.color.map((itm, i) => {
+      return `<span>Color ${itm.name}: ${itm.value}</span>`
+    })}
+        </div>
+      </span>
 
-        totalPrice = (parseInt(item.price)*parseInt(item.qty))+totalPrice
+    </div>
+
+    <span class="card_price">$${item.price}.64X${item.qty}</span>
+
+    <a class="remove_btn">Remove</a>
+  </div>`);
+
+    totalPrice = (parseInt(item.price) * parseInt(item.qty)) + totalPrice
   })
 
 
 
   jQuery("#total_price").html(`$${totalPrice}`);
-  
+
 }
 
 
-function removeArray(i){
-  if(window.confirm("Do you want to delete this row")){
-        cartArray = cartArray.filter((item, j) => i !== j);
-        fetchArray();
-    }
+function removeArray(i) {
+  if (window.confirm("Do you want to delete this row")) {
+    cartArray = cartArray.filter((item, j) => i !== j);
+    fetchArray();
+  }
 }
 
 
