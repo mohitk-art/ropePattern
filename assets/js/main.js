@@ -221,8 +221,8 @@ function getColors() {
 }
 
 
-let cartArr = localStorage.getItem("cart") || [];
-var cartArray = JSON.parse(cartArr);
+let cartArr = JSON.parse(localStorage.getItem("cart")) || [];
+var cartArray = cartArr;
 
 function addToCart() {
   getColors();
