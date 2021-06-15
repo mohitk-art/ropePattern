@@ -186,7 +186,7 @@
 
                 <section class="shipping_items card">
                   <label>
-                    <input type="radio" name="shipping" />
+                    <input type="radio" name="shipping" id="methodField" />
 
                     <span class="content">
                       <h6>USPS Priority Mail</h6>
@@ -208,11 +208,161 @@
               </div>
 
               <div class="col-md-12 text-right">
-                <button type="submit" class="btn btn-primary" onclick="checkoutStep(3)">Continue to payment</button>
+                <button type="button" class="btn btn-primary" onclick="checkoutStep(3)">Continue to payment</button>
 
                 <a class="ml-2 text-primary" href="#" onclick="checkoutStep(2)">Return to information</a>
               </div>
             </div>
+
+            <div class="form-row checkoutStepForm d-none" id="checkoutStep3">
+              <div class="col-md-12 mb-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="info_item">
+                      <span class="text_light">
+                        Contact
+                      </span>
+
+                      <span class="text">pro@yopmail.com</span>
+
+                      <span class="action">
+                        <a onclick="contactChange()">Change</a>
+                      </span>
+                    </div>
+
+                    <div class="info_item">
+                      <span class="text_light">
+                        Ship to
+                      </span>
+
+                      <span class="text">Chandigarh, India, Chandigarh AK 99801, United States</span>
+
+                      <span class="action">
+                        <a onclick="shipChange()">Change</a>
+                      </span>
+                    </div>
+
+                    <div class="info_item">
+                      <span class="text_light">
+                        Method
+                      </span>
+
+                      <span class="text">Priority Mail <b>$340.83</b></span>
+
+                      <span class="action">
+                        <a onclick="methodChange()">Change</a>
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 mb-3">
+                <h5 class="mb-3">Payment</h5>
+                <p>All transactions are secure and encrypted.</p>
+
+
+                <section class="card">
+                  <h6 class="card-header">
+                    Credit Card
+                  </h6>
+
+                  <div class="card-body">
+                    <div class="form-row">
+                      <div class="col-md-12 mb-3">
+                        <label>Card number</label>
+                        <input type="number" class="form-control" />
+                      </div>
+
+                      <div class="col-md-12 mb-3">
+                        <label>Name on card</label>
+                        <input type="text" class="form-control" />
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label>Expiration date (MM / YY)</label>
+                        <input type="text" class="form-control" />
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label>Security code</label>
+                        <input type="text" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+
+              <div class="col-md-12 mb-3">
+                <h5 class="mb-3">Billing address</h5>
+                <p>Select the address that matches your card or payment method.</p>
+
+
+                <section class="card">
+                  <label class="card-header h6">
+                    <input type="radio" name="addresstype" class="addresstypeJS mr-2" value="shipping" /> Same as
+                    shipping address
+                  </label>
+
+                  <label class="card-header h6">
+                    <input type="radio" name="addresstype" class="addresstypeJS mr-2" value="billing" /> Use a
+                    different billing address
+                  </label>
+
+                  <div class="card-body d-none" id="billingBody">
+                    <div class="form-row">
+                      <div class="col-md-6 mb-3">
+                        <label>First name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="firstnameField" />
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label>Last name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" />
+                      </div>
+
+                      <div class="col-md-12 mb-3">
+                        <label>Address <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" />
+                      </div>
+
+                      <div class="col-md-12 mb-3">
+                        <label>City <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" />
+                      </div>
+
+                      <div class="col-md-4 mb-3">
+                        <label>Country/Region <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" />
+                      </div>
+
+                      <div class="col-md-4 mb-3">
+                        <label>State <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" />
+                      </div>
+
+                      <div class="col-md-4 mb-3">
+                        <label>ZIP code <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" />
+                      </div>
+
+                      <div class="col-md-12 mb-3">
+                        <label>Phone <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+
+              <div class="col-md-12 text-right">
+                <button type="submit" class="btn btn-primary">Pay now</button>
+
+                <a class="ml-2 text-primary" href="#" onclick="checkoutStep(3)">Return to shipping</a>
+              </div>
+            </div>
+
           </form>
 
 

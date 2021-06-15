@@ -335,6 +335,26 @@ function shipChange() {
   document.getElementById("firstnameField").focus();
 }
 
+function methodChange() {
+  checkoutStep(2);
+  document.getElementById("methodField").focus();
+}
+
+
+
+jQuery(".addresstypeJS").click(function () {
+  let value = jQuery(".addresstypeJS:checked").val();
+
+  console.log("vaa", value)
+
+  if (value == 'shipping') {
+    jQuery(`#billingBody`).addClass('d-none');
+  }
+  else {
+    jQuery(`#billingBody`).removeClass('d-none');
+  }
+
+})
 
 // Checkout Page End
 
