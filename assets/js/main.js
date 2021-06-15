@@ -221,7 +221,9 @@ function getColors() {
 }
 
 
-var cartArray = [];
+let cartArr = localStorage.getItem("cart") || [];
+var cartArray = JSON.parse(cartArr);
+
 function addToCart() {
   getColors();
   let title = jQuery(".svg_wrapper").attr(`pattern`);
@@ -241,13 +243,21 @@ function addToCart() {
     price: price
   })
 
+  jQuery("#qty_value").val(1);
+
   console.log("cartarray", cartArray)
   fetchArray();
 }
 
 
 
+fetchArray();
+
 function fetchArray() {
+
+  localStorage.removeItem("cart");
+  localStorage.setItem("cart", JSON.stringify(cartArray));
+
   $("#cart_row .cart_item").remove();
 
   if (cartArray.length <= 0) {
@@ -264,6 +274,7 @@ function fetchArray() {
       <!-- <img src="${item.img}" class="cart_img mr-2" /> -->
       <div class="cart_svg">
       ${item.svghtml}
+      <span class="qty">${item.qty}</span>
       </div>
       <span class="d-inline-block">
         <h5>${item.title}</h5>
@@ -278,12 +289,11 @@ function fetchArray() {
 
     </div>
 
-    <span class="card_price">$${item.price}X${item.qty}</span>
+    <span class="card_price">$${item.price * item.qty}</span>
 
     <a class="remove_btn" onclick="removeArray(${i})">Remove</a>
   </div>`);
 
-    console.log("total", item.price, item.qty)
     totalPrice = (item.price * item.qty) + totalPrice
   })
 
@@ -301,6 +311,32 @@ function removeArray(i) {
   }
 }
 
+
+
+
+// Checkout Page Start
+var checkoutVariable = 1;
+function checkoutStep(step) {
+  checkoutVariable = step;
+  jQuery(`.checkout_breadcrumb .breadcrumb-item`).removeClass('active');
+  jQuery(`.checkout_breadcrumb .breadcrumb-item:nth-child(${step + 1})`).addClass('active');
+
+  jQuery(`.checkoutStepForm`).addClass('d-none');
+  jQuery(`#checkoutStep${step}`).removeClass('d-none');
+}
+
+function contactChange() {
+  checkoutStep(1);
+  document.getElementById("contactfield").focus();
+}
+
+function shipChange() {
+  checkoutStep(1);
+  document.getElementById("firstnameField").focus();
+}
+
+
+// Checkout Page End
 
 
 

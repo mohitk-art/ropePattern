@@ -34,7 +34,7 @@
       <div class="container logo_wrapper">
         <a class="navbar-brand w-100 d-flex justify-content-between" href="#">
           <img src="./assets/img/logo.png" class="logo_img" />
-          <img src="./assets/img/Foamlink_link.png" class="logo2_img" />
+          <!-- <img src="./assets/img/Foamlink_link.png" class="logo2_img" /> -->
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -451,11 +451,11 @@
 
   </div>
 
-  <section>
-    <div class="container py-4">
+  <section class="main_wrapper">
 
+    <div class="container">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7 mb-3">
           <div class="row_box_wrapper text-center">
 
 
@@ -3571,7 +3571,7 @@
           </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-5 right_bg">
           <div class="mb-3">
             <section class="qty_input mr-2">
               <i class="fa fa-minus qty_minus"></i>
@@ -3584,36 +3584,40 @@
 
 
 
-          <div class="card cart_bar">
-            <div class="card-body">
-              <h3 class="mb-3">Cart</h3>
-              <div class="card_item_row">
-                <div class="card_row" id="cart_row"></div>
+          <div class="cart_bar">
+            <h3 class="mb-0">Cart</h3>
 
-              </div>
-
-              <hr />
-
-              <div class="price_item">
-                <b>Fright charges</b>
-                <span>$34.56</span>
-              </div>
-
-              <div class="price_item total_item">
-                <b>Total</b>
-                <span id="total_price">$0</span>
-              </div>
-
-
-              <!-- <button class="btn btn-primary w-100" id="checkoutbtn" disabled>Checkout</button> -->
-              <a class="btn btn-primary w-100" id="checkoutbtn" disabled href="/chekcout.html">Checkout</a>
-
+            <hr />
+            <div class="card_item_row">
+              <div class="card_row" id="cart_row"></div>
 
             </div>
+
+            <hr />
+
+            <div class="price_item">
+              <b>Fright</b>
+              <span>$34.56</span>
+            </div>
+
+            <hr />
+
+            <div class="price_item total_item">
+              <b>Total</b>
+              <span id="total_price">$0</span>
+            </div>
+
+
+            <!-- <button class="btn btn-primary w-100" id="checkoutbtn" disabled>Checkout</button> -->
+            <a class="btn btn-primary w-100" id="checkoutbtn" disabled href="/chekcout.html">Checkout</a>
+
+
           </div>
         </div>
       </div>
     </div>
+
+
   </section>
 
   <!-- Optional JavaScript; choose one of the two! -->
