@@ -41,18 +41,13 @@ body {
     justify-content: center !important; }
     .main_header .navbar-brand .logo_img {
       width: 25%;
-      height: -webkit-fill-available; }
-    .main_header .navbar-brand .logo2_img {
-      width: 16%;
-      height: -webkit-fill-available; }
+      height: auto; }
 
 @media (max-width: 768px) {
   .main_header .navbar-brand {
     align-items: center; }
-    .main_header .navbar-brand .logo2_img {
-      width: 40%; }
     .main_header .navbar-brand .logo_img {
-      width: 50%; }
+      width: 80%; }
   .header_top .hTLink {
     display: block;
     text-align: center;

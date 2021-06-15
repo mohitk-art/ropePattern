@@ -57,12 +57,7 @@ body{
         justify-content: center !important;
         .logo_img{
             width: 25%;
-            height: -webkit-fill-available;
-        }
-
-        .logo2_img{
-            width: 16%;
-            height: -webkit-fill-available;
+            height: auto;
         }
     }
 }
@@ -72,12 +67,8 @@ body{
     .main_header .navbar-brand{ 
         align-items: center;
 
-        .logo2_img{
-            width: 40%;
-        }
-
         .logo_img{
-            width: 50%;
+            width: 80%;
         }
     }
 
