@@ -1,5 +1,5 @@
 :root {
-    --primary: #1e90ff;
+    --primary: #3e6c8e;
 }
 
 .text-primary{
@@ -8,11 +8,101 @@
 
 @import "./mixins";
 
+
+body{
+    font-size: 14px;
+}
+
+
+.header_top{
+    background-color: var(--primary);
+    padding:9px 0;
+    .hTLink{
+        display: inline-block;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-decoration: none;
+        cursor: pointer;
+        color: #fff;
+        border-left: 1px solid #fff;
+
+        &:hover{
+            color:#ffffffcf;
+        }
+    }
+}
+
+.main_header{
+    .navbar-collapse{
+        background-color: #fff !important;
+        padding: 5px 0;
+        .nav-link{
+            font-weight: 500;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+    }
+
+    .logo_wrapper{
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 15px;
+    }
+
+    .navbar-brand{
+        .logo_img{
+            width: 25%;
+            height: -webkit-fill-available;
+        }
+
+        .logo2_img{
+            width: 16%;
+            height: -webkit-fill-available;
+        }
+    }
+}
+
+
+@media(max-width:768px){
+    .main_header .navbar-brand{ 
+        align-items: center;
+
+        .logo2_img{
+            width: 40%;
+        }
+
+        .logo_img{
+            width: 50%;
+        }
+    }
+
+    .header_top{
+        .hTLink{
+            display: block;
+            text-align: center;
+            border-left: 0;
+        }
+
+        .hTLink:not(:last-child){
+            margin-bottom: 10px;
+        }
+    }
+}
+
+
+
 .btn{
     border-radius: 0;
     padding: 6px 16px;
     line-height: normal;
     font-size: 14px;
+}
+
+.btn-primary{
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
 }
 
 
@@ -280,7 +370,7 @@
         padding: 6px 5px;
         font-size: 14px;
         line-height: normal;
-        color:#007bff;
+        color:var(--primary);
         border:1px solid #dee2e6;
         -webkit-user-select: none;
         -ms-user-select: none;
