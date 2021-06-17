@@ -1,0 +1,109 @@
+<style>
+    .rope_box {
+        overflow: hidden;
+        display: inline-block;
+        /* border-top: 1px solid #000;
+        border-bottom: 1px solid #000; */
+        height: 765px;
+        position: relative;
+    }
+
+
+    .rope_box::before,
+    .rope_box::after {
+        content: '';
+        position: absolute;
+        height: 1px;
+        background-color: #000;
+        z-index: 1;
+    }
+
+    .rope_box::before {
+        width: calc(100% - 14px);
+        top: 0;
+        left: 1px;
+    }
+
+    .rope_box::after {
+        width: calc(100% - 18px);
+        bottom: 0;
+        left: 9px;
+    }
+
+
+
+
+    .rope_box_wrapper {
+        margin-left: 6px;
+        position: relative;
+        top: -12px;
+    }
+
+
+
+    .colorred {
+        background-color: red;
+    }
+
+    .colorgreen {
+        background-color: green;
+    }
+
+    .rope_row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 12px;
+    }
+
+    .rope_row>input {
+        display: inline-block;
+        width: 50px;
+        height: 30px;
+        border: 1px solid #000;
+        position: relative;
+        padding: 6px 9px;
+        font-size: 14px;
+        outline: none;
+        border-radius: 0;
+        text-align: right;
+    }
+
+    .rope_row>input:nth-child(odd) {
+        transform: rotate(45deg);
+        top: -21px;
+        left: -15px;
+    }
+
+
+    .rope_row>input:nth-child(even) {
+        transform: rotate(-45deg)
+    }
+
+    .rope_row>input:nth-child(even):not(:first-child) {
+        margin-left: -30px;
+    }
+
+    .rope_row>input:last-child {
+        border-bottom-right-radius: 90px;
+    }
+
+    .rope_row>input:first-child {
+        border-bottom-left-radius: 90px;
+    }
+</style>
+
+<div class="inner_rope" id="test">
+    <div class="rope_box">
+        <div class="rope_box_wrapper">
+            <div class="rope_row">
+                <input type="text" value="" id="1">
+                <input type="text" value="" id="2">
+                <input type="text" value="" id="3">
+                <input type="text" value="" id="4">
+                <input type="text" value="" id="5">
+                <input type="text" value="" id="6">
+            </div>
+        </div>
+
+    </div>
+</div>

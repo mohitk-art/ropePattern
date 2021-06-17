@@ -14,74 +14,30 @@ body{
 }
 
 
-.header_top{
-    background-color: var(--primary);
+.main_header{
+    // background-color: var(--primary);
     padding:9px 0;
+    position: relative;
+    z-index: 9;
+
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
     .hTLink{
         display: inline-block;
+        font-weight: 500;
+        color:var(--primary);
         padding-left: 10px;
         padding-right: 10px;
         text-decoration: none;
         cursor: pointer;
-        color: #fff;
-        border-left: 1px solid #fff;
-
-        &:hover{
-            color:#ffffffcf;
-        }
-    }
-}
-
-.main_header{
-    z-index: 9;
-    position: relative;
-    .navbar-collapse{
-        background-color: #fff !important;
-        padding: 5px 0;
-        .nav-link{
-            font-weight: 500;
-            font-size: 16px;
-            text-transform: uppercase;
-        }
     }
 
-    .logo_wrapper{
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        justify-content: space-between;
-        padding: 6px 15px;
-    }
-
-    .navbar-brand{
-        justify-content: center !important;
-        .logo_img{
-            width: 25%;
-            height: auto;
-        }
-    }
-}
-
-
-@media(max-width:768px){
-    .main_header .navbar-brand{ 
-        align-items: center;
-
-        .logo_img{
-            width: 80%;
-        }
-    }
-
-    .header_top{
-        .hTLink{
-            display: block;
-            text-align: center;
-            border-left: 0;
-        }
-
-        .hTLink:not(:last-child){
-            margin-bottom: 10px;
-        }
+    .logo_img{
+        max-width: 130px;
     }
 }
 
@@ -137,15 +93,6 @@ body{
 .btn-primary{
     background-color: var(--primary) !important;
     border-color: var(--primary) !important;
-}
-
-
-.colorred{
-    background-color: red;
-}
-
-.colorgreen{
-    background-color: green;
 }
 
 .row_box_wrapper{
@@ -236,7 +183,7 @@ body{
   .svg_wrapper {
     position: relative;
     width: 100%;
-    max-width: 600px;
+    max-width: 150px;
     color: #fff;
   }
 
@@ -256,35 +203,6 @@ body{
   .ropeBG {
     width: 100%;
   }
-
-  .svg_wrapper[size="16"]{
-    max-width:320px;
-}
-
-.svg_wrapper[size="14"]{
-    max-width:300px;
-}
-
-
-.svg_wrapper[size="12"]{
-    max-width:280px;
-}
-
-.svg_wrapper[size="10"]{
-    max-width:250px;
-}
-
-.svg_wrapper[size="8"]{
-    max-width:230px;
-}
-
-.svg_wrapper[size="6"]{
-    max-width:200px;
-}
-
-.svg_wrapper[size="5"]{
-    max-width:180px;
-}
 
 .sub_pattern_nav{
     display: none;
