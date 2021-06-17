@@ -4,7 +4,7 @@
         display: inline-block;
         /* border-top: 1px solid #000;
         border-bottom: 1px solid #000; */
-        height: 765px;
+        height: 1058px;
         position: relative;
     }
 
@@ -94,16 +94,33 @@
 
 <div class="inner_rope" id="test">
     <div class="rope_box">
-        <div class="rope_box_wrapper">
-            <div class="rope_row">
-                <input type="text" value="" id="1">
-                <input type="text" value="" id="2">
-                <input type="text" value="" id="3">
-                <input type="text" value="" id="4">
-                <input type="text" value="" id="5">
-                <input type="text" value="" id="6">
-            </div>
-        </div>
-
+        <div class="rope_box_wrapper" id="rope_box_wrapper"></div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+
+<script>
+
+    loadRows()
+    function loadRows() {
+
+
+        for (let j = 1; j <= 26; j++) {
+            jQuery(`#rope_box_wrapper`).append(`<div class="rope_row" index="${j}"></div>`);
+            for (let i = 5; i >= 0; i--) {
+
+                let svgIndex = (j * 6) - i;
+                let col = 6 - i;
+
+                jQuery(`#rope_box_wrapper > div:nth-child(${j})`).append(`<input type="text" id="${svgIndex}">`);
+
+            }
+        }
+
+
+    }
+
+</script>
