@@ -223,7 +223,7 @@ function loadIndex(mainclass = '') {
 
   SetPattren(mainclass)
 
-  for (let j = 1; j <= 19; j++) {
+  for (let j = 1; j <= 26; j++) {
     for (let i = 5; i >= 0; i--) {
 
       let svgIndex = (j * 6) - i;
