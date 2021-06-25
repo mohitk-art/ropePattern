@@ -77,8 +77,6 @@ function pathClick(cls) {
   if (cls != 'svg_class_') {
     jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('style', `fill:${picked_color}`);
     jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('color', `${picked_color}`);
-    //   jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('style', `fill:#fff`);
-    //   jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('color', `#fff`);
     jQuery(`#addtocartBtn`).removeAttr('disabled');
   }
 
@@ -137,47 +135,47 @@ function loadSvg(roperows = 0) {
       let col = 6 - i;
 
 
-      jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('id', svgIndex);
+      jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('id', svgIndex);
 
       if (col == 1) {
         let y = cell1;
-        jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('x', 18);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 18);
         cell1 = cell1 + cellspace;
       }
 
       if (col == 2) {
         let y = cell2;
-        jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('x', 40);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 40);
         cell2 = cell2 + cellspace;
       }
 
       if (col == 3) {
         let y = cell3;
-        jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('x', 232);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 232);
         cell3 = cell3 + cellspace;
       }
 
       if (col == 4) {
         let y = cell4;
-        jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('x', 557);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 557);
         cell4 = cell4 + cellspace;
       }
 
       if (col == 5) {
         let y = cell5;
-        jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('x', 932);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 932);
         cell5 = cell5 + cellspace;
       }
 
       if (col == 6) {
         let y = cell6;
-        jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('x', 1254);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 1254);
         cell6 = cell6 + cellspace;
       }
 
@@ -196,16 +194,16 @@ function loadSVGCell(svgIndex, col) {
   let preserveAspectRatio = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('preserveAspectRatio');
   let xmlns = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('xmlns');
 
-  jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('height', height);
-  jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('width', width);
-  jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('version', version);
-  jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('viewBox', viewBox);
-  jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('preserveAspectRatio', preserveAspectRatio);
-  jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('xmlns', xmlns);
-  jQuery(`.svg_inner > *:nth-child(${svgIndex})`).html(hiddenPatternHTML);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('height', height);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('width', width);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('version', version);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('viewBox', viewBox);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('preserveAspectRatio', preserveAspectRatio);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('xmlns', xmlns);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).html(hiddenPatternHTML);
 
-  let svgclass = jQuery(`.svg_inner > *:nth-child(${svgIndex})`).attr('class');
-  jQuery(`.svg_inner > *:nth-child(${svgIndex}) path`).attr('onclick', `pathClick('${svgclass}')`);
+  let svgclass = jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('class');
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex}) path`).attr('onclick', `pathClick('${svgclass}')`);
 
 
   // console.log("index", svgIndex, "col", col)
@@ -218,7 +216,7 @@ function loadIndex(mainclass = '') {
 
   mainclass = mainclass ? `.${mainclass}` : '';
 
-  jQuery(`.svg_inner`).html('');
+  jQuery(`.svg_wrapper .svg_inner`).html('');
 
   let j = 0;
   $(`${mainclass} #rope_box_wrapper > .rope_row`).each(function (e) {
@@ -230,7 +228,7 @@ function loadIndex(mainclass = '') {
       let svgIndex = (j * 6) - i;
       let col = 6 - i;
 
-      jQuery(`.svg_inner`).append('<svg></svg>');
+      jQuery(`.svg_wrapper .svg_inner`).append('<svg></svg>');
 
       var cls1 = '';
 
