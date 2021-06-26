@@ -109,7 +109,7 @@ function getData() {
   let colorName = getProperties().colorName;
 
   SizeJs(sizeJS);
-  parentPattern('parent_pattern1');
+  parentPattern('parent_pattern2');
   SetColor(colorName);
 }
 
