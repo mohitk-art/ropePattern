@@ -84,14 +84,14 @@ function pathClick(cls) {
 
 
 // Color Slider Start
-// colorArray.map(item => {
+colorArray.map(item => {
 
-//   jQuery(`.vertical__color_crousel`).append(`<div class="color_slider">
-//     <span style="background-color: ${item.code};" onClick="ColorJs('${item.code}')" class="color_sliderJS"
-//       title="${item.name}" code="${item.code}"></span>
-//   </div>`);
+  jQuery(`.vertical__color_crousel`).append(`<div class="color_slider">
+    <span style="background-color: ${item.code};" onClick="ColorJs('${item.code}')" class="color_sliderJS"
+      title="${item.name}" code="${item.code}"></span>
+  </div>`);
 
-// })
+})
 // Color Slider End
 
 
@@ -119,12 +119,12 @@ function getData() {
 // load svg Cell
 function loadSvg(roperows = 0) {
   let cell1 = -181;
-  let cell2 = -145;
-  let cell3 = -303;
-  let cell4 = -145;
-  let cell5 = -301.6;
-  let cell6 = -126;
-  let cellspace = 318.4;
+  let cell2 = -166;
+  let cell3 = -324;
+  let cell4 = -171;
+  let cell5 = -324;
+  let cell6 = -157;
+  let cellspace = 304;
 
   console.log("rope length", roperows)
 
@@ -140,42 +140,42 @@ function loadSvg(roperows = 0) {
       if (col == 1) {
         let y = cell1;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 18);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 23);
         cell1 = cell1 + cellspace;
       }
 
       if (col == 2) {
         let y = cell2;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 40);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 38);
         cell2 = cell2 + cellspace;
       }
 
       if (col == 3) {
         let y = cell3;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 232);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 225);
         cell3 = cell3 + cellspace;
       }
 
       if (col == 4) {
         let y = cell4;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 557);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 543);
         cell4 = cell4 + cellspace;
       }
 
       if (col == 5) {
         let y = cell5;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 932);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 910);
         cell5 = cell5 + cellspace;
       }
 
       if (col == 6) {
         let y = cell6;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 1254);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 1231);
         cell6 = cell6 + cellspace;
       }
 
@@ -244,7 +244,10 @@ function loadIndex(mainclass = '') {
 
   });
 
+
+  jQuery(`.svg_wrapper`).attr('length', `${j}`);
   loadSvg(j);
+  // loadSvg(1);
   defaultColorClass();
 }
 

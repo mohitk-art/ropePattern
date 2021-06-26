@@ -12,8 +12,12 @@
       padding: 15px 27px;
       }
       
+
+      /* svg{
+        overflow: initial;
+      } */
       
-      .svg_wrapper:before,
+      /* .svg_wrapper:before,
       .cart_svg:before{
           content: "";
           height: 100%;
@@ -21,11 +25,16 @@
           width: 97%;
           left: .5%;
           background-color: #000;
-      }
+      } */
           
       
       .svg_inner, .main_svg {
           position:relative;
+      }
+
+      .svg_inner::before{
+        position: absolute;
+        content: "";
       }
       
       .row_box_wrapper{
@@ -55,6 +64,7 @@
     overflow: hidden; }
     .main_wrapper .container > .row > * {
       padding-top: 30px;
+      /* padding-top: 50px; */
       padding-bottom:20px;
       margin-bottom:0 !important;
         
@@ -161,7 +171,10 @@
   
   path {
     stroke: #000;
-    stroke-width: 38px; }
+    /* stroke-width: 38px;  */
+    stroke-width: 118px; 
+    
+  }
   
   .svg_inner g,
   .svg_inner path {
