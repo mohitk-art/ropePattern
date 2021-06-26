@@ -6,6 +6,20 @@
   
   body {
     font-size: 14px; }
+
+
+    #loaderdiv{
+      display: none;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      background-color: #fff;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+      z-index: 9999;
+    }
     
     
     button#addtocartBtn[disabled="disabled"] {
@@ -199,11 +213,7 @@
   
   .ropeBG {
     width: 100%; }
-  
-  .sub_pattern_nav {
-    display: none; }
-    .sub_pattern_nav.active {
-      display: block; }
+
   
   .sub_pattern_crousel .slick-list, .sub_pattern_crousel .slick-track {
     min-height: 354px; }

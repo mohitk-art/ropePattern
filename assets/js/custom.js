@@ -25,36 +25,26 @@ var lightColorArray = [
   '#d3b683'
 ]
 
+
+function loaderDiv(p) {
+  if (p == 'show') {
+    jQuery('#loaderdiv').addClass("d-flex")
+  }
+  else {
+    jQuery('#loaderdiv').removeClass("d-flex")
+  }
+}
+
 function SizeJs(index) {
   jQuery(".svg_wrapper").attr('size', index);
   jQuery(".number_sliderJS").removeClass("active")
   jQuery(`.number_sliderJS[title='${index}']`).addClass("active")
 }
 
-
-function parentPattern(id) {
-  jQuery(".pattren_sliderJS1").removeClass("active")
-  jQuery(`.pattren_sliderJS1[title='${id}']`).addClass("active")
-
-  jQuery(".sub_pattern_nav").removeClass("active")
-  jQuery(`#${id}`).addClass("active");
-
-  SetPattren(id);
-  // document.getElementById(id).click();
-  jQuery(`#${id} .slick-prev`).click();
-  jQuery(`#${id} .slick-track > *:first-child .pattren_sliderJS`).click();
-
-}
-
-
 function SetPattren(index) {
   jQuery(".svg_wrapper").attr('pattern', index);
   jQuery(".pattren_sliderJS").removeClass("active")
   jQuery(`.pattren_sliderJS[title='${index}']`).addClass("active")
-}
-
-function PattrenJs(index) {
-  SetPattren(index);
 }
 
 var picked_color;
@@ -73,7 +63,6 @@ function ColorJs(color) {
 
 function pathClick(cls) {
   picked_color = getProperties().colorName;
-
   if (cls != 'svg_class_') {
     jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('style', `fill:${picked_color}`);
     jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('color', `${picked_color}`);
@@ -99,18 +88,18 @@ function getProperties() {
   let sizeJS = jQuery(".svg_wrapper").attr('size');
   let patternName = jQuery(".svg_wrapper").attr('pattern');
   let colorName = jQuery(".svg_wrapper").attr('color');
-  return { sizeJS, patternName, colorName }
+  let length = jQuery(".svg_wrapper").attr('length');
+  return { sizeJS, patternName, colorName, length }
 }
 
 
 function getData() {
   let sizeJS = getProperties().sizeJS;
-  let patternJS = getProperties().patternName;
   let colorName = getProperties().colorName;
-
   SizeJs(sizeJS);
-  parentPattern('parent_pattern2');
   SetColor(colorName);
+
+  jQuery(".sub_pattern_nav .slick-track .slick-slide:first-child .pattren_sliderJS").click();
 }
 
 
@@ -205,11 +194,37 @@ function loadSVGCell(svgIndex, col) {
   let svgclass = jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('class');
   jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex}) path`).attr('onclick', `pathClick('${svgclass}')`);
 
-
+  loaderDiv('hide')
   // console.log("index", svgIndex, "col", col)
 }
 
+
+
+loadPattern();
+function loadPattern() {
+  jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).html("")
+
+  $(`.hiddenRopes > div`).each(function (e) {
+
+    let cls = $(this).attr("class");
+    console.log("pa cls", cls);
+
+    let img = jQuery(`.${cls} .tamplateImageJS`).attr("src") || '';
+
+    let htmlcode = `<div class="pattren_slider">
+    <img src="${img}" class="pattren_sliderJS" title="${cls}"
+      onClick="loadIndex('${cls}')" />
+  </div>`;
+
+
+    jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).append(htmlcode)
+
+  });
+
+}
+
 function loadIndex(mainclass = '') {
+  loaderDiv('show');
   jQuery(".svg_wrapper").removeClass("d-none");
 
   SetPattren(mainclass)
