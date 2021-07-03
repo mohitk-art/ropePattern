@@ -4,16 +4,35 @@ function search() {
     console.log("df", classname);
 
     let arrayList = [];
+    let index = 0;
     jQuery(classname).each(function (e) {
-        var html = jQuery(this).html();
 
-        arrayList.push(html);
+        let flag = jQuery(`${classname}:nth-child(${index}) .iti__flag`).attr('class');
+        let countryname = jQuery(`${classname}:nth-child(${index}) .iti__country-name`).html();
+        let code = jQuery(`${classname}:nth-child(${index}) .iti__dial-code`).html();
+
+
+
+
+        // console.log('html', this);
+
+        if (flag) {
+            // let atpos = flag.indexOf("iti__flag iti__");
+            let domain = flag.split("iti__flag iti__")[1];
+            arrayList.push({ flag: domain, countryname, code });
+        }
+
+        index++;
     });
 
     jQuery("#arraylist").html(`[${arrayList.map(item => {
-        return ` "${item}"`
+        return `{
+            flag:'${item.flag}',
+            country: '${item.countryname}',
+            code: '${item.code}'
+    }`
     })}]`);
-    console.log("dfd", arrayList);
+    console.log("array", arrayList);
 }
 
 function append() {
