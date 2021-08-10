@@ -1,0 +1,68 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="https://unpkg.com/canvg@3.0.4/lib/umd.js"></script> -->
+<script type="text/javascript" src="./htmltocanvs.js"></script>
+
+</head>
+<body>
+     
+        <div id="myHtml" style="background-color: #F0F0F1; color: #00cc65; width: 500px; margin:20px;
+        padding:25px;">           
+            
+            <svg class="svg_class_1" pattern="1" id="136" y="6517" x="543" height="349.000000pt" width="399.000000pt" version="1.0" viewBox="0 0 399.000000 349.000000" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="fill:#f6dd3c" color="#f6dd3c" colorname="yellow">
+                <metadata>
+                  Created by potrace 1.16, written by Peter Selinger 2001-2019
+                </metadata>
+                <g transform="translate(0.000000,349.000000) scale(0.100000,-0.100000)">
+                  <path d="M2655 3424 c-44 -36 -146 -120 -227 -185 -81 -66 -191 -162 -245
+          -213 -54 -50 -145 -130 -203 -176 -193 -154 -384 -317 -526 -446 -77 -71 -281
+          -239 -452 -373 -172 -134 -345 -273 -386 -310 -40 -36 -163 -147 -272 -245
+          -241 -217 -344 -317 -344 -332 0 -18 67 -76 306 -266 120 -96 257 -210 304
+          -254 47 -44 139 -125 205 -179 66 -55 179 -154 250 -222 132 -124 252 -223
+          270 -223 6 0 69 59 140 131 72 72 171 162 222 199 51 38 152 125 226 192 73
+          68 252 216 398 329 145 114 292 229 326 255 34 27 62 57 63 67 0 10 8 17 21
+          17 17 0 20 5 16 23 -4 19 17 39 152 144 212 166 320 262 609 542 223 215 377
+          357 455 417 15 12 27 26 27 31 0 5 -159 166 -352 359 -298 296 -384 376 -553
+          509 -110 87 -230 184 -266 217 -37 32 -71 58 -75 57 -5 0 -45 -30 -89 -65z" onclick="pathClick('svg_class_1')"></path>
+                </g>
+              </svg>
+        </div>
+
+     
+        <input id="btn_convert" type="button" value="Convert to Image" />
+
+        <br />
+        <h3>Preview :</h3>
+        <div id="previewImg">
+        </div>
+
+        <div id="imageLink"></div>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#btn_convert").on('click', function () {
+                html2canvas(document.getElementById("myHtml"),
+                    {
+                        allowTaint: true,
+                        useCORS: true
+                    }).then(function (canvas) {
+                        var anchorTag = $("#imageLink").html(`<a class="anchorURL" href="${canvas.toDataURL()}"></a>`);
+                        document.body.appendChild(anchorTag);
+                        $("#previewImg").html(canvas);
+                        anchorTag.download = "filename.jpg";
+                        anchorTag.href = canvas.toDataURL();
+                        anchorTag.target = '_blank';
+                        // anchorTag.click();
+                    });
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
+ 
+ 

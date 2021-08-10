@@ -1,4 +1,4 @@
-<div></div>
+<div id="ropeImage"></div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/canvg@3.0.4/lib/umd.js"></script>
@@ -23,15 +23,26 @@
 
 
 
-const svg=`<svg version="1.1" baseProfile="full" width="300" height="200"
-xmlns="http://www.w3.org/2000/svg">
-   <rect width="100%" height="100%" fill="red" />
-   <circle cx="150" cy="100" r="80" fill="green" />
-   <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text></svg>`
+const svg=`<svg class="svg_class_1" pattern="1" id="136" y="6517" x="543" height="349.000000pt" width="399.000000pt" version="1.0" viewBox="0 0 399.000000 349.000000" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="fill:#f6dd3c" color="#f6dd3c" colorname="yellow">
+      <metadata>
+        Created by potrace 1.16, written by Peter Selinger 2001-2019
+      </metadata>
+      <g transform="translate(0.000000,349.000000) scale(0.100000,-0.100000)">
+        <path d="M2655 3424 c-44 -36 -146 -120 -227 -185 -81 -66 -191 -162 -245
+-213 -54 -50 -145 -130 -203 -176 -193 -154 -384 -317 -526 -446 -77 -71 -281
+-239 -452 -373 -172 -134 -345 -273 -386 -310 -40 -36 -163 -147 -272 -245
+-241 -217 -344 -317 -344 -332 0 -18 67 -76 306 -266 120 -96 257 -210 304
+-254 47 -44 139 -125 205 -179 66 -55 179 -154 250 -222 132 -124 252 -223
+270 -223 6 0 69 59 140 131 72 72 171 162 222 199 51 38 152 125 226 192 73
+68 252 216 398 329 145 114 292 229 326 255 34 27 62 57 63 67 0 10 8 17 21
+17 17 0 20 5 16 23 -4 19 17 39 152 144 212 166 320 262 609 542 223 215 377
+357 455 417 15 12 27 26 27 31 0 5 -159 166 -352 359 -298 296 -384 376 -553
+509 -110 87 -230 184 -266 217 -37 32 -71 58 -75 57 -5 0 -45 -30 -89 -65z" onclick="pathClick('svg_class_1')"></path>
+      </g>
+    </svg>
+    `
 svgToPng(svg,(imgData)=>{
-    const pngImage = document.createElement('img');
-    document.body.appendChild(pngImage);
-    pngImage.src=imgData;
+    jQuery("#ropeImage").html(`<img class="rope_image" src="${imgData}">`);
 });
  function svgToPng(svg, callback) {
     const url = getSvgUrl(svg);
@@ -44,10 +55,8 @@ function getSvgUrl(svg) {
     return  URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
 }
 function svgUrlToPng(svgUrl, callback) {
-    const svgImage = document.createElement('img');
-    // imgPreview.style.position = 'absolute';
-    // imgPreview.style.top = '-9999px';
-    document.body.appendChild(svgImage);
+    const svgImage = jQuery("#ropeImage").html(`<img class="rope_image" src="${svgUrl}">`);
+
     svgImage.onload = function () {
         const canvas = document.createElement('canvas');
         canvas.width = svgImage.clientWidth;

@@ -1,30 +1,57 @@
+var states = new Array( "Australia","Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burma", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic", "Congo, Republic of the", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Greenland", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Mongolia", "Morocco", "Monaco", "Mozambique", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Samoa", "San Marino", " Sao Tome", "Saudi Arabia", "Senegal", "Serbia and Montenegro", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe");
+var options = '';
+
+for (var i = 0; i < states.length; i++) {
+   options += '<option value="' + states[i]+ '">' + states[i] + '</option>';
+}
+var cartArray=[]
+
+
+
+$("#country").html(options);
+
+
 var lightColorArray = [
-  { code: '#a9c0cb', name: "Echo Blue" },
-  { code: '#A1D7C9', name: "Sinbad" },
-  { code: '#c6e3f7', name: "Pale Cornflower Blue" },
-  { code: '#92cbf1', name: "Sky Blue" },
-  { code: '#74bbfb', name: "Maya Blue" },
-  { code: '#87cefa', name: "Light Sky Blue" },
-  { code: '#aec9eb', name: "Tropical Blue" },
-  { code: '#efc5b5', name: "Desert Sand" },
-  { code: '#dedbcc', name: "Green White" },
-  { code: '#d3b683', name: "Calico" }
+  {code:'#a9c0cb'},
+  {code:'#A1D7C9'},
+  {code:'#c6e3f7'},
+  {code:'#92cbf1'},
+  {code:'#74bbfb'},
+  {code:'#87cefa'},
+  {code:'#aec9eb'},
+  {code:'#efc5b5'},
+  {code:'#dedbcc'},
+  {code:'#d3b683'},
+  {code:'#A1D7C9'},
+  {code:'#c6e3f7'},
+  {code:'#92cbf1'},
+  {code:'#74bbfb'},
+  {code:'#87cefa'},
+  {code:'#aec9eb'},
+  {code:'#efc5b5'},
+  {code:'#dedbcc'},
+  {code:'#d3b683'},
+  {code:'#A1D7C9'},
+  {code:'#c6e3f7'},
+  {code:'#92cbf1'},
+  {code:'#74bbfb'},
+  {code:'#87cefa'}
 ]
 
 
 var ropeDetails = []
 getRopeDetails();
-function getRopeDetails() {
-  jQuery(`.ropeDetailTable > div`).each(function (e) {
-    let size = jQuery(this).attr('size');
-    let length = jQuery(this).attr('length');
-    let weight = jQuery(this).attr('weight');
-    let price = jQuery(this).attr('price');
-
-    ropeDetails.push({ size, length, weight, price })
-  })
-
-  console.log("rope details", ropeDetails);
+function getRopeDetails(){
+    jQuery(`.ropeDetailTable > div`).each(function (e) {
+        let size = jQuery(this).attr('size');
+        let length = jQuery(this).attr('length');
+        let weight = jQuery(this).attr('weight');
+        let price = jQuery(this).attr('price');
+        
+        ropeDetails.push({size, length, weight, price})
+    })
+    
+    console.log("rope details", ropeDetails);
 }
 
 function loaderDiv(p) {
@@ -37,12 +64,22 @@ function loaderDiv(p) {
 }
 
 function SizeJs(index) {
-  jQuery(".svg_wrapper").attr('size', index);
+    
+    let size = getProperties().sizeJS;
+  
   jQuery(".number_sliderJS").removeClass("active");
   jQuery(`.number_sliderJS[title='${index}']`).addClass("active");
+  
+  if(size == index){
+        return false;
 }
 
-function SetPattren(index) {
+jQuery(".svg_wrapper").attr('size', index);
+
+  patternAssign(index);
+}
+
+function SetPattren(index = '') {
   jQuery(".svg_wrapper").attr('pattern', index);
   jQuery(".pattren_sliderJS").removeClass("active")
   jQuery(`.pattren_sliderJS[id='${index}']`).addClass("active")
@@ -65,12 +102,12 @@ function ColorJs(color) {
 function pathClick(cls) {
   picked_color = getProperties().color;
   if (cls != 'svg_class_') {
-
-    let colortitle = jQuery(`.color_sliderJS[code='${picked_color}']`).attr('title');
-    jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('style', `fill:${picked_color}`);
+      
+    let colortitle = jQuery(`.color_sliderJS[code='${picked_color}']`).attr('data-original-title');
+    jQuery(`.svg_wrapper .svg_inner svg.${cls} path`).attr('style', `fill:${picked_color};stroke: #000;stroke-width: 118px;`);
     jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('color', `${picked_color}`);
     jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('colorname', `${colortitle}`);
-    jQuery(`#addtocartBtn`).removeAttr('disabled');
+    jQuery(`.addtocartBtn`).removeAttr('disabled');
   }
 
 }
@@ -105,12 +142,43 @@ function getData() {
   jQuery(".vertical__color_crousel .slick-track .slick-slide:first-child .color_sliderJS").click();
 }
 
+loadSize();
+function loadSize(p = []){
+    let sizes = [6,8,10,12,14,16];
+    if(p.length>0){
+        sizes = p;
+    }
+    jQuery(".verticle_size_slider").html('');
+    
+    
+    sizes.map(item=>{
+        let htmls = `<div class="number_slider">
+              <span class="number_sliderJS" onClick="SizeJs(${item})" title="${item}">${item}</span>
+            </div>`
+        
+        jQuery(".verticle_size_slider").append(htmls);    
+    })
+    
+}
+
 
 
 
 // load svg Cell
 function loadSvg(roperows = 0) {
-  let cell1 = -181;
+  
+  $.ajax({
+   url:loadSvgStep1(roperows),
+   success:function(){
+   loaderDiv('hide')
+}
+});
+  
+}
+
+
+function loadSvgStep1(roperows){
+    let cell1 = -181;
   let cell2 = -166;
   let cell3 = -324;
   let cell4 = -171;
@@ -118,17 +186,21 @@ function loadSvg(roperows = 0) {
   let cell6 = -157;
   let cellspace = 304;
 
-  console.log("rope length", roperows)
-
-  for (let j = 1; j <= roperows; j++) {
+  console.log("rope length", roperows);
+    
+    for (let j = 1; j <= roperows; j++) {
     for (let i = 5; i >= 0; i--) {
 
       let svgIndex = (j * 6) - i;
       let col = 6 - i;
 
-
-      jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('id', svgIndex);
-
+      
+      let id = jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('id');
+      
+      if(!id){
+          
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('id', svgIndex);
+          
       if (col == 1) {
         let y = cell1;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
@@ -170,58 +242,70 @@ function loadSvg(roperows = 0) {
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 1231);
         cell6 = cell6 + cellspace;
       }
+      
+          
+      }
+
+      
 
 
       loadSVGCell(svgIndex, col);
     }
   }
+  
+  
+  defaultColorClass()
 }
 
 function loadSVGCell(svgIndex, col) {
-  let hiddenPatternHTML = jQuery(`#hiddenPattren > *:nth-child(${col})`).html();
-  let height = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('height');
-  let width = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('width');
-  let version = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('version');
-  let viewBox = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('viewBox');
-  let preserveAspectRatio = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('preserveAspectRatio');
-  let xmlns = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('xmlns');
-
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('height', height);
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('width', width);
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('version', version);
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('viewBox', viewBox);
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('preserveAspectRatio', preserveAspectRatio);
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('xmlns', xmlns);
-
+  
   let ishtml = jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).html();
-  if (ishtml) {
-
+  if(ishtml){
+      
   }
-  else {
-    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).html(hiddenPatternHTML);
+  else{
+     
+      let hiddenPatternHTML = jQuery(`#hiddenPattren > *:nth-child(${col})`).html();
+      let height = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('height');
+      let width = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('width');
+      let version = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('version');
+      let viewBox = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('viewBox');
+      let preserveAspectRatio = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('preserveAspectRatio');
+      let xmlns = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('xmlns');
+      
+    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('height', height);
+    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('width', width);
+    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('version', version);
+    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('viewBox', viewBox);
+    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('preserveAspectRatio', preserveAspectRatio);
+    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('xmlns', xmlns);
+    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).html(hiddenPatternHTML);    
   }
 
   let svgclass = jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('class');
   jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex}) path`).attr('onclick', `pathClick('${svgclass}')`);
-
-  loaderDiv('hide')
   // console.log("index", svgIndex, "col", col)
 }
 
 
 
-patternAssign();
-function patternAssign(size = '') {
-  loadPattern(size);
-  jQuery('.vertical__pattren_crousel').removeClass('slick-initialized slick-slider slick-vertical');
-  jQuery('.vertical__pattren_crousel').slick({
+patternAssign(6);
+function patternAssign(size = ''){
+    loadPattern(size);
+    jQuery('.vertical__pattren_crousel').removeClass('slick-initialized slick-slider slick-vertical');
+    jQuery('.vertical__pattren_crousel').slick({
     infinite: false,
     vertical: true,
     verticalSwiping: true,
-    slidesToShow: 2,
-    slidesToScroll: 2
+    slidesToShow: 3,
+    slidesToScroll: 3
   });
-
+  
+  
+  jQuery(".svg_wrapper").attr('pattern', '');
+  jQuery(".svg_wrapper").addClass("d-none");
+  jQuery(`.addtocartBtn`).attr('disabled', true);
+  
   jQuery(".sub_pattern_nav .slick-track .slick-slide:first-child .pattren_sliderJS").click();
 }
 
@@ -230,66 +314,91 @@ function loadPattern(ropesize = '') {
   jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).html("")
 
 
-  if (ropesize) {
+if(ropesize){
     $(`.hiddenRopes > div`).each(function (e) {
-      let cls = $(this).attr("class");
-      // console.log("pa cls", cls);
-      let img = jQuery(`.${cls} .tamplateImageJS`).attr("src") || '';
-      let title = jQuery(`.${cls} .rope_title`).html() || '';
-      let size = jQuery(`.${cls} .rope_sizeJS`).html() || '';
+    let cls = $(this).attr("class");
+    // console.log("pa cls", cls);
+    let img = jQuery(`.${cls} .tamplateImageJS`).attr("src") || '';
+    let title = jQuery(`.${cls} .rope_title`).html() || '';
+    let size = jQuery(`.${cls} .rope_sizeJS`).html() || '';
+    
+    let htmlcode = `<div class="pattren_slider">
+    <img src="${img}" class="pattren_sliderJS" size="${size}" data-toggle="tooltip" data-placement="right" id="${cls}" title="${title}"
+      onClick="loadIndex('${cls}')" />
+  </div>`;
+  
+  
+  if(ropesize == 6 || ropesize == 8){
+      if(size == 6){
+    jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).append(htmlcode)
+    }
+  }
+  
+  else{
+      if(size == 10){
+    jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).append(htmlcode)
+    }
+  }
+    
+    
+    
+    
 
-      let htmlcode = `<div class="pattren_slider">
+  });
+}
+else{
+    $(`.hiddenRopes > div`).each(function (e) {
+    let cls = $(this).attr("class");
+    // console.log("pa cls", cls);
+    let img = jQuery(`.${cls} .tamplateImageJS`).attr("src") || '';
+    let title = jQuery(`.${cls} .rope_title`).html() || '';
+    
+    let htmlcode = `<div class="pattren_slider">
     <img src="${img}" class="pattren_sliderJS" id="${cls}" title="${title}"
       onClick="loadIndex('${cls}')" />
   </div>`;
+    jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).append(htmlcode)
 
-      if (size == ropesize) {
-        jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).append(htmlcode)
-      }
-
-
-
-    });
-  }
-  else {
-    $(`.hiddenRopes > div`).each(function (e) {
-      let cls = $(this).attr("class");
-      // console.log("pa cls", cls);
-      let img = jQuery(`.${cls} .tamplateImageJS`).attr("src") || '';
-      let title = jQuery(`.${cls} .rope_title`).html() || '';
-
-      let htmlcode = `<div class="pattren_slider">
-    <img src="${img}" class="pattren_sliderJS" id="${cls}" title="${title}"
-      onClick="loadIndex('${cls}')" />
-  </div>`;
-      jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).append(htmlcode)
-
-    });
-  }
-
+  });
+}
+  
+  
+  
+ jQuery('[data-toggle="tooltip"]').tooltip()
 
 }
 
-function loadIndex(mainclass = '') {
+function loadIndex(mainclass = ''){
+    
+    $.ajax({
+   url:loaderDiv('show'),
+   success:function(){
+   loadIndexStep1(mainclass)
+}
+})
+    
+}
 
-  let svgpattern = jQuery(".svg_wrapper").attr('pattern');
-  if (svgpattern == mainclass) {
+
+function loadIndexStep1(mainclass = '') {
+    
+
+let svgpattern = jQuery(".svg_wrapper").attr('pattern');    
+if(svgpattern == mainclass){
     return false;
-  }
+}
 
 
-  jQuery(`#addtocartBtn`).removeAttr('disabled');
+jQuery(`.addtocartBtn`).removeAttr('disabled');
 
-  SetPattren(mainclass);
-
-  loaderDiv('show');
+SetPattren(mainclass);
+    
   jQuery(".svg_wrapper").removeClass("d-none");
 
-
+  
 
   mainclass = mainclass ? `.${mainclass}` : '';
 
-  //   jQuery(`.svg_wrapper .svg_inner`).html('');
 
   let j = 0;
   $(`${mainclass} #rope_box_wrapper > .rope_row`).each(function (e) {
@@ -302,16 +411,16 @@ function loadIndex(mainclass = '') {
       let col = 6 - i;
 
 
-      jQuery(`.svg_wrapper .svg_inner svg:nth-child(${svgIndex})`).attr('pattern', `${cls1}`);
-
-      let isid = jQuery(`.svg_wrapper .svg_inner svg:nth-child(${svgIndex})`).attr('id') || '';
-
-      if (isid) {
-
-      } else {
-        jQuery(`.svg_wrapper .svg_inner`).append('<svg></svg>');
+    jQuery(`.svg_wrapper .svg_inner svg:nth-child(${svgIndex})`).attr('pattern', `${cls1}`);
+    
+     let isid = jQuery(`.svg_wrapper .svg_inner svg:nth-child(${svgIndex})`).attr('id') || '';
+      
+      if(isid){
+          
+      }else{
+          jQuery(`.svg_wrapper .svg_inner`).append('<svg></svg>');
       }
-
+      
 
       var cls1 = '';
 
@@ -330,8 +439,6 @@ function loadIndex(mainclass = '') {
 
   jQuery(`.svg_wrapper`).attr('Ropelength', `${j}`);
   loadSvg(j);
-  // loadSvg(1);
-  defaultColorClass();
 }
 
 function defaultColorClass() {
@@ -340,17 +447,27 @@ function defaultColorClass() {
   let list = [];
 
   $(`.svg_wrapper .svg_inner svg`).each(function (e) {
-    var value = $(this).attr("class");
+    let value = $(this).attr("class");
+    let pattern = $(this).attr("pattern");
 
     if (list.indexOf(value) === -1) {
       // console.log("index", svgclassinex, "class", value)
-      jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('style', `fill:${lightColorArray[svgclassinex].code}`);
-      jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('color', `${lightColorArray[svgclassinex].code}`);
-      jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('colorname', `${lightColorArray[svgclassinex].name}`);
+      let pickerCode = jQuery(`.color_sliderJS[number="${pattern}"]`).attr('code');
+      let pickerName = jQuery(`.color_sliderJS[number="${pattern}"]`).attr('data-original-title');
+      
+      console.log("pickerCode", pickerCode, "pickerName", pickerName, "class", value);
+      
+      
+      let code = pickerCode?pickerCode:(lightColorArray[svgclassinex] && lightColorArray[svgclassinex].code || '');
+      let name = pickerName?pickerName:(lightColorArray[svgclassinex] && lightColorArray[svgclassinex].name || '');
+      
+      jQuery(`.svg_wrapper .svg_inner svg.${value} path`).attr('style', `fill:${code};stroke: #000;stroke-width: 118px;`);
+      jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('color', `${code}`);
+      jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('colorname', `${name}`);
       list.push(value);
       svgclassinex++
     }
-    jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('style', `fill:#fff`);
+    jQuery(`.svg_wrapper .svg_inner svg.svg_class_ path`).attr('style', `fill:#fff;stroke: #000;stroke-width: 118px;`);
     jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('color', `#fff`);
   });
 
@@ -361,21 +478,32 @@ function defaultColorClass() {
 var selectedColors = [];
 function getColors() {
   let list = []
+  let isError = '';
   selectedColors = [];
   $(`.svg_wrapper .svg_inner svg`).each(function (e) {
-    var value = $(this).attr("pattern");
+    var value = $(this).attr("colorname");
+    
+    
+    if(value==''){
+            $('#liveToast').toast('show')
+            isError = 'undefined'
+    }
 
     if (list.indexOf(value) === -1) {
-      // console.log("index", svgclassinex, "class", value)
       if (value) {
         list.push(value);
-        let color = jQuery(`.svg_wrapper .svg_inner svg[pattern='${value}']`).attr('colorname') || 'White';
-        let colorcode = jQuery(`.svg_wrapper .svg_inner svg[pattern='${value}']`).attr('color') || '#fff';
-        selectedColors.push({ name: value, value: color, colorcode })
+        
+        let colorcode = jQuery(`.svg_wrapper .svg_inner svg[colorname='${value}']`).attr('color') || '#fff';
+        let pattern = jQuery(`.svg_wrapper .svg_inner svg[colorname='${value}']`).attr('pattern') || '';
+        
+        selectedColors.push({ name: pattern, value: value, colorcode })
       }
     }
   });
-  console.log("selecrf color", selectedColors)
+  
+  
+  return isError;
+//   console.log("selected color", selectedColors)
 }
 
 
@@ -403,112 +531,146 @@ jQuery(".qty_minus").click(function () {
 
 
 let cartArr = JSON.parse(localStorage.getItem("cart")) || [];
-var cartArray = cartArr;
+  cartArray = cartArr;
 
-function getLengths(size) {
-  let lengths = []
-  ropeDetails.map(item => {
-    if (item.size == size) {
-      lengths.push({ length: item.length, weight: item.weight, price: item.price });
-    }
-  })
-  // console.log("lengths",lengths)
-  return lengths;
+function getLengths(size){
+    let lengths = []
+    ropeDetails.map(item=>{
+        if(item.size == size){
+            lengths.push({length:item.length, weight:item.weight, price: item.price});
+        }
+    })
+    // console.log("lengths",lengths)
+    return lengths;
 }
 
 
 function addToCart() {
-  getColors();
-  let title = jQuery(".svg_wrapper").attr(`pattern`);
-  let size = jQuery(".svg_wrapper").attr(`size`);
-  let qty = jQuery("#qty_value").val();
-
-  let lengths = getLengths(size);
-
-  let price = lengths[0].price
-  let length1 = lengths[0].length
-  let weight = lengths[0].weight
-  let img = jQuery(`.${title} .tamplateImageJS`).attr("src");
-  let svghtml = jQuery(".svg_wrapper").html();
-
-  let titlename = jQuery(`.${title} .rope_title`).html();
-
-  cartArray.push({
-    title: titlename,
-    length1,
-    lengths,
-    weight,
-    comment: '',
-    img,
-    size,
-    qty,
-    svghtml,
-    color: selectedColors,
-    price: price
-  })
-
-  jQuery("#qty_value").val(1);
-
-  cartArray.reverse();
-  console.log("cartarray", cartArray)
-  fetchArray();
+  
+  if(getColors() == 'undefined'){
+      return
+  }
+  
+  
+ $.ajax({
+   url:cartArrayPush(),
+   success:function(){
+   jQuery('.cart_svg svg path').removeAttr('onclick')
 }
+})
+  
+  
+  
+  
+}
+// var cartArray=[];
 
+function cartArrayPush(){
+    jQuery('.addtocartBtn').attr('disabled', true)
+//   console.log('fdfd', getColors())
+    let title = jQuery(".svg_wrapper").attr(`pattern`);
+    let size = jQuery(".svg_wrapper").attr(`size`);
+    let qty = jQuery("#qty_value").val();
+    let lengths = getLengths(size);
+    let price = lengths[0].price
+    let length1 = lengths[0].length
+    let weight = lengths[0].weight
+    let img = jQuery(`.${title} .tamplateImageJS`).attr("src");
+    let fillimage = 'nolink';
+    let svghtml = jQuery(".svg_wrapper").html();
+    let titlename = jQuery(`.${title} .rope_title`).html();
+
+      cartArray.push({
+        title: titlename,
+        length1,
+        lengths,
+        weight,
+        comment: '',
+        img,
+        fillimage,
+        size,
+        qty,
+        svghtml,
+        color: selectedColors,
+        price: price
+      })
+
+    jQuery("#qty_value").val(1);
+
+    // cartArray.reverse();
+    // console.log("cartarray", cartArray)
+    fetchArray();
+}
 
 
 
 function updateCart(i, item = 'comment') {
-
-  if (item == 'length') {
-    let value1 = jQuery(`.rope_length${i}`).val();
-
-    cartArray[i].length1 = value1;
-
-    cartArray[i].lengths.map(item => {
-      if (item.length == value1) {
-        cartArray[i].price = item.price;
-        cartArray[i].weight = item.weight;
+    
+if(item == 'length'){
+  let value1 = jQuery(`.rope_length${i}`).val();
+  
+  cartArray[i].length1 = value1;  
+  
+  cartArray[i].lengths.map(item=>{
+      if(item.length == value1){
+          cartArray[i].price = item.price;
+          cartArray[i].weight = item.weight;
       }
-    });
-
-    fetchArray();
-  }
-  else {
+  });
+  
+  fetchArray();
+}
+else{
     let value2 = jQuery(`.rope_text${i}`).val();
-    cartArray[i].comment = value2;
-  }
+  cartArray[i].comment = value2;
+}
 
-
+  
 
   localStorage.removeItem("cart");
   localStorage.setItem("cart", JSON.stringify(cartArray));
 }
 
 
-fetchArray();
 
+fetchArray();
+var totalPrice = 0;
 function fetchArray() {
+// console.log("fetch", cartArray, 'svgimg',svgImages);
+    
   localStorage.removeItem("cart");
+  jQuery("#cart_items").val(JSON.stringify(cartArray));
+  jQuery("#cart_items1").val(JSON.stringify(cartArray));
   localStorage.setItem("cart", JSON.stringify(cartArray));
+  
+  jQuery("#cartLength").html(cartArray.length);
+  
+   
+
+     if($( "#zipcode" ).val() != '')
+      {
+    ziocodechange();
+    }
 
   $("#cart_row .cart_item").remove();
 
   if (cartArray.length <= 0) {
-    jQuery("#checkoutbtn").attr(`disabled`, true);
+    jQuery(".checkoutbtn").attr(`disabled`, true);
   }
   else {
-    jQuery("#checkoutbtn").removeAttr("disabled")
+    jQuery(".checkoutbtn").removeAttr("disabled")
   }
 
-  var totalPrice = 0;
+  totalPrice = 0;
   cartArray.map((item, i) => {
     $("#cart_row").append(`<div class="cart_item">
     <section class="d-flex w-100">
       <!-- <img src="${item.img}" class="cart_img mr-2" /> -->
-      <div class="cart_svg">
+      <div class="cart_svg" id="cartsvg${i}">
       ${item.svghtml}
-      <span class="qty">${item.qty}</span>
+     
       </div>
+      
       <div class="cart_item_conetnt">
         <h5>${item.title}</h5>
 
@@ -523,9 +685,9 @@ function fetchArray() {
         <span class="cart_length">Length: 
             <select onchange="updateCart(${i}, 'length')" class="lengthdropdown rope_length${i}" value="${item.length1}">
             
-                    ${item.lengths.map(lit => {
-      return `<option value="${lit.length}" ${item.length1 == lit.length ? 'selected' : ''}>${lit.length}</option>`
-    })}
+                    ${item.lengths.map(lit=>{
+                      return `<option value="${lit.length}" ${item.length1==lit.length?'selected':''}>${lit.length}</option>`
+                    })}
                     
             </select>
         </span>
@@ -545,15 +707,59 @@ function fetchArray() {
   })
 
 
+    jQuery("#total_value1").val(totalPrice.toFixed(2));
 
-  jQuery("#total_price").html(`$${totalPrice}`);
+  jQuery("#total_price").html(`$${totalPrice.toFixed(2)}`);
+   jQuery('.final_total').html('$' + totalPrice.toFixed(2));
+    jQuery('#final_total1').val(totalPrice.toFixed(2)) ;
+    
+     if(totalPrice == 0)
+     {
+        document.getElementById("shipping_cost").textContent = '$0.00';
+        document.getElementById("gst").textContent = '$0.00';
+        jQuery('.final_total').html('$0.00');
+        jQuery('#final_total1').val(0) ;
 
+     }
+
+     if($( "#country option:selected" ).text() == 'Australia'  )
+      {
+          
+        
+            var gst = document.getElementById("gst_value").value;
+            var shipping_cost1 = document.getElementById("shipping_cost1").value
+            var totalPrice1 = parseInt(totalPrice) + parseInt(shipping_cost1)
+            final_total = (parseInt(totalPrice1) *  parseInt(gst) /100 ) ;
+            final_total1 =totalPrice1+final_total
+            document.getElementById("gst").textContent =  '$' +final_total.toFixed(2) 
+            document.getElementById("gst_value1").value =  final_total.toFixed(2)
+            jQuery('.final_total').html('$' + final_total1.toFixed(2));
+            jQuery('#final_total1').val(final_total1.toFixed(2)) ;
+            document.getElementById("shipping_cost").textContent = '$'+ parseInt(shipping_cost1).toFixed(2)
+
+             if(totalPrice == 0)
+             {
+                document.getElementById("shipping_cost").textContent = '$0.00';
+                document.getElementById("gst").textContent = '$0.00';
+                jQuery('.final_total').html('$0.00');
+                jQuery('#final_total1').val(0) ;
+
+             }
+
+         
+          
+      }
+      
+
+
+
+    
 }
 
 
 function removeArray(i) {
   if (window.confirm("Do you want to remove this item")) {
-    jQuery(`#addtocartBtn`).removeAttr('disabled');
+    jQuery(`.addtocartBtn`).removeAttr('disabled');
     cartArray = cartArray.filter((item, j) => i !== j);
     fetchArray();
   }
@@ -602,6 +808,30 @@ jQuery(".addresstypeJS").click(function () {
 
 })
 
+
+jQuery(".pickupbtnJS").click(function () {
+ pickupFunction();
+})
+
+pickupFunction();
+function pickupFunction(){
+let value = jQuery(".pickupbtnJS:checked").val();
+  console.log("vaa", value)
+
+  if (value == 'pickup') {
+    jQuery(`#shippingBody`).addClass('d-none');
+    // jQuery(`#shippingItem`).addClass('d-none');
+    jQuery(`#address`).attr('required', false);
+    jQuery(`#zipcode`).attr('required', false);
+  }
+  else {
+    jQuery(`#shippingBody`).removeClass('d-none');
+    // jQuery(`#shippingItem`).removeClass('d-none');
+    jQuery(`#address`).attr('required', true);
+    jQuery(`#zipcode`).attr('required', true);
+  }
+}
+
 // Checkout Page End
 
 
@@ -617,20 +847,65 @@ function loadSliders() {
     slidesToScroll: 8
   });
 
-  //   jQuery('.vertical__pattren_crousel').slick({
-  //     infinite: false,
-  //     vertical: true,
-  //     verticalSwiping: true,
-  //     slidesToShow: 2,
-  //     slidesToScroll: 2
-  //   });
+//   jQuery('.vertical__pattren_crousel').slick({
+//     infinite: false,
+//     vertical: true,
+//     verticalSwiping: true,
+//     slidesToShow: 2,
+//     slidesToScroll: 2
+//   });
 }
 getData()
 
 
 
+jQuery("#checkoutbtn").click(function () {
+    checkoutClick();
+})
+
+
+
+function checkoutClick(){
+$.ajax({
+    url:checkoutStep1(),
+    success:function(){
+    // checkoutStep2();
+    }
+})
+
+}
+
+
+function checkoutStep1(){
+    if(cartArray.length == 0){
+        $('#cartToast').toast('show')
+        jQuery(".checkoutbtn").attr('disabled', true)
+        return
+    }
+    
+    jQuery(".checkoutbtnsubmit").click()
+    
+    $( "#checkoutForm" ).submit(function( event ) {
+      loaderDiv('show')
+    
+    //   event.preventDefault();
+    });
+}
+
+
+
+
+
 function ziocodechange() {
-  jQuery('#error').css('display', 'none');
+    
+    var zipcode = document.getElementById("zipcode").value;
+   
+    
+    
+    if(zipcode!='')
+    {
+    jQuery('#error').css('display', 'none');
+  
 
   var zip_code_value = 0;
   var weight_value = 0;
@@ -640,6 +915,9 @@ function ziocodechange() {
   var get_first_character = zipcode.slice(0, 1);
   var sub_value = 0;
   var total_val = 0;
+  var sub_value1 = 0;
+  var weight1 =0;
+    var weight =0;
   if (get_first_character == 0) {
     zip_code_value = 1.8;
   }
@@ -672,9 +950,18 @@ function ziocodechange() {
   }
   cartArray.map((item, i) => {
     console.log(item.price)
-    weight = item.weight;
+    weight1 = item.weight;
+    
     price = parseInt(item.price);
     final_price = final_price + price;
+
+
+  weight =  parseInt(weight1) + parseInt(weight) ;
+
+
+  })
+
+ 
     if (weight >= 0 && weight <= 20) {
       weight_value = document.getElementById("00to20").value;
     }
@@ -723,26 +1010,171 @@ function ziocodechange() {
       return false;
     }
 
+
     sub_value = zip_code_value * weight_value;
+    
+    gst_value =   document.getElementById("gst_value").value
+        
+    total_price = document.getElementById("total_value1").value;
+
+    final_total1 = parseInt(total_price) + parseInt(sub_value);
+    
+   final_total2 = (parseInt(final_total1) *  parseInt(gst_value) /100 ) ;
+
+   final_total3 =parseInt(final_total1)+parseInt(final_total2)
+
+    document.getElementById("shipping_cost").textContent = '$' + sub_value.toFixed(2);
+
+    document.getElementById("shipping_cost1").value =  sub_value.toFixed(2);
+  
+    document.getElementById("gst").textContent = '$' +   final_total2.toFixed(2) 
+      document.getElementById("gst_value1").value =  final_total2.toFixed(2)
+  
+    jQuery('.final_total').html('$' + final_total3.toFixed(2));
+    jQuery('#final_total1').val(final_total3.toFixed(2)) ;
+     if(parseInt(total_price) == 0)
+     {
+       
+        document.getElementById("shipping_cost").textContent = '$0.00';
+        document.getElementById("gst").textContent = '$0.00';
+        jQuery('.final_total').html('$0.00');
+        jQuery('#final_total1').val(0) ;
+
+     }
 
 
+}
+else
+{
+    
+    if(document.getElementById("shipping_cost")){
+        document.getElementById("shipping_cost").textContent = '$0.00';
+        document.getElementById("shipping_cost1").value = 0.00;
+        
+        totalPrice = document.getElementById("total_value1").value;
+        
+        
+        var gst = document.getElementById("gst_value").value;
+        var shipping_cost1 = document.getElementById("shipping_cost1").value
+    
+        var totalPrice1 = parseInt(totalPrice) + parseInt(shipping_cost1)
+        final_total = (parseInt(totalPrice1) *  parseInt(gst) /100 ) ;
+        final_total1 =totalPrice1+final_total
+        
+        document.getElementById("gst").textContent =  '$' + final_total.toFixed(2)  
+          document.getElementById("gst_value1").value =  final_total.toFixed(2)
+        jQuery('.final_total').html('$' + final_total1.toFixed(2));
+        jQuery('#final_total1').val(final_total1.toFixed(2)) ;
+    }
+    
+    
+    
+}
+    
+  
 
 
-    total_val = total_val + sub_value;
-
-
-
-  })
-  console.log(total_val, final_price, 'total_valtotal_val')
-
-  document.getElementById("shipping_cost").textContent = '$' + total_val;
-
-
-  var final_total1 = final_price + total_val;
-  console.log(total_val, final_price, 'total_valtotal_val', final_total1)
-  document.getElementById("final_total").textContent = '$' + final_total1;
-  document.getElementById('placeorder').disabled = false;
+//   document.getElementById("final_total").textContent = '$' + final_total1;
+jQuery(".checkoutbtn").removeAttr(`disabled`);
+//   document.getElementById('checkoutbtn').disabled = false;
 
 }
 
+function deliverychange()
+{
+    if (document.getElementById('ispickup1').checked) {
+         document.getElementById("zipcode").value = '';
+         jQuery(".checkoutbtn").attr(`disabled`, true);
+    
+    }
+    document.getElementById("address").required = true;
+    document.getElementById("suburb").required = true;
+    document.getElementById("state").required = true;
+    document.getElementById("zipcode").required = true;
+     
+   totalPrice = document.getElementById("total_value1").value;
 
+    var gst = document.getElementById("gst_value").value;
+    var shipping_cost1 = document.getElementById("shipping_cost1").value
+    var totalPrice1 = parseInt(totalPrice) 
+    final_total = (parseInt(totalPrice1) *  parseInt(gst) /100 ) ;
+    final_total1 =totalPrice1+final_total
+    document.getElementById("gst").textContent =  '$' +final_total.toFixed(2)  
+      document.getElementById("gst_value1").value =  final_total.toFixed(2)
+    jQuery('.final_total').html('$' + final_total1.toFixed(2));
+    jQuery('#final_total1').val(final_total1.toFixed(2)) ;
+    
+  
+}
+
+function pickupchange()
+{
+    totalPrice = document.getElementById("total_value1").value;
+
+    var gst = document.getElementById("gst_value").value;
+
+    var totalPrice1 = parseInt(totalPrice) 
+    final_total = (parseInt(totalPrice1) *  parseInt(gst) /100 ) ;
+    final_total1 =totalPrice1+final_total
+        document.getElementById("shipping_cost").textContent = '$0.00';
+
+     document.getElementById("gst").textContent =  '$' +final_total.toFixed(2)  
+       document.getElementById("gst_value1").value =  final_total.toFixed(2)
+    jQuery('.final_total').html('$' + final_total1.toFixed(2));
+    jQuery('#final_total1').val(final_total1.toFixed(2)) ;
+    
+}
+
+function countrychange(country)
+{
+   
+    
+   var x = (country.value || country.options[country.selectedIndex].value);  //crossbrowser solution =)
+
+
+  if(x == 'Australia')
+  {
+    
+    var gst = document.getElementById("gst_value").value;
+
+
+    shipping_cost =  document.getElementById("shipping_cost1").value;
+    total_price = document.getElementById("total_value1").value;
+   
+
+    
+    final_total2 =parseInt(total_price)   + parseInt(shipping_cost)
+    
+   var final_total3 = (final_total2 *  parseInt(gst) /100 ) ;
+    
+    final_total1 =final_total3+final_total2
+    
+
+    document.getElementById("gst").textContent = '$' +  final_total3.toFixed(2) ;
+    document.getElementById("gst_value1").value =  final_total3.toFixed(2) 
+
+    
+    jQuery('.final_total').html('$' + final_total1.toFixed(2));
+    jQuery('#final_total1').val(final_total1.toFixed(2)) ;
+
+    // document.getElementById("final_total").textContent = '$' + final_total1;
+  
+  }
+  else
+  {
+    var gst =0;
+    
+   document.getElementById("gst").textContent = '$' +  gst.toFixed(2)  
+    total_price = document.getElementById("total_value1").value;
+    shipping_cost =  document.getElementById("shipping_cost1").value;
+    final_total2 =parseInt(total_price)   + parseInt(shipping_cost)
+    document.getElementById("gst_value1").value =  gst.toFixed(2) 
+    jQuery('.final_total').html('$' + final_total2.toFixed(2));
+    jQuery('#final_total1').val(final_total2.toFixed(2)) ;
+
+
+    // document.getElementById("final_total").textContent = '$' + final_total1;
+  }
+
+  
+}
