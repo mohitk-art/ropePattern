@@ -1,14 +1,14 @@
 var colorArray = [
   { code: 'red' },
-  { code: 'green' },
+  { code: 'green', code2: 'yellow' },
   { code: 'chocolate' },
-  { code: 'yellow' },
+  { code: 'yellow', code2: 'yellow' },
   { code: '#fff' },
-  { code: '#000' },
-  { code: 'orange' },
-  { code: 'brown' },
-  { code: '#999ea1' },
-  { code: '#767b7e' }
+  { code: '#000', code2: 'yellow' },
+  { code: 'orange', code2: 'yellow' },
+  { code: 'brown', code2: 'yellow' },
+  { code: '#999ea1', code2: 'yellow' },
+  { code: '#767b7e', code2: 'yellow' }
 ]
 
 
@@ -47,37 +47,68 @@ function SetPattren(index) {
   jQuery(`.pattren_sliderJS[title='${index}']`).addClass("active")
 }
 
-var picked_color;
-function SetColor(color) {
-  picked_color = color;
-  jQuery(".svg_wrapper").attr(`color`, color);
+
+function SetColor(i) {
+  jQuery(".svg_wrapper").attr(`color`, i);
   jQuery(`.color_sliderJS`).removeClass('active');
-  jQuery(`.color_sliderJS[code='${color}']`).addClass('active');
+  jQuery(`.color_sliderJS[index='${i}']`).addClass('active');
 }
 
-function ColorJs(color) {
-  SetColor(color);
+var picked_color;
+function ColorJs(code, code2, i) {
+  picked_color = { code, code2, i };
+  SetColor(i);
 }
 
 
 
 function pathClick(cls) {
-  picked_color = getProperties().colorName;
+  if (!picked_color) {
+    alert("Please select a color")
+    return
+  }
+
+  let gradientSvg = ``;
+
+  let colors = `${picked_color.code}`
+  let style = `${picked_color.code}`
+  if (picked_color?.code2) {
+    colors = `${picked_color.code},${picked_color.code2}`
+    gradientSvg = `<linearGradient id="header-shape-gradient${cls}">
+    <stop offset="0%" stop-color="${picked_color.code}" />
+    <stop offset="25%" stop-color="${picked_color.code2}" />
+    <stop offset="50%" stop-color="${picked_color.code}" />
+    <stop offset="75%" stop-color="${picked_color.code2}" />
+    </linearGradient>`;
+
+    style = `url(#header-shape-gradient${cls}) #fff`
+  }
+
+
+
   if (cls != 'svg_class_') {
-    jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('style', `fill:${picked_color}`);
-    jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('color', `${picked_color}`);
-    jQuery(`#addtocartBtn`).removeAttr('disabled');
+    jQuery(`.svg_wrapper .svg_inner svg.${cls} defs`).html(gradientSvg);
+    jQuery(`.svg_wrapper .svg_inner svg.${cls} path`).attr('style', `fill:${style};stroke: #000;stroke-width: 118px;`);
+    jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('color', `${picked_color.i}`);
+    jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('colorname', `${colors}`);
+    jQuery(`.addtocartBtn`).removeAttr('disabled');
   }
 
 }
 
 
 // Color Slider Start
-colorArray.map(item => {
+colorArray.map((item, i) => {
 
+  let colors = `${item.code}`
+  let style = `${item.code}`
+  if (item?.code2) {
+    colors = `${item.code},${item.code2}`
+    style = `linear-gradient(90deg,${colors},${colors})`
+  }
   jQuery(`.vertical__color_crousel`).append(`<div class="color_slider">
-    <span style="background-color: ${item.code};" onClick="ColorJs('${item.code}')" class="color_sliderJS"
-      title="${item.name}" code="${item.code}"></span>
+    <span style="background:${style};" index="${i}" onClick="ColorJs('${item.code}','${item.code2 ? item.code2 : ''}',${i})" class="color_sliderJS"
+      title="${colors}" code="${item.code}" code2="${item.code2 ? item.code2 : ''}"></span>
   </div>`);
 
 })
@@ -95,10 +126,7 @@ function getProperties() {
 
 function getData() {
   let sizeJS = getProperties().sizeJS;
-  let colorName = getProperties().colorName;
   SizeJs(sizeJS);
-  SetColor(colorName);
-
   jQuery(".sub_pattern_nav .slick-track .slick-slide:first-child .pattren_sliderJS").click();
 }
 
