@@ -75,10 +75,8 @@ function pathClick(cls) {
   if (picked_color?.code2) {
     colors = `${picked_color.code},${picked_color.code2}`
     gradientSvg = `<linearGradient id="header-shape-gradient${cls}">
-    <stop offset="0%" stop-color="${picked_color.code}" />
-    <stop offset="25%" stop-color="${picked_color.code2}" />
     <stop offset="50%" stop-color="${picked_color.code}" />
-    <stop offset="75%" stop-color="${picked_color.code2}" />
+    <stop offset="50%" stop-color="${picked_color.code2}" />
     </linearGradient>`;
 
     style = `url(#header-shape-gradient${cls}) #fff`
@@ -87,10 +85,20 @@ function pathClick(cls) {
 
 
   if (cls != 'svg_class_') {
+    let colortitle = jQuery(`.color_sliderJS[code='${picked_color}']`).attr('data-original-title');
     jQuery(`.svg_wrapper .svg_inner svg.${cls} defs`).html(gradientSvg);
-    jQuery(`.svg_wrapper .svg_inner svg.${cls} path`).attr('style', `fill:${style};stroke: #000;stroke-width: 118px;`);
+
+
+    // jQuery(`.svg_wrapper .svg_inner svg.${cls} path`).attr('style', `fill:${style};`);
+    if (picked_color.code2) {
+      jQuery(`.svg_wrapper .svg_inner svg.${cls} g:nth-child(even) path`).attr('style', `fill:${picked_color?.code2};`);
+      jQuery(`.svg_wrapper .svg_inner svg.${cls} g:nth-child(odd) path`).attr('style', `fill:${picked_color?.code};`);
+    } else {
+      jQuery(`.svg_wrapper .svg_inner svg.${cls} path`).attr('style', `fill:${picked_color?.code};`);
+    }
+
     jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('color', `${picked_color.i}`);
-    jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('colorname', `${colors}`);
+    jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('colorname', `${colortitle}`);
     jQuery(`.addtocartBtn`).removeAttr('disabled');
   }
 
@@ -104,7 +112,7 @@ colorArray.map((item, i) => {
   let style = `${item.code}`
   if (item?.code2) {
     colors = `${item.code},${item.code2}`
-    style = `linear-gradient(90deg,${colors},${colors})`
+    style = `linear-gradient(90deg, ${item.code} 50%, ${item.code2} 50%);`
   }
   jQuery(`.vertical__color_crousel`).append(`<div class="color_slider">
     <span style="background:${style};" index="${i}" onClick="ColorJs('${item.code}','${item.code2 ? item.code2 : ''}',${i})" class="color_sliderJS"
@@ -137,11 +145,11 @@ function getData() {
 function loadSvg(roperows = 0) {
   let cell1 = -181;
   let cell2 = -166;
-  let cell3 = -324;
-  let cell4 = -171;
-  let cell5 = -324;
-  let cell6 = -157;
-  let cellspace = 304;
+  let cell3 = -312;
+  let cell4 = -163;
+  let cell5 = -309;
+  let cell6 = -155;
+  let cellspace = 290;
 
   console.log("rope length", roperows)
 
@@ -171,28 +179,28 @@ function loadSvg(roperows = 0) {
       if (col == 3) {
         let y = cell3;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 225);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 220);
         cell3 = cell3 + cellspace;
       }
 
       if (col == 4) {
         let y = cell4;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 543);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 518);
         cell4 = cell4 + cellspace;
       }
 
       if (col == 5) {
         let y = cell5;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 910);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 866);
         cell5 = cell5 + cellspace;
       }
 
       if (col == 6) {
         let y = cell6;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 1231);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 1169);
         cell6 = cell6 + cellspace;
       }
 
