@@ -1,10 +1,56 @@
-var states = new Array( "Australia","Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burma", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic", "Congo, Republic of the", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Greenland", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Mongolia", "Morocco", "Monaco", "Mozambique", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Samoa", "San Marino", " Sao Tome", "Saudi Arabia", "Senegal", "Serbia and Montenegro", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe");
+$('#zipcode').on('keypress', function (ev) {
+  var keyCode = window.event ? ev.keyCode : ev.which;
+  //codes for 0-9
+  if (keyCode < 48 || keyCode > 57) {
+    //codes for backspace, delete, enter
+    if (keyCode != 0 && keyCode != 8 && keyCode != 13 && !ev.ctrlKey) {
+      ev.preventDefault();
+    }
+  }
+});
+
+
+jQuery('[data-toggle="tooltip"]').mouseenter(function () {
+  var that = $(this)
+  that.tooltip('show');
+  setTimeout(function () {
+    that.tooltip('hide');
+  }, 1000);
+})
+
+jQuery('[data-toggle="tooltip"]').mouseleave(function () {
+  $(this).tooltip('hide');
+})
+
+
+/*
+var minLength = 5;
+var maxLength = 10;
+
+$('#phone_number').on('keydown keyup change', function(){
+var char = $(this).val();
+var charLength = $(this).val().length;
+if(charLength < minLength){
+   jQuery('#error').css('display', 'block');
+  document.getElementById("error").textContent = 'Phone number length is short, minimum '+minLength+' required.';
+  
+  
+}else if(charLength > maxLength){
+   jQuery('#error').css('display', 'block');
+    document.getElementById("error").textContent = 'Phone number Length is not valid, maximum '+maxLength+' allowed.';
+  $(this).val(char.substring(0, maxLength));
+  
+}
+});
+*/
+
+var states = new Array("Australia", "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burma", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic", "Congo, Republic of the", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Greenland", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Mongolia", "Morocco", "Monaco", "Mozambique", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Samoa", "San Marino", " Sao Tome", "Saudi Arabia", "Senegal", "Serbia and Montenegro", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe");
 var options = '';
 
 for (var i = 0; i < states.length; i++) {
-   options += '<option value="' + states[i]+ '">' + states[i] + '</option>';
+  options += '<option value="' + states[i] + '">' + states[i] + '</option>';
 }
-var cartArray=[]
+var cartArray = []
 
 
 
@@ -12,46 +58,46 @@ $("#country").html(options);
 
 
 var lightColorArray = [
-  {code:'#a9c0cb'},
-  {code:'#A1D7C9'},
-  {code:'#c6e3f7'},
-  {code:'#92cbf1'},
-  {code:'#74bbfb'},
-  {code:'#87cefa'},
-  {code:'#aec9eb'},
-  {code:'#efc5b5'},
-  {code:'#dedbcc'},
-  {code:'#d3b683'},
-  {code:'#A1D7C9'},
-  {code:'#c6e3f7'},
-  {code:'#92cbf1'},
-  {code:'#74bbfb'},
-  {code:'#87cefa'},
-  {code:'#aec9eb'},
-  {code:'#efc5b5'},
-  {code:'#dedbcc'},
-  {code:'#d3b683'},
-  {code:'#A1D7C9'},
-  {code:'#c6e3f7'},
-  {code:'#92cbf1'},
-  {code:'#74bbfb'},
-  {code:'#87cefa'}
+  { code: '#a9c0cb' },
+  { code: '#A1D7C9' },
+  { code: '#c6e3f7' },
+  { code: '#92cbf1' },
+  { code: '#74bbfb' },
+  { code: '#87cefa' },
+  { code: '#aec9eb' },
+  { code: '#efc5b5' },
+  { code: '#dedbcc' },
+  { code: '#d3b683' },
+  { code: '#A1D7C9' },
+  { code: '#c6e3f7' },
+  { code: '#92cbf1' },
+  { code: '#74bbfb' },
+  { code: '#87cefa' },
+  { code: '#aec9eb' },
+  { code: '#efc5b5' },
+  { code: '#dedbcc' },
+  { code: '#d3b683' },
+  { code: '#A1D7C9' },
+  { code: '#c6e3f7' },
+  { code: '#92cbf1' },
+  { code: '#74bbfb' },
+  { code: '#87cefa' }
 ]
 
 
 var ropeDetails = []
 getRopeDetails();
-function getRopeDetails(){
-    jQuery(`.ropeDetailTable > div`).each(function (e) {
-        let size = jQuery(this).attr('size');
-        let length = jQuery(this).attr('length');
-        let weight = jQuery(this).attr('weight');
-        let price = jQuery(this).attr('price');
-        
-        ropeDetails.push({size, length, weight, price})
-    })
-    
-    console.log("rope details", ropeDetails);
+function getRopeDetails() {
+  jQuery(`.ropeDetailTable > div`).each(function (e) {
+    let size = jQuery(this).attr('size');
+    let length = jQuery(this).attr('length');
+    let weight = jQuery(this).attr('weight');
+    let price = jQuery(this).attr('price');
+
+    ropeDetails.push({ size, length, weight, price })
+  })
+
+  console.log("rope details", ropeDetails);
 }
 
 function loaderDiv(p) {
@@ -64,17 +110,17 @@ function loaderDiv(p) {
 }
 
 function SizeJs(index) {
-    
-    let size = getProperties().sizeJS;
-  
+
+  let size = getProperties().sizeJS;
+
   jQuery(".number_sliderJS").removeClass("active");
   jQuery(`.number_sliderJS[title='${index}']`).addClass("active");
-  
-  if(size == index){
-        return false;
-}
 
-jQuery(".svg_wrapper").attr('size', index);
+  if (size == index) {
+    return false;
+  }
+
+  jQuery(".svg_wrapper").attr('size', index);
 
   patternAssign(index);
 }
@@ -85,27 +131,45 @@ function SetPattren(index = '') {
   jQuery(`.pattren_sliderJS[id='${index}']`).addClass("active")
 }
 
-var picked_color;
-function SetColor(color) {
-  picked_color = color;
-  jQuery(".svg_wrapper").attr(`color`, color);
+
+function SetColor(i) {
+  jQuery(".svg_wrapper").attr(`color`, i);
   jQuery(`.color_sliderJS`).removeClass('active');
-  jQuery(`.color_sliderJS[code='${color}']`).addClass('active');
+  jQuery(`.color_sliderJS[index='${i}']`).addClass('active');
 }
 
-function ColorJs(color) {
-  SetColor(color);
+var picked_color;
+function ColorJs(code, code2, i) {
+  picked_color = { code, code2, i };
+  SetColor(i);
 }
 
 
 
 function pathClick(cls) {
-  picked_color = getProperties().color;
+
+  if (!picked_color) {
+    alert("Please select a color")
+    return
+  }
+
+  let gradientSvg = ``;
+
+  let colors = `${picked_color.code}`
+
+
+
   if (cls != 'svg_class_') {
-      
     let colortitle = jQuery(`.color_sliderJS[code='${picked_color}']`).attr('data-original-title');
-    jQuery(`.svg_wrapper .svg_inner svg.${cls} path`).attr('style', `fill:${picked_color};stroke: #000;stroke-width: 118px;`);
-    jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('color', `${picked_color}`);
+
+    if (picked_color.code2) {
+      jQuery(`.svg_wrapper .svg_inner svg.${cls} g:nth-child(even) path`).attr('style', `fill:${picked_color?.code2};`);
+      jQuery(`.svg_wrapper .svg_inner svg.${cls} g:nth-child(odd) path`).attr('style', `fill:${picked_color?.code};`);
+    } else {
+      jQuery(`.svg_wrapper .svg_inner svg.${cls} path`).attr('style', `fill:${picked_color?.code};`);
+    }
+
+    jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('color', `${picked_color.i}`);
     jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('colorname', `${colortitle}`);
     jQuery(`.addtocartBtn`).removeAttr('disabled');
   }
@@ -113,24 +177,12 @@ function pathClick(cls) {
 }
 
 
-// Color Slider Start
-// colorArray.map(item => {
-
-//   jQuery(`.vertical__color_crousel`).append(`<div class="color_slider">
-//     <span style="background-color: ${item.code};" onClick="ColorJs('${item.code}')" class="color_sliderJS"
-//       title="${item.name}" code="${item.code}"></span>
-//   </div>`);
-
-// })
-// Color Slider End
-
 
 function getProperties() {
   let sizeJS = jQuery(".svg_wrapper").attr('size');
   let color = jQuery(".svg_wrapper").attr('color');
   let patternName = jQuery(".svg_wrapper").attr('pattern');
-  let ropeLength = jQuery(".svg_wrapper").attr('Ropelength');
-  return { sizeJS, patternName, ropeLength, color }
+  return { sizeJS, patternName, color }
 }
 
 
@@ -143,42 +195,46 @@ function getData() {
 }
 
 loadSize();
-function loadSize(p = []){
-    let sizes = [6,8,10,12,14,16];
-    if(p.length>0){
-        sizes = p;
-    }
-    jQuery(".verticle_size_slider").html('');
-    
-    
-    sizes.map(item=>{
-        let htmls = `<div class="number_slider">
-              <span class="number_sliderJS" onClick="SizeJs(${item})" title="${item}">${item}</span>
-            </div>`
-        
-        jQuery(".verticle_size_slider").append(htmls);    
-    })
-    
+function loadSize(p = []) {
+  let sizes = [6, 8, 10, 12, 14, 16];
+  if (p.length > 0) {
+    sizes = p;
+  }
+  jQuery(".verticle_size_slider").html('');
+
+
+  sizes.map(item => {
+    let htmls = `<div class="number_slider">
+            <span class="number_sliderJS" onClick="SizeJs(${item})" title="${item}">${item}</span>
+          </div>`
+
+    jQuery(".verticle_size_slider").append(htmls);
+  })
+
 }
 
 
 
+function loadSVGCell(svgIndex, col) {
+  let hiddenPatternHTML = jQuery(`#hiddenPattren > *:nth-child(${col})`).html();
+  let height = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('height');
+  let width = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('width');
+  let version = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('version');
+  let xmlns = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('xmlns');
+
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('height', height);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('width', width);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('version', version);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('xmlns', xmlns);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).html(hiddenPatternHTML);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex}) path`).attr('onclick', `pathClick('')`);
+
+  loaderDiv('hide')
+}
 
 // load svg Cell
 function loadSvg(roperows = 0) {
-  
-  $.ajax({
-   url:loadSvgStep1(roperows),
-   success:function(){
-   loaderDiv('hide')
-}
-});
-  
-}
-
-
-function loadSvgStep1(roperows){
-    let cell1 = -181;
+  let cell1 = -199;
   let cell2 = -166;
   let cell3 = -324;
   let cell4 = -171;
@@ -186,25 +242,19 @@ function loadSvgStep1(roperows){
   let cell6 = -157;
   let cellspace = 304;
 
-  console.log("rope length", roperows);
-    
-    for (let j = 1; j <= roperows; j++) {
+  for (let j = 1; j <= roperows; j++) {
     for (let i = 5; i >= 0; i--) {
 
       let svgIndex = (j * 6) - i;
       let col = 6 - i;
 
-      
-      let id = jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('id');
-      
-      if(!id){
-          
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('id', svgIndex);
-          
+
+      jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('id', svgIndex);
+
       if (col == 1) {
         let y = cell1;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 23);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 14);
         cell1 = cell1 + cellspace;
       }
 
@@ -242,70 +292,43 @@ function loadSvgStep1(roperows){
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 1231);
         cell6 = cell6 + cellspace;
       }
-      
-          
-      }
-
-      
 
 
       loadSVGCell(svgIndex, col);
     }
   }
-  
-  
-  defaultColorClass()
 }
 
-function loadSVGCell(svgIndex, col) {
-  
-  let ishtml = jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).html();
-  if(ishtml){
-      
-  }
-  else{
-     
-      let hiddenPatternHTML = jQuery(`#hiddenPattren > *:nth-child(${col})`).html();
-      let height = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('height');
-      let width = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('width');
-      let version = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('version');
-      let viewBox = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('viewBox');
-      let preserveAspectRatio = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('preserveAspectRatio');
-      let xmlns = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('xmlns');
-      
-    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('height', height);
-    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('width', width);
-    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('version', version);
-    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('viewBox', viewBox);
-    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('preserveAspectRatio', preserveAspectRatio);
-    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('xmlns', xmlns);
-    jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).html(hiddenPatternHTML);    
-  }
+function loadSvgStep1() {
+  jQuery(`.svg_wrapper .svg_inner`).html('');
 
-  let svgclass = jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('class');
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex}) path`).attr('onclick', `pathClick('${svgclass}')`);
-  // console.log("index", svgIndex, "col", col)
+  for (let j = 25; j >= 0; j--) {
+    for (let i = 5; i >= 0; i--) {
+      jQuery(`.svg_wrapper .svg_inner`).append('<svg></svg>');
+    }
+  }
+  loadSvg(26);
 }
 
+loadSvgStep1()
 
 
 patternAssign(6);
-function patternAssign(size = ''){
-    loadPattern(size);
-    jQuery('.vertical__pattren_crousel').removeClass('slick-initialized slick-slider slick-vertical');
-    jQuery('.vertical__pattren_crousel').slick({
+function patternAssign(size = '') {
+  loadPattern(size);
+  jQuery('.vertical__pattren_crousel').removeClass('slick-initialized slick-slider slick-vertical');
+  jQuery('.vertical__pattren_crousel').slick({
     infinite: false,
     vertical: true,
     verticalSwiping: true,
     slidesToShow: 3,
     slidesToScroll: 3
   });
-  
-  
+
+
   jQuery(".svg_wrapper").attr('pattern', '');
-  jQuery(".svg_wrapper").addClass("d-none");
   jQuery(`.addtocartBtn`).attr('disabled', true);
-  
+
   jQuery(".sub_pattern_nav .slick-track .slick-slide:first-child .pattren_sliderJS").click();
 }
 
@@ -314,132 +337,104 @@ function loadPattern(ropesize = '') {
   jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).html("")
 
 
-if(ropesize){
+  if (ropesize) {
     $(`.hiddenRopes > div`).each(function (e) {
-    let cls = $(this).attr("class");
-    // console.log("pa cls", cls);
-    let img = jQuery(`.${cls} .tamplateImageJS`).attr("src") || '';
-    let title = jQuery(`.${cls} .rope_title`).html() || '';
-    let size = jQuery(`.${cls} .rope_sizeJS`).html() || '';
-    
-    let htmlcode = `<div class="pattren_slider">
-    <img src="${img}" class="pattren_sliderJS" size="${size}" data-toggle="tooltip" data-placement="right" id="${cls}" title="${title}"
-      onClick="loadIndex('${cls}')" />
-  </div>`;
-  
-  
-  if(ropesize == 6 || ropesize == 8){
-      if(size == 6){
-    jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).append(htmlcode)
-    }
-  }
-  
-  else{
-      if(size == 10){
-    jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).append(htmlcode)
-    }
-  }
-    
-    
-    
-    
+      let cls = $(this).attr("class");
+      // console.log("pa cls", cls);
+      let img = jQuery(`.${cls} .tamplateImageJS`).attr("src") || '';
+      let title = jQuery(`.${cls} .rope_title`).html() || '';
+      let size = jQuery(`.${cls} .rope_sizeJS`).html() || '';
 
-  });
-}
-else{
+      let htmlcode = `<div class="pattren_slider">
+  <img src="${img}" class="pattren_sliderJS" size="${size}" data-toggle="tooltip" data-placement="right" id="${cls}" title="${title}"
+    onClick="loadIndex('${cls}')" />
+</div>`;
+
+
+      if (ropesize == 6 || ropesize == 8) {
+        if (size == 6) {
+          jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).append(htmlcode)
+        }
+      }
+
+      else {
+        if (size == 10) {
+          jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).append(htmlcode)
+        }
+      }
+
+
+
+
+
+    });
+  }
+  else {
     $(`.hiddenRopes > div`).each(function (e) {
-    let cls = $(this).attr("class");
-    // console.log("pa cls", cls);
-    let img = jQuery(`.${cls} .tamplateImageJS`).attr("src") || '';
-    let title = jQuery(`.${cls} .rope_title`).html() || '';
-    
-    let htmlcode = `<div class="pattren_slider">
-    <img src="${img}" class="pattren_sliderJS" id="${cls}" title="${title}"
-      onClick="loadIndex('${cls}')" />
-  </div>`;
-    jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).append(htmlcode)
+      let cls = $(this).attr("class");
+      // console.log("pa cls", cls);
+      let img = jQuery(`.${cls} .tamplateImageJS`).attr("src") || '';
+      let title = jQuery(`.${cls} .rope_title`).html() || '';
 
-  });
-}
-  
-  
-  
- jQuery('[data-toggle="tooltip"]').tooltip()
+      let htmlcode = `<div class="pattren_slider">
+  <img src="${img}" class="pattren_sliderJS" id="${cls}" title="${title}"
+    onClick="loadIndex('${cls}')" />
+</div>`;
+      jQuery(`.sub_pattern_crousel .vertical__pattren_crousel`).append(htmlcode)
 
-}
-
-function loadIndex(mainclass = ''){
-    
-    $.ajax({
-   url:loaderDiv('show'),
-   success:function(){
-   loadIndexStep1(mainclass)
-}
-})
-    
-}
+    });
+  }
 
 
-function loadIndexStep1(mainclass = '') {
-    
 
-let svgpattern = jQuery(".svg_wrapper").attr('pattern');    
-if(svgpattern == mainclass){
-    return false;
+  jQuery('[data-toggle="tooltip"]').tooltip()
+
+  jQuery('[data-toggle="tooltip"]').mouseenter(function () {
+    var that = $(this)
+    that.tooltip('show');
+    setTimeout(function () {
+      that.tooltip('hide');
+    }, 1000);
+  })
+
+  jQuery('[data-toggle="tooltip"]').mouseleave(function () {
+    $(this).tooltip('hide');
+  })
+
 }
 
 
-jQuery(`.addtocartBtn`).removeAttr('disabled');
-
-SetPattren(mainclass);
-    
-  jQuery(".svg_wrapper").removeClass("d-none");
-
-  
+function loadIndex(mainclass = '') {
+  SetPattren(mainclass)
 
   mainclass = mainclass ? `.${mainclass}` : '';
 
-
   let j = 0;
+
   $(`${mainclass} #rope_box_wrapper > .rope_row`).each(function (e) {
 
     j++;
-
     for (let i = 5; i >= 0; i--) {
 
       let svgIndex = (j * 6) - i;
       let col = 6 - i;
-
-
-    jQuery(`.svg_wrapper .svg_inner svg:nth-child(${svgIndex})`).attr('pattern', `${cls1}`);
-    
-     let isid = jQuery(`.svg_wrapper .svg_inner svg:nth-child(${svgIndex})`).attr('id') || '';
-      
-      if(isid){
-          
-      }else{
-          jQuery(`.svg_wrapper .svg_inner`).append('<svg></svg>');
-      }
-      
-
       var cls1 = '';
-
-      // console.log("index", svgIndex, "col", col, "row", j)
-
 
       cls1 = jQuery(`${mainclass} .rope_box_wrapper .rope_row:nth-child(${j}) > input:nth-child(${col})`).attr("class") || '';
 
-
       jQuery(`.svg_wrapper .svg_inner svg:nth-child(${svgIndex})`).attr('class', `svg_class_${cls1}`);
       jQuery(`.svg_wrapper .svg_inner svg:nth-child(${svgIndex})`).attr('pattern', `${cls1}`);
+      jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex}) path`).attr('onclick', `pathClick('svg_class_${cls1}')`);
     }
 
   });
 
-
-  jQuery(`.svg_wrapper`).attr('Ropelength', `${j}`);
-  loadSvg(j);
+  defaultColorClass();
 }
+
+
+
+
 
 function defaultColorClass() {
 
@@ -447,31 +442,21 @@ function defaultColorClass() {
   let list = [];
 
   $(`.svg_wrapper .svg_inner svg`).each(function (e) {
-    let value = $(this).attr("class");
-    let pattern = $(this).attr("pattern");
+    var value = $(this).attr("class");
 
     if (list.indexOf(value) === -1) {
       // console.log("index", svgclassinex, "class", value)
-      let pickerCode = jQuery(`.color_sliderJS[number="${pattern}"]`).attr('code');
-      let pickerName = jQuery(`.color_sliderJS[number="${pattern}"]`).attr('data-original-title');
-      
-      console.log("pickerCode", pickerCode, "pickerName", pickerName, "class", value);
-      
-      
-      let code = pickerCode?pickerCode:(lightColorArray[svgclassinex] && lightColorArray[svgclassinex].code || '');
-      let name = pickerName?pickerName:(lightColorArray[svgclassinex] && lightColorArray[svgclassinex].name || '');
-      
-      jQuery(`.svg_wrapper .svg_inner svg.${value} path`).attr('style', `fill:${code};stroke: #000;stroke-width: 118px;`);
-      jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('color', `${code}`);
-      jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('colorname', `${name}`);
+      jQuery(`.svg_wrapper .svg_inner svg.${value} path`).attr('style', `fill:${lightColorArray[svgclassinex].code}`);
+      jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('color', ``);
       list.push(value);
       svgclassinex++
     }
-    jQuery(`.svg_wrapper .svg_inner svg.svg_class_ path`).attr('style', `fill:#fff;stroke: #000;stroke-width: 118px;`);
-    jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('color', `#fff`);
+    jQuery(`.svg_wrapper .svg_inner svg.svg_class_ path`).attr('style', `fill:#fff`);
+    jQuery(`.svg_wrapper .svg_inner svg.svg_class_ path`).attr('color', ``);
   });
 
 }
+
 
 
 
@@ -482,28 +467,28 @@ function getColors() {
   selectedColors = [];
   $(`.svg_wrapper .svg_inner svg`).each(function (e) {
     var value = $(this).attr("colorname");
-    
-    
-    if(value==''){
-            $('#liveToast').toast('show')
-            isError = 'undefined'
+
+
+    if (value == '') {
+      $('#liveToast').toast('show')
+      isError = 'undefined'
     }
 
     if (list.indexOf(value) === -1) {
       if (value) {
         list.push(value);
-        
+
         let colorcode = jQuery(`.svg_wrapper .svg_inner svg[colorname='${value}']`).attr('color') || '#fff';
         let pattern = jQuery(`.svg_wrapper .svg_inner svg[colorname='${value}']`).attr('pattern') || '';
-        
+
         selectedColors.push({ name: pattern, value: value, colorcode })
       }
     }
   });
-  
-  
+
+
   return isError;
-//   console.log("selected color", selectedColors)
+  //   console.log("selected color", selectedColors)
 }
 
 
@@ -531,101 +516,102 @@ jQuery(".qty_minus").click(function () {
 
 
 let cartArr = JSON.parse(localStorage.getItem("cart")) || [];
-  cartArray = cartArr;
+cartArray = cartArr;
 
-function getLengths(size){
-    let lengths = []
-    ropeDetails.map(item=>{
-        if(item.size == size){
-            lengths.push({length:item.length, weight:item.weight, price: item.price});
-        }
-    })
-    // console.log("lengths",lengths)
-    return lengths;
+function getLengths(size) {
+  let lengths = []
+  ropeDetails.map(item => {
+    if (item.size == size) {
+      lengths.push({ length: item.length, weight: item.weight, price: item.price });
+    }
+  })
+  // console.log("lengths",lengths)
+  return lengths;
 }
 
 
 function addToCart() {
-  
-  if(getColors() == 'undefined'){
-      return
+
+  if (getColors() == 'undefined') {
+    return
   }
-  
-  
- $.ajax({
-   url:cartArrayPush(),
-   success:function(){
-   jQuery('.cart_svg svg path').removeAttr('onclick')
-}
-})
-  
-  
-  
-  
+
+
+  $.ajax({
+    url: cartArrayPush(),
+    success: function () {
+      jQuery('.cart_svg svg path').removeAttr('onclick')
+    }
+  })
+
+
+
+
 }
 // var cartArray=[];
 
-function cartArrayPush(){
-    jQuery('.addtocartBtn').attr('disabled', true)
-//   console.log('fdfd', getColors())
-    let title = jQuery(".svg_wrapper").attr(`pattern`);
-    let size = jQuery(".svg_wrapper").attr(`size`);
-    let qty = jQuery("#qty_value").val();
-    let lengths = getLengths(size);
-    let price = lengths[0].price
-    let length1 = lengths[0].length
-    let weight = lengths[0].weight
-    let img = jQuery(`.${title} .tamplateImageJS`).attr("src");
-    let fillimage = 'nolink';
-    let svghtml = jQuery(".svg_wrapper").html();
-    let titlename = jQuery(`.${title} .rope_title`).html();
+function cartArrayPush() {
+  jQuery('.addtocartBtn').attr('disabled', true)
+  //   console.log('fdfd', getColors())
+  let title = jQuery(".svg_wrapper").attr(`pattern`);
+  let size = jQuery(".svg_wrapper").attr(`size`);
+  let qty = jQuery("#qty_value").val();
+  let lengths = getLengths(size);
+  let price = lengths[0].price
+  let length1 = lengths[0].length
+  let weight = lengths[0].weight
+  let img = jQuery(`.${title} .tamplateImageJS`).attr("src");
+  let fillimage = 'nolink';
+  let svghtml = jQuery(".svg_wrapper").html();
+  let titlename = jQuery(`.${title} .rope_title`).html();
 
-      cartArray.push({
-        title: titlename,
-        length1,
-        lengths,
-        weight,
-        comment: '',
-        img,
-        fillimage,
-        size,
-        qty,
-        svghtml,
-        color: selectedColors,
-        price: price
-      })
+  cartArray.push({
+    title: titlename,
+    length1,
+    lengths,
+    weight,
+    comment: '',
+    img,
+    fillimage,
+    size,
+    qty,
+    svghtml,
+    color: selectedColors,
+    price: price
+  })
 
-    jQuery("#qty_value").val(1);
+  jQuery("#qty_value").val(1);
 
-    // cartArray.reverse();
-    // console.log("cartarray", cartArray)
-    fetchArray();
+  // cartArray.reverse();
+  // console.log("cartarray", cartArray)
+  fetchArray();
 }
 
 
 
 function updateCart(i, item = 'comment') {
-    
-if(item == 'length'){
-  let value1 = jQuery(`.rope_length${i}`).val();
-  
-  cartArray[i].length1 = value1;  
-  
-  cartArray[i].lengths.map(item=>{
-      if(item.length == value1){
-          cartArray[i].price = item.price;
-          cartArray[i].weight = item.weight;
-      }
-  });
-  
-  fetchArray();
-}
-else{
-    let value2 = jQuery(`.rope_text${i}`).val();
-  cartArray[i].comment = value2;
-}
 
-  
+  if (item == 'length') {
+    let value1 = jQuery(`.rope_length${i}`).val();
+
+    cartArray[i].length1 = value1;
+
+    cartArray[i].lengths.map(item => {
+      if (item.length == value1) {
+        cartArray[i].price = item.price;
+        cartArray[i].weight = item.weight;
+      }
+    });
+
+    fetchArray();
+  }
+  else {
+    let value2 = jQuery(`.rope_text${i}`).val();
+    cartArray[i].comment = value2;
+    fetchArray();
+  }
+
+
 
   localStorage.removeItem("cart");
   localStorage.setItem("cart", JSON.stringify(cartArray));
@@ -636,21 +622,20 @@ else{
 fetchArray();
 var totalPrice = 0;
 function fetchArray() {
-// console.log("fetch", cartArray, 'svgimg',svgImages);
-    
+  // console.log("fetch", cartArray, 'svgimg',svgImages);
+
   localStorage.removeItem("cart");
   jQuery("#cart_items").val(JSON.stringify(cartArray));
   jQuery("#cart_items1").val(JSON.stringify(cartArray));
   localStorage.setItem("cart", JSON.stringify(cartArray));
-  
-  jQuery("#cartLength").html(cartArray.length);
-  
-   
 
-     if($( "#zipcode" ).val() != '')
-      {
+  jQuery("#cartLength").html(cartArray.length);
+
+
+
+  if ($("#zipcode").val() != '') {
     ziocodechange();
-    }
+  }
 
   $("#cart_row .cart_item").remove();
 
@@ -664,96 +649,143 @@ function fetchArray() {
   totalPrice = 0;
   cartArray.map((item, i) => {
     $("#cart_row").append(`<div class="cart_item">
-    <section class="d-flex w-100">
-      <!-- <img src="${item.img}" class="cart_img mr-2" /> -->
-      <div class="cart_svg" id="cartsvg${i}">
-      ${item.svghtml}
-     
-      </div>
-      
-      <div class="cart_item_conetnt">
-        <h5>${item.title}</h5>
+  <section class="d-flex w-100">
+    <!-- <img src="${item.img}" class="cart_img mr-2" /> -->
+    <div class="cart_svg" id="cartsvg${i}">
+    ${item.svghtml}
+   
+    </div>
+    
+    <div class="cart_item_conetnt">
+      <h5>${item.title}</h5>
 
-        <span class="cart_size">Size: ${item.size}mm</span>
-        <span class="cart_weight">Weight: ${item.weight}kg</span>
-        <div class="colors_div">Colors:
-        ${item.color.map((itm) => {
+      <span class="cart_size">Size: ${item.size}mm</span>
+      <span class="cart_weight">Weight: ${item.weight}kg</span>
+      <div class="colors_div">Colours:
+      ${item.color.map((itm) => {
       return ` ${itm.value}`
     })}
-        </div>
-        
-        <span class="cart_length">Length: 
-            <select onchange="updateCart(${i}, 'length')" class="lengthdropdown rope_length${i}" value="${item.length1}">
-            
-                    ${item.lengths.map(lit=>{
-                      return `<option value="${lit.length}" ${item.length1==lit.length?'selected':''}>${lit.length}</option>`
-                    })}
-                    
-            </select>
-        </span>
-        
-        
-        <textarea class="rope_textbox rope_text${i}" value="${item.comment}" onchange="updateCart(${i}, 'comment')">${item.comment}</textarea>
       </div>
+      
+      <span class="cart_length">Length: 
+          <select onchange="updateCart(${i}, 'length')" class="lengthdropdown rope_length${i}" value="${item.length1}">
+          
+                  ${item.lengths.map(lit => {
+      return `<option value="${lit.length}" ${item.length1 == lit.length ? 'selected' : ''}>${lit.length}</option>`
+    })}
+                  
+          </select>
+      </span>
+      
+      
+      <textarea class="rope_textbox rope_text${i}" value="${item.comment}" onchange="updateCart(${i}, 'comment')">${item.comment}</textarea>
+    </div>
 
-    </section>
+  </section>
 
-    <span class="card_price">$${item.price * item.qty}</span>
+  <span class="card_price">$${item.price * item.qty}</span>
 
-    <a class="remove_btn" onclick="removeArray(${i})">Remove</a>
-  </div>`);
+  <a class="remove_btn" onclick="removeArray(${i})">Remove</a>
+</div>`);
 
     totalPrice = (item.price * item.qty) + totalPrice
   })
 
 
-    jQuery("#total_value1").val(totalPrice.toFixed(2));
+  jQuery("#total_value1").val(totalPrice.toFixed(2));
 
   jQuery("#total_price").html(`$${totalPrice.toFixed(2)}`);
-   jQuery('.final_total').html('$' + totalPrice.toFixed(2));
-    jQuery('#final_total1').val(totalPrice.toFixed(2)) ;
-    
-     if(totalPrice == 0)
-     {
-        document.getElementById("shipping_cost").textContent = '$0.00';
-        document.getElementById("gst").textContent = '$0.00';
-        jQuery('.final_total').html('$0.00');
-        jQuery('#final_total1').val(0) ;
 
-     }
+  jQuery('.final_total').html('$' + totalPrice.toFixed(2));
+  jQuery('#final_total1').val(totalPrice.toFixed(2));
 
-     if($( "#country option:selected" ).text() == 'Australia'  )
-      {
-          
-        
-            var gst = document.getElementById("gst_value").value;
-            var shipping_cost1 = document.getElementById("shipping_cost1").value
-            var totalPrice1 = parseInt(totalPrice) + parseInt(shipping_cost1)
-            final_total = (parseInt(totalPrice1) *  parseInt(gst) /100 ) ;
-            final_total1 =totalPrice1+final_total
-            document.getElementById("gst").textContent =  '$' +final_total.toFixed(2) 
-            document.getElementById("gst_value1").value =  final_total.toFixed(2)
-            jQuery('.final_total').html('$' + final_total1.toFixed(2));
-            jQuery('#final_total1').val(final_total1.toFixed(2)) ;
-            document.getElementById("shipping_cost").textContent = '$'+ parseInt(shipping_cost1).toFixed(2)
+  if (totalPrice == 0) {
+    document.getElementById("shipping_cost").textContent = '$0.00';
+    document.getElementById("gst").textContent = '$0.00';
+    jQuery('.final_total').html('$0.00');
+    jQuery('#final_total1').val(0);
 
-             if(totalPrice == 0)
-             {
-                document.getElementById("shipping_cost").textContent = '$0.00';
-                document.getElementById("gst").textContent = '$0.00';
-                jQuery('.final_total').html('$0.00');
-                jQuery('#final_total1').val(0) ;
+  }
 
-             }
+  if ($("#country option:selected").text() == 'Australia') {
 
-         
-          
+    if (document.getElementById('ispickup1').checked) {
+
+      var gst = document.getElementById("gst_value").value;
+      var shipping_cost1 = document.getElementById("shipping_cost1").value
+      var totalPrice1 = parseFloat(totalPrice) + parseFloat(shipping_cost1)
+      final_total = (parseFloat(totalPrice1) * parseFloat(gst) / 100);
+      final_total1 = totalPrice1 + final_total
+      document.getElementById("gst").textContent = '$' + final_total.toFixed(2)
+      document.getElementById("gst_value1").value = final_total.toFixed(2)
+      jQuery('.final_total').html('$' + final_total1.toFixed(2));
+      jQuery('#final_total1').val(final_total1.toFixed(2));
+      document.getElementById("shipping_cost").textContent = '$' + parseFloat(shipping_cost1).toFixed(2)
+    }
+    else {
+
+      var gst = document.getElementById("gst_value").value;
+      var shipping_cost1 = document.getElementById("shipping_cost1").value
+      var totalPrice1 = parseFloat(totalPrice)
+      final_total = (parseFloat(totalPrice1) * parseFloat(gst) / 100);
+      final_total1 = totalPrice1 + final_total
+      document.getElementById("gst").textContent = '$' + final_total.toFixed(2)
+      document.getElementById("gst_value1").value = final_total.toFixed(2)
+      jQuery('.final_total').html('$' + final_total1.toFixed(2));
+      jQuery('#final_total1').val(final_total1.toFixed(2));
+      document.getElementById("shipping_cost").textContent = '$0.00';
+    }
+
+    if (totalPrice == 0) {
+      document.getElementById("shipping_cost").textContent = '$0.00';
+      document.getElementById("gst").textContent = '$0.00';
+      jQuery('.final_total').html('$0.00');
+      jQuery('#final_total1').val(0);
+
+    }
+
+
+
+  }
+  else {
+    if (totalPrice == 0) {
+      document.getElementById("shipping_cost").textContent = '$0.00';
+      document.getElementById("gst").textContent = '$0.00';
+      jQuery('.final_total').html('$0.00');
+      jQuery('#final_total1').val(0);
+
+    }
+    else {
+      if (document.getElementById('ispickup1').checked) {
+
+        var shipping_cost1 = document.getElementById("shipping_cost1").value
+        document.getElementById("shipping_cost").textContent = '$' + parseFloat(shipping_cost1).toFixed(2);
+
+        var totalPrice1 = parseFloat(totalPrice) + parseFloat(shipping_cost1)
+        jQuery('.final_total').html('$' + totalPrice1.toFixed(2));
+        jQuery('#final_total1').val(totalPrice1.toFixed(2));
       }
-      
+      else {
+
+        var gst = document.getElementById("gst_value").value;
+        final_total = (parseFloat(totalPrice) * parseFloat(gst) / 100);
+        final_total1 = totalPrice + final_total;
+
+        document.getElementById("gst").textContent = '$' + final_total.toFixed(2)
+        document.getElementById("gst_value1").value = final_total.toFixed(2)
+        jQuery('.final_total').html('$' + final_total1.toFixed(2));
+        jQuery('#final_total1').val(final_total1.toFixed(2));
+        document.getElementById("shipping_cost").textContent = '$0.00';
+
+      }
+    }
+
+  }
 
 
 
-    
+
+
 }
 
 
@@ -810,25 +842,33 @@ jQuery(".addresstypeJS").click(function () {
 
 
 jQuery(".pickupbtnJS").click(function () {
- pickupFunction();
+  pickupFunction();
 })
 
 pickupFunction();
-function pickupFunction(){
-let value = jQuery(".pickupbtnJS:checked").val();
+function pickupFunction() {
+  let value = jQuery(".pickupbtnJS:checked").val();
   console.log("vaa", value)
 
   if (value == 'pickup') {
-    jQuery(`#shippingBody`).addClass('d-none');
+    jQuery('#shippingBody').addClass('d-none');
     // jQuery(`#shippingItem`).addClass('d-none');
-    jQuery(`#address`).attr('required', false);
-    jQuery(`#zipcode`).attr('required', false);
+    jQuery('#address').attr('required', false);
+    jQuery('#zipcode').attr('required', false);
+    jQuery('#suburb').attr('required', false);
+    jQuery('#street').attr('required', false);
+    jQuery('#state').attr('required', false);
+
+
   }
   else {
-    jQuery(`#shippingBody`).removeClass('d-none');
+    jQuery('#shippingBody').removeClass('d-none');
     // jQuery(`#shippingItem`).removeClass('d-none');
-    jQuery(`#address`).attr('required', true);
-    jQuery(`#zipcode`).attr('required', true);
+    jQuery('#address').attr('required', true);
+    jQuery('#zipcode').attr('required', true);
+    jQuery('#suburb').attr('required', true);
+    jQuery('#street').attr('required', true);
+    jQuery('#state').attr('required', true);
   }
 }
 
@@ -847,49 +887,49 @@ function loadSliders() {
     slidesToScroll: 8
   });
 
-//   jQuery('.vertical__pattren_crousel').slick({
-//     infinite: false,
-//     vertical: true,
-//     verticalSwiping: true,
-//     slidesToShow: 2,
-//     slidesToScroll: 2
-//   });
+  //   jQuery('.vertical__pattren_crousel').slick({
+  //     infinite: false,
+  //     vertical: true,
+  //     verticalSwiping: true,
+  //     slidesToShow: 2,
+  //     slidesToScroll: 2
+  //   });
 }
 getData()
 
 
 
 jQuery("#checkoutbtn").click(function () {
-    checkoutClick();
+  checkoutClick();
 })
 
 
 
-function checkoutClick(){
-$.ajax({
-    url:checkoutStep1(),
-    success:function(){
-    // checkoutStep2();
+function checkoutClick() {
+  $.ajax({
+    url: checkoutStep1(),
+    success: function () {
+      // checkoutStep2();
     }
-})
+  })
 
 }
 
 
-function checkoutStep1(){
-    if(cartArray.length == 0){
-        $('#cartToast').toast('show')
-        jQuery(".checkoutbtn").attr('disabled', true)
-        return
-    }
-    
-    jQuery(".checkoutbtnsubmit").click()
-    
-    $( "#checkoutForm" ).submit(function( event ) {
-      loaderDiv('show')
-    
+function checkoutStep1() {
+  if (cartArray.length == 0) {
+    $('#cartToast').toast('show')
+    jQuery(".checkoutbtn").attr('disabled', true)
+    return
+  }
+
+  jQuery(".checkoutbtnsubmit").click()
+
+  $("#checkoutForm").submit(function (event) {
+    //   loaderDiv('show')
+
     //   event.preventDefault();
-    });
+  });
 }
 
 
@@ -897,284 +937,358 @@ function checkoutStep1(){
 
 
 function ziocodechange() {
-    
-    var zipcode = document.getElementById("zipcode").value;
-   
-    
-    
-    if(zipcode!='')
-    {
-    jQuery('#error').css('display', 'none');
-  
 
-  var zip_code_value = 0;
-  var weight_value = 0;
+
   var zipcode = document.getElementById("zipcode").value;
-  var price = 0;
-  var final_price = 0;
-  var get_first_character = zipcode.slice(0, 1);
-  var sub_value = 0;
-  var total_val = 0;
-  var sub_value1 = 0;
-  var weight1 =0;
-    var weight =0;
-  if (get_first_character == 0) {
-    zip_code_value = 1.8;
-  }
-  else if (get_first_character == 2) {
-    zip_code_value = 1.5;
-  }
-  else if (get_first_character == 3) {
-    zip_code_value = 1.4;
-  }
-  else if (get_first_character == 4) {
-    zip_code_value = 1.9;
-  }
-  else if (get_first_character == 5) {
-    zip_code_value = 1.2
-  }
-  else if (get_first_character == 6) {
-    zip_code_value = 1;
-  }
-  else if (get_first_character == 7) {
-    zip_code_value = 2;
-  }
-  else {
 
 
-    jQuery('#error').css('display', 'block');
 
-    document.getElementById("error").textContent = "You entered wrong zip code  ";
-
-    return false;
-  }
-  cartArray.map((item, i) => {
-    console.log(item.price)
-    weight1 = item.weight;
-    
-    price = parseInt(item.price);
-    final_price = final_price + price;
+  if (zipcode != '') {
+    jQuery('#error').css('display', 'none');
 
 
-  weight =  parseInt(weight1) + parseInt(weight) ;
+    var zip_code_value = 0;
+    var weight_value = 0;
+    var zipcode = document.getElementById("zipcode").value;
+    var price = 0;
+    var final_price = 0;
+    var get_first_character = zipcode.slice(0, 1);
+    var sub_value = 0;
+    var total_val = 0;
+    var sub_value1 = 0;
+    var weight1 = 0;
+    var weight = 0;
+    if (get_first_character == 0) {
+      zip_code_value = 1.8;
+    }
+    else if (get_first_character == 2) {
+      zip_code_value = 1.5;
+    }
+    else if (get_first_character == 3) {
+      zip_code_value = 1.4;
+    }
+    else if (get_first_character == 4) {
+      zip_code_value = 1.9;
+    }
+    else if (get_first_character == 5) {
+      zip_code_value = 1.2
+    }
+    else if (get_first_character == 6) {
+      zip_code_value = 1;
+    }
+    else if (get_first_character == 7) {
+      zip_code_value = 2;
+    }
+    else {
 
 
-  })
+      jQuery('#error').css('display', 'block');
 
- 
-    if (weight >= 0 && weight <= 20) {
+      document.getElementById("error").textContent = "You entered wrong zip code  ";
+
+      return false;
+    }
+    cartArray.map((item, i) => {
+      console.log(item.price)
+      weight1 = item.weight;
+
+      price = parseInt(item.price);
+      final_price = final_price + price;
+
+
+      weight = parseInt(weight1) + parseInt(weight);
+
+
+    })
+
+
+    if (weight >= 1 && weight <= 19.9) {
       weight_value = document.getElementById("00to20").value;
     }
-    else if (weight >= 21 && weight <= 30) {
+    else if (weight >= 20 && weight <= 29.9) {
       weight_value = document.getElementById("20to30").value;
     }
-    /* else if(weight >= 31 &&  weight <= 40)
-     {
-          weight_value =40;
-     } */
-    else if (weight >= 31 && weight <= 50) {
+    else if (weight >= 30 && weight <= 39.9) {
+      weight_value = document.getElementById("30to40").value;
+    }
+    else if (weight >= 40 && weight <= 49.9) {
       weight_value = document.getElementById("40to50").value;
     }
-    else if (weight >= 51 && weight <= 60) {
+    else if (weight >= 50 && weight <= 59.9) {
       weight_value = document.getElementById("50to60").value;
     }
-    else if (weight >= 61 && weight <= 70) {
+    else if (weight >= 60 && weight <= 69.9) {
       weight_value = document.getElementById("60to70").value;
     }
 
-    else if (weight >= 71 && weight <= 80) {
+    else if (weight >= 70 && weight <= 79.9) {
       weight_value = document.getElementById("70to80").value;
     }
-    else if (weight >= 81 && weight <= 90) {
+    else if (weight >= 80 && weight <= 89.9) {
       weight_value = document.getElementById("80to90").value;
     }
-    else if (weight >= 91 && weight <= 100) {
+    else if (weight >= 90 && weight <= 99.9) {
       weight_value = document.getElementById("90to100").value;
     }
-    else if (weight >= 101 && weight <= 120) {
-      weight_value = document.getElementById("90to120").value;
+    else if (weight >= 100 && weight <= 199.9) {
+      weight_value = document.getElementById("100to120").value;
     }
-    else if (weight >= 121 && weight <= 140) {
+    else if (weight >= 120 && weight <= 139.9) {
       weight_value = document.getElementById("120to140").value;
     }
-    else if (weight >= 141 && weight <= 160) {
+    else if (weight >= 140 && weight <= 159.9) {
       weight_value = document.getElementById("140to160").value;
     }
-    else if (weight >= 161 && weight <= 200) {
+    else if (weight >= 160 && weight <= 199.9) {
       weight_value = document.getElementById("160to200").value;
     }
-    else if (weight >= 201 && weight <= 400) {
+    else if (weight >= 200 && weight <= 399.9) {
       weight_value = document.getElementById("200to400").value;
     }
     else {
-      return false;
+      weight_value = 0;
     }
 
+    if ($("#country option:selected").text() == 'Australia') {
 
-    sub_value = zip_code_value * weight_value;
-    
-    gst_value =   document.getElementById("gst_value").value
-        
-    total_price = document.getElementById("total_value1").value;
 
-    final_total1 = parseInt(total_price) + parseInt(sub_value);
-    
-   final_total2 = (parseInt(final_total1) *  parseInt(gst_value) /100 ) ;
+      sub_value = zip_code_value * weight_value;
 
-   final_total3 =parseInt(final_total1)+parseInt(final_total2)
+      gst_value = document.getElementById("gst_value").value
 
-    document.getElementById("shipping_cost").textContent = '$' + sub_value.toFixed(2);
+      total_price = document.getElementById("total_value1").value;
+      final_total1 = parseFloat(total_price) + parseFloat(sub_value);
 
-    document.getElementById("shipping_cost1").value =  sub_value.toFixed(2);
-  
-    document.getElementById("gst").textContent = '$' +   final_total2.toFixed(2) 
-      document.getElementById("gst_value1").value =  final_total2.toFixed(2)
-  
-    jQuery('.final_total').html('$' + final_total3.toFixed(2));
-    jQuery('#final_total1').val(final_total3.toFixed(2)) ;
-     if(parseInt(total_price) == 0)
-     {
-       
+      final_total2 = (parseFloat(final_total1) * parseFloat(gst_value) / 100);
+
+      final_total3 = parseFloat(final_total1) + parseFloat(final_total2)
+
+      document.getElementById("shipping_cost").textContent = '$' + sub_value.toFixed(2);
+
+      document.getElementById("shipping_cost1").value = sub_value.toFixed(2);
+
+      document.getElementById("gst").textContent = '$' + final_total2.toFixed(2)
+      document.getElementById("gst_value1").value = final_total2.toFixed(2)
+
+      jQuery('.final_total').html('$' + final_total3.toFixed(2));
+      jQuery('#final_total1').val(final_total3.toFixed(2));
+      if (parseInt(total_price) == 0) {
+
         document.getElementById("shipping_cost").textContent = '$0.00';
         document.getElementById("gst").textContent = '$0.00';
         jQuery('.final_total').html('$0.00');
-        jQuery('#final_total1').val(0) ;
+        jQuery('#final_total1').val(0);
 
-     }
+      }
+    }
+    else {
+
+      var gst = 0;
+      sub_value = zip_code_value * weight_value;
+      total_price = document.getElementById("total_value1").value;
+      final_total1 = parseFloat(total_price) + parseFloat(sub_value);
+      final_total2 = 0;
+
+      final_total3 = parseFloat(final_total1) + parseFloat(final_total2)
 
 
-}
-else
-{
-    
-    if(document.getElementById("shipping_cost")){
+      document.getElementById("shipping_cost").textContent = '$' + sub_value.toFixed(2);
+
+      document.getElementById("shipping_cost1").value = sub_value.toFixed(2);
+      document.getElementById("gst_value1").textContent = '$0.00';
+      document.getElementById("gst").textContent = '$0.00';
+
+      jQuery('.final_total').html('$' + final_total3.toFixed(2));
+      jQuery('#final_total1').val(final_total3.toFixed(2));
+      if (parseInt(total_price) == 0) {
+
+        document.getElementById("shipping_cost").textContent = '$0.00';
+        document.getElementById("gst").textContent = '$0.00';
+        jQuery('.final_total').html('$0.00');
+        jQuery('#final_total1').val(0);
+
+      }
+
+    }
+
+
+
+
+  }
+  else {
+    if ($("#country option:selected").text() == 'Australia') {
+
+      if (document.getElementById("shipping_cost")) {
         document.getElementById("shipping_cost").textContent = '$0.00';
         document.getElementById("shipping_cost1").value = 0.00;
-        
+
         totalPrice = document.getElementById("total_value1").value;
-        
-        
+
+
         var gst = document.getElementById("gst_value").value;
         var shipping_cost1 = document.getElementById("shipping_cost1").value
-    
-        var totalPrice1 = parseInt(totalPrice) + parseInt(shipping_cost1)
-        final_total = (parseInt(totalPrice1) *  parseInt(gst) /100 ) ;
-        final_total1 =totalPrice1+final_total
-        
-        document.getElementById("gst").textContent =  '$' + final_total.toFixed(2)  
-          document.getElementById("gst_value1").value =  final_total.toFixed(2)
+
+        var totalPrice1 = parseFloat(totalPrice) + parseFloat(shipping_cost1)
+        final_total = (parseFloat(totalPrice1) * parseFloat(gst) / 100);
+        final_total1 = totalPrice1 + final_total
+
+        document.getElementById("gst").textContent = '$' + final_total.toFixed(2)
+        document.getElementById("gst_value1").value = final_total.toFixed(2)
         jQuery('.final_total').html('$' + final_total1.toFixed(2));
-        jQuery('#final_total1').val(final_total1.toFixed(2)) ;
+        jQuery('#final_total1').val(final_total1.toFixed(2));
+      }
     }
-    
-    
-    
+    else {
+      var gst = 0;
+      sub_value = zip_code_value * weight_value;
+      total_price = document.getElementById("total_value1").value;
+      final_total1 = parseFloat(total_price) + parseFloat(sub_value);
+      final_total2 = 0;
+
+      final_total3 = parseFloat(final_total1) + parseFloat(final_total2)
+
+
+      document.getElementById("shipping_cost").textContent = '$' + sub_value.toFixed(2);
+
+      document.getElementById("shipping_cost1").value = sub_value.toFixed(2);
+      document.getElementById("gst_value1").textContent = '$0.00';
+      document.getElementById("gst").textContent = '$0.00';
+
+      jQuery('.final_total').html('$' + final_total3.toFixed(2));
+      jQuery('#final_total1').val(final_total3.toFixed(2));
+      if (parseInt(total_price) == 0) {
+
+        document.getElementById("shipping_cost").textContent = '$0.00';
+        document.getElementById("gst").textContent = '$0.00';
+        jQuery('.final_total').html('$0.00');
+        jQuery('#final_total1').val(0);
+
+      }
+    }
+
+
+
+  }
+
+
+
+
+  //   document.getElementById("final_total").textContent = '$' + final_total1;
+  jQuery(".checkoutbtn").removeAttr(`disabled`);
+  //   document.getElementById('checkoutbtn').disabled = false;
+
 }
-    
-  
 
-
-//   document.getElementById("final_total").textContent = '$' + final_total1;
-jQuery(".checkoutbtn").removeAttr(`disabled`);
-//   document.getElementById('checkoutbtn').disabled = false;
-
-}
-
-function deliverychange()
-{
+function deliverychange() {
+  if (document.getElementById("zipcode").value != '') {
+    ziocodechange();
+  }
+  else {
     if (document.getElementById('ispickup1').checked) {
-         document.getElementById("zipcode").value = '';
-         jQuery(".checkoutbtn").attr(`disabled`, true);
-    
+      // = '';
+      // jQuery(".checkoutbtn").attr(`disabled`, true);
+
     }
     document.getElementById("address").required = true;
     document.getElementById("suburb").required = true;
     document.getElementById("state").required = true;
     document.getElementById("zipcode").required = true;
-     
-   totalPrice = document.getElementById("total_value1").value;
 
-    var gst = document.getElementById("gst_value").value;
-    var shipping_cost1 = document.getElementById("shipping_cost1").value
-    var totalPrice1 = parseInt(totalPrice) 
-    final_total = (parseInt(totalPrice1) *  parseInt(gst) /100 ) ;
-    final_total1 =totalPrice1+final_total
-    document.getElementById("gst").textContent =  '$' +final_total.toFixed(2)  
-      document.getElementById("gst_value1").value =  final_total.toFixed(2)
-    jQuery('.final_total').html('$' + final_total1.toFixed(2));
-    jQuery('#final_total1').val(final_total1.toFixed(2)) ;
-    
-  
-}
-
-function pickupchange()
-{
     totalPrice = document.getElementById("total_value1").value;
+    if ($("#country option:selected").text() == 'Australia') {
 
-    var gst = document.getElementById("gst_value").value;
+      var gst = document.getElementById("gst_value").value;
+    }
+    else {
 
-    var totalPrice1 = parseInt(totalPrice) 
-    final_total = (parseInt(totalPrice1) *  parseInt(gst) /100 ) ;
-    final_total1 =totalPrice1+final_total
-        document.getElementById("shipping_cost").textContent = '$0.00';
+      var gst = 0;
 
-     document.getElementById("gst").textContent =  '$' +final_total.toFixed(2)  
-       document.getElementById("gst_value1").value =  final_total.toFixed(2)
+    }
+
+    var shipping_cost1 = document.getElementById("shipping_cost1").value
+    var totalPrice1 = parseInt(totalPrice)
+    final_total = (parseFloat(totalPrice1) * parseFloat(gst) / 100);
+    final_total1 = totalPrice1 + final_total
+    document.getElementById("gst").textContent = '$' + final_total.toFixed(2)
+    document.getElementById("gst_value1").value = final_total.toFixed(2)
     jQuery('.final_total').html('$' + final_total1.toFixed(2));
-    jQuery('#final_total1').val(final_total1.toFixed(2)) ;
-    
+    jQuery('#final_total1').val(final_total1.toFixed(2));
+
+  }
 }
 
-function countrychange(country)
-{
-   
-    
-   var x = (country.value || country.options[country.selectedIndex].value);  //crossbrowser solution =)
+function pickupchange() {
+  totalPrice = document.getElementById("total_value1").value;
+
+  var gst = document.getElementById("gst_value").value;
+
+  var totalPrice1 = parseFloat(totalPrice)
+  final_total = (parseFloat(totalPrice1) * parseFloat(gst) / 100);
+  final_total1 = totalPrice1 + final_total
+  document.getElementById("shipping_cost").textContent = '$0.00';
+
+  document.getElementById("gst").textContent = '$' + final_total.toFixed(2)
+  document.getElementById("gst_value1").value = final_total.toFixed(2)
+  jQuery('.final_total').html('$' + final_total1.toFixed(2));
+  jQuery('#final_total1').val(final_total1.toFixed(2));
+
+}
+
+function countrychange(country) {
 
 
-  if(x == 'Australia')
-  {
-    
+  var x = (country.value || country.options[country.selectedIndex].value);  //crossbrowser solution =)
+
+
+  if (x == 'Australia') {
+
     var gst = document.getElementById("gst_value").value;
 
 
-    shipping_cost =  document.getElementById("shipping_cost1").value;
+    shipping_cost = document.getElementById("shipping_cost1").value;
     total_price = document.getElementById("total_value1").value;
-   
 
-    
-    final_total2 =parseInt(total_price)   + parseInt(shipping_cost)
-    
-   var final_total3 = (final_total2 *  parseInt(gst) /100 ) ;
-    
-    final_total1 =final_total3+final_total2
-    
 
-    document.getElementById("gst").textContent = '$' +  final_total3.toFixed(2) ;
-    document.getElementById("gst_value1").value =  final_total3.toFixed(2) 
 
-    
+    final_total2 = parseFloat(total_price) + parseFloat(shipping_cost)
+
+    var final_total3 = (final_total2 * parseFloat(gst) / 100);
+
+    final_total1 = final_total3 + final_total2
+
+
+    document.getElementById("gst").textContent = '$' + final_total3.toFixed(2);
+    document.getElementById("gst_value1").value = final_total3.toFixed(2)
+
+
     jQuery('.final_total').html('$' + final_total1.toFixed(2));
-    jQuery('#final_total1').val(final_total1.toFixed(2)) ;
+    jQuery('#final_total1').val(final_total1.toFixed(2));
 
     // document.getElementById("final_total").textContent = '$' + final_total1;
-  
+
   }
-  else
-  {
-    var gst =0;
-    
-   document.getElementById("gst").textContent = '$' +  gst.toFixed(2)  
+  else {
+    var gst = 0;
+
+    document.getElementById("gst").textContent = '$' + gst.toFixed(2)
     total_price = document.getElementById("total_value1").value;
-    shipping_cost =  document.getElementById("shipping_cost1").value;
-    final_total2 =parseInt(total_price)   + parseInt(shipping_cost)
-    document.getElementById("gst_value1").value =  gst.toFixed(2) 
+    shipping_cost = document.getElementById("shipping_cost1").value;
+    final_total2 = parseFloat(total_price) + parseFloat(shipping_cost)
+    document.getElementById("gst_value1").value = gst.toFixed(2)
     jQuery('.final_total').html('$' + final_total2.toFixed(2));
-    jQuery('#final_total1').val(final_total2.toFixed(2)) ;
+    jQuery('#final_total1').val(final_total2.toFixed(2));
+    if (parseInt(total_price) == 0) {
+
+      document.getElementById("shipping_cost").textContent = '$0.00';
+      document.getElementById("gst").textContent = '$0.00';
+      jQuery('.final_total').html('$0.00');
+      jQuery('#final_total1').val(0);
+
+    }
 
 
     // document.getElementById("final_total").textContent = '$' + final_total1;
   }
 
-  
+
 }

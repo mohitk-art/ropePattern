@@ -68,27 +68,13 @@ function pathClick(cls) {
     return
   }
 
-  let gradientSvg = ``;
-
-  let colors = `${picked_color.code}`
-  let style = `${picked_color.code}`
-  if (picked_color?.code2) {
-    colors = `${picked_color.code},${picked_color.code2}`
-    gradientSvg = `<linearGradient id="header-shape-gradient${cls}">
-    <stop offset="50%" stop-color="${picked_color.code}" />
-    <stop offset="50%" stop-color="${picked_color.code2}" />
-    </linearGradient>`;
-
-    style = `url(#header-shape-gradient${cls}) #fff`
+  if (!cls) {
+    alert("No Pettern")
+    return
   }
 
 
-
   if (cls != 'svg_class_') {
-    let colortitle = jQuery(`.color_sliderJS[code='${picked_color}']`).attr('data-original-title');
-    jQuery(`.svg_wrapper .svg_inner svg.${cls} defs`).html(gradientSvg);
-
-
     // jQuery(`.svg_wrapper .svg_inner svg.${cls} path`).attr('style', `fill:${style};`);
     if (picked_color.code2) {
       jQuery(`.svg_wrapper .svg_inner svg.${cls} g:nth-child(even) path`).attr('style', `fill:${picked_color?.code2};`);
@@ -98,7 +84,6 @@ function pathClick(cls) {
     }
 
     jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('color', `${picked_color.i}`);
-    jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('colorname', `${colortitle}`);
     jQuery(`.addtocartBtn`).removeAttr('disabled');
   }
 
@@ -115,8 +100,13 @@ colorArray.map((item, i) => {
     style = `linear-gradient(90deg, ${item.code} 50%, ${item.code2} 50%);`
   }
   jQuery(`.vertical__color_crousel`).append(`<div class="color_slider">
-    <span style="background:${style};" index="${i}" onClick="ColorJs('${item.code}','${item.code2 ? item.code2 : ''}',${i})" class="color_sliderJS"
-      title="${colors}" code="${item.code}" code2="${item.code2 ? item.code2 : ''}"></span>
+    <span index="${i}" onClick="ColorJs('${item.code}','${item.code2 ? item.code2 : ''}',${i})" class="color_sliderJS"
+      title="${colors}" code="${item.code}" code2="${item.code2 ? item.code2 : ''}">
+      
+      <i style="background:${style};"></i>
+      <i style="background:${style};"></i>
+      
+      </span>
   </div>`);
 
 })
@@ -135,103 +125,7 @@ function getProperties() {
 function getData() {
   let sizeJS = getProperties().sizeJS;
   SizeJs(sizeJS);
-  jQuery(".sub_pattern_nav .slick-track .slick-slide:first-child .pattren_sliderJS").click();
-}
-
-
-
-
-// load svg Cell
-function loadSvg(roperows = 0) {
-  let cell1 = -181;
-  let cell2 = -166;
-  let cell3 = -312;
-  let cell4 = -163;
-  let cell5 = -309;
-  let cell6 = -155;
-  let cellspace = 290;
-
-  console.log("rope length", roperows)
-
-  for (let j = 1; j <= roperows; j++) {
-    for (let i = 5; i >= 0; i--) {
-
-      let svgIndex = (j * 6) - i;
-      let col = 6 - i;
-
-
-      jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('id', svgIndex);
-
-      if (col == 1) {
-        let y = cell1;
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 23);
-        cell1 = cell1 + cellspace;
-      }
-
-      if (col == 2) {
-        let y = cell2;
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 38);
-        cell2 = cell2 + cellspace;
-      }
-
-      if (col == 3) {
-        let y = cell3;
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 220);
-        cell3 = cell3 + cellspace;
-      }
-
-      if (col == 4) {
-        let y = cell4;
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 518);
-        cell4 = cell4 + cellspace;
-      }
-
-      if (col == 5) {
-        let y = cell5;
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 866);
-        cell5 = cell5 + cellspace;
-      }
-
-      if (col == 6) {
-        let y = cell6;
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 1169);
-        cell6 = cell6 + cellspace;
-      }
-
-
-      loadSVGCell(svgIndex, col);
-    }
-  }
-}
-
-function loadSVGCell(svgIndex, col) {
-  let hiddenPatternHTML = jQuery(`#hiddenPattren > *:nth-child(${col})`).html();
-  let height = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('height');
-  let width = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('width');
-  let version = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('version');
-  let viewBox = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('viewBox');
-  let preserveAspectRatio = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('preserveAspectRatio');
-  let xmlns = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('xmlns');
-
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('height', height);
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('width', width);
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('version', version);
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('viewBox', viewBox);
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('preserveAspectRatio', preserveAspectRatio);
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('xmlns', xmlns);
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).html(hiddenPatternHTML);
-
-  let svgclass = jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('class');
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex}) path`).attr('onclick', `pathClick('${svgclass}')`);
-
-  loaderDiv('hide')
-  // console.log("index", svgIndex, "col", col)
+  // jQuery(".sub_pattern_nav .slick-track .slick-slide:first-child .pattren_sliderJS").click();
 }
 
 
@@ -243,7 +137,7 @@ function loadPattern() {
   $(`.hiddenRopes > div`).each(function (e) {
 
     let cls = $(this).attr("class");
-    console.log("pa cls", cls);
+    // console.log("pa cls", cls);
 
     let img = jQuery(`.${cls} .tamplateImageJS`).attr("src") || '';
 
@@ -259,46 +153,130 @@ function loadPattern() {
 
 }
 
-function loadIndex(mainclass = '') {
-  loaderDiv('show');
-  jQuery(".svg_wrapper").removeClass("d-none");
 
-  SetPattren(mainclass)
 
-  mainclass = mainclass ? `.${mainclass}` : '';
+function loadSVGCell(svgIndex, col) {
+  let hiddenPatternHTML = jQuery(`#hiddenPattren > *:nth-child(${col})`).html();
+  let height = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('height');
+  let width = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('width');
+  let version = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('version');
+  let xmlns = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('xmlns');
 
-  jQuery(`.svg_wrapper .svg_inner`).html('');
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('height', height);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('width', width);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('version', version);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('xmlns', xmlns);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).html(hiddenPatternHTML);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex}) path`).attr('onclick', `pathClick('')`);
 
-  let j = 0;
-  $(`${mainclass} #rope_box_wrapper > .rope_row`).each(function (e) {
+  loaderDiv('hide')
+}
 
-    j++;
+// load svg Cell
+function loadSvg(roperows = 0) {
+  let cell1 = -199;
+  let cell2 = -166;
+  let cell3 = -324;
+  let cell4 = -171;
+  let cell5 = -324;
+  let cell6 = -157;
+  let cellspace = 304;
 
+  for (let j = 1; j <= roperows; j++) {
     for (let i = 5; i >= 0; i--) {
 
       let svgIndex = (j * 6) - i;
       let col = 6 - i;
 
+
+      jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('id', svgIndex);
+
+      if (col == 1) {
+        let y = cell1;
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 14);
+        cell1 = cell1 + cellspace;
+      }
+
+      if (col == 2) {
+        let y = cell2;
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 38);
+        cell2 = cell2 + cellspace;
+      }
+
+      if (col == 3) {
+        let y = cell3;
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 225);
+        cell3 = cell3 + cellspace;
+      }
+
+      if (col == 4) {
+        let y = cell4;
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 543);
+        cell4 = cell4 + cellspace;
+      }
+
+      if (col == 5) {
+        let y = cell5;
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 910);
+        cell5 = cell5 + cellspace;
+      }
+
+      if (col == 6) {
+        let y = cell6;
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 1231);
+        cell6 = cell6 + cellspace;
+      }
+
+
+      loadSVGCell(svgIndex, col);
+    }
+  }
+}
+
+function loadSvgStep1() {
+  jQuery(`.svg_wrapper .svg_inner`).html('');
+
+  for (let j = 25; j >= 0; j--) {
+    for (let i = 5; i >= 0; i--) {
       jQuery(`.svg_wrapper .svg_inner`).append('<svg></svg>');
+    }
+  }
+  loadSvg(26);
+}
 
+loadSvgStep1()
+
+function loadIndex(mainclass = '') {
+  SetPattren(mainclass)
+
+  mainclass = mainclass ? `.${mainclass}` : '';
+
+  let j = 0;
+
+  $(`${mainclass} #rope_box_wrapper > .rope_row`).each(function (e) {
+
+    j++;
+    for (let i = 5; i >= 0; i--) {
+
+      let svgIndex = (j * 6) - i;
+      let col = 6 - i;
       var cls1 = '';
-
-      // console.log("index", svgIndex, "col", col, "row", j)
-
 
       cls1 = jQuery(`${mainclass} .rope_box_wrapper .rope_row:nth-child(${j}) > input:nth-child(${col})`).attr("class") || '';
 
-
       jQuery(`.svg_wrapper .svg_inner svg:nth-child(${svgIndex})`).attr('class', `svg_class_${cls1}`);
       jQuery(`.svg_wrapper .svg_inner svg:nth-child(${svgIndex})`).attr('pattern', `${cls1}`);
+      jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex}) path`).attr('onclick', `pathClick('svg_class_${cls1}')`);
     }
 
   });
 
-
-  jQuery(`.svg_wrapper`).attr('length', `${j}`);
-  loadSvg(j);
-  // loadSvg(1);
   defaultColorClass();
 }
 
@@ -312,13 +290,13 @@ function defaultColorClass() {
 
     if (list.indexOf(value) === -1) {
       // console.log("index", svgclassinex, "class", value)
-      jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('style', `fill:${lightColorArray[svgclassinex]}`);
-      jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('color', `${lightColorArray[svgclassinex]}`);
+      jQuery(`.svg_wrapper .svg_inner svg.${value} path`).attr('style', `fill:${lightColorArray[svgclassinex]}`);
+      jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('color', ``);
       list.push(value);
       svgclassinex++
     }
-    jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('style', `fill:#fff`);
-    jQuery(`.svg_wrapper .svg_inner svg.svg_class_`).attr('color', `#fff`);
+    jQuery(`.svg_wrapper .svg_inner svg.svg_class_ path`).attr('style', `fill:#fff`);
+    jQuery(`.svg_wrapper .svg_inner svg.svg_class_ path`).attr('color', ``);
   });
 
 }

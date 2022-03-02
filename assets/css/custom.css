@@ -21,6 +21,16 @@
       z-index: 9999;
     }
     
+
+    .color_sliderJS{
+      display: flex;
+    }
+
+    .color_sliderJS > *{
+      height: 40px;
+      display: block;
+      width: 100%;
+    }
     
     button#addtocartBtn[disabled="disabled"] {
       padding: 15px 27px;
@@ -125,9 +135,7 @@
     padding: 6px 3px; }
   
   .verticle_slider .color_slider > * {
-    height: 40px;
     width: 100%;
-    display: block;
     background-color: #000;
     cursor: pointer;
     box-shadow: 0 0 5px #00000070; }
