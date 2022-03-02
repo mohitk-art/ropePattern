@@ -147,21 +147,19 @@ function ColorJs(code, code2, i) {
 
 
 function pathClick(cls) {
-
   if (!picked_color) {
     alert("Please select a color")
     return
   }
 
-  let gradientSvg = ``;
-
-  let colors = `${picked_color.code}`
-
+  if (!cls) {
+    alert("No Pettern")
+    return
+  }
 
 
   if (cls != 'svg_class_') {
-    let colortitle = jQuery(`.color_sliderJS[code='${picked_color}']`).attr('data-original-title');
-
+    // jQuery(`.svg_wrapper .svg_inner svg.${cls} path`).attr('style', `fill:${style};`);
     if (picked_color.code2) {
       jQuery(`.svg_wrapper .svg_inner svg.${cls} g:nth-child(even) path`).attr('style', `fill:${picked_color?.code2};`);
       jQuery(`.svg_wrapper .svg_inner svg.${cls} g:nth-child(odd) path`).attr('style', `fill:${picked_color?.code};`);
@@ -170,7 +168,6 @@ function pathClick(cls) {
     }
 
     jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('color', `${picked_color.i}`);
-    jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('colorname', `${colortitle}`);
     jQuery(`.addtocartBtn`).removeAttr('disabled');
   }
 
@@ -466,7 +463,7 @@ function getColors() {
   let isError = '';
   selectedColors = [];
   $(`.svg_wrapper .svg_inner svg`).each(function (e) {
-    var value = $(this).attr("colorname");
+    var value = $(this).attr("pattern");
 
 
     if (value == '') {
@@ -478,17 +475,18 @@ function getColors() {
       if (value) {
         list.push(value);
 
-        let colorcode = jQuery(`.svg_wrapper .svg_inner svg[colorname='${value}']`).attr('color') || '#fff';
-        let pattern = jQuery(`.svg_wrapper .svg_inner svg[colorname='${value}']`).attr('pattern') || '';
+        let color = jQuery(`.svg_wrapper .svg_inner svg[pattern='${value}']`).attr('color') || '';
 
-        selectedColors.push({ name: pattern, value: value, colorcode })
+        selectedColors.push({ pattern: value, color: color })
       }
     }
   });
 
+  console.log("selected color", selectedColors)
+
 
   return isError;
-  //   console.log("selected color", selectedColors)
+
 }
 
 
