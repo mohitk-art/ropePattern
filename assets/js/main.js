@@ -477,7 +477,14 @@ function getColors() {
 
         let color = jQuery(`.svg_wrapper .svg_inner svg[pattern='${value}']`).attr('color') || '';
 
-        selectedColors.push({ pattern: value, color: color })
+        let colorName = $(`.color_sliderJS[index='${color}']`).attr('data-original-title');
+
+        if (!colorName) {
+          $('#liveToast').toast('show')
+          isError = 'undefined'
+        }
+
+        selectedColors.push({ pattern: value, color: color, colorName: colorName })
       }
     }
   });
@@ -661,7 +668,7 @@ function fetchArray() {
       <span class="cart_weight">Weight: ${item.weight}kg</span>
       <div class="colors_div">Colours:
       ${item.color.map((itm) => {
-      return ` ${itm.value}`
+      return ` ${itm.colorName}`
     })}
       </div>
       

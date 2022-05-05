@@ -77,13 +77,11 @@ function pathClick(cls) {
   if (cls != 'svg_class_') {
     // jQuery(`.svg_wrapper .svg_inner svg.${cls} path`).attr('style', `fill:${style};`);
     if (picked_color.code2) {
-      jQuery(`.svg_wrapper .svg_inner svg.${cls} path#black`).attr('style', `fill:${picked_color?.code2};`);
-      jQuery(`.svg_wrapper .svg_inner svg.${cls} path#white`).attr('style', `fill:${picked_color?.code};`);
+      jQuery(`.svg_wrapper .svg_inner svg.${cls} g:nth-child(even) path`).attr('style', `fill:${picked_color?.code2};`);
+      jQuery(`.svg_wrapper .svg_inner svg.${cls} g:nth-child(odd) path`).attr('style', `fill:${picked_color?.code};`);
     } else {
       jQuery(`.svg_wrapper .svg_inner svg.${cls} path`).attr('style', `fill:${picked_color?.code};`);
     }
-
-    jQuery(`.svg_wrapper .svg_inner svg.${cls} path#border`).attr('style', `fill:#000;`);
 
     jQuery(`.svg_wrapper .svg_inner svg.${cls}`).attr('color', `${picked_color.i}`);
     jQuery(`.addtocartBtn`).removeAttr('disabled');
@@ -162,12 +160,12 @@ function loadSVGCell(svgIndex, col) {
   let height = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('height');
   let width = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('width');
   let version = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('version');
-  let viewBox = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('viewBox');
+  let xmlns = jQuery(`#hiddenPattren > *:nth-child(${col})`).attr('xmlns');
 
   jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('height', height);
   jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('width', width);
   jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('version', version);
-  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('viewBox', viewBox);
+  jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('xmlns', xmlns);
   jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).html(hiddenPatternHTML);
   jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex}) path`).attr('onclick', `pathClick('')`);
 
@@ -176,24 +174,13 @@ function loadSVGCell(svgIndex, col) {
 
 // load svg Cell
 function loadSvg(roperows = 0) {
-
-  let ytop = 195
-  let cell1 = -199 - ytop;
-  let cell2 = 4 - ytop;
-  let cell3 = -202 - ytop;
-  let cell4 = 1 - ytop;
-  let cell5 = -201 - ytop;
-  let cell6 = 5 - ytop;
-  let cellspace = 400;
-
-  let xspace = {
-    cell1: 3,
-    cell2: 3,
-    cell3: 3,
-    cell4: 3,
-    cell5: 3,
-    cell6: 3,
-  }
+  let cell1 = -199;
+  let cell2 = -166;
+  let cell3 = -324;
+  let cell4 = -171;
+  let cell5 = -324;
+  let cell6 = -157;
+  let cellspace = 304;
 
   for (let j = 1; j <= roperows; j++) {
     for (let i = 5; i >= 0; i--) {
@@ -207,42 +194,42 @@ function loadSvg(roperows = 0) {
       if (col == 1) {
         let y = cell1;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', -837);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 14);
         cell1 = cell1 + cellspace;
       }
 
       if (col == 2) {
         let y = cell2;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', -670);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 38);
         cell2 = cell2 + cellspace;
       }
 
       if (col == 3) {
         let y = cell3;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', -320);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 225);
         cell3 = cell3 + cellspace;
       }
 
       if (col == 4) {
         let y = cell4;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 110);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 543);
         cell4 = cell4 + cellspace;
       }
 
       if (col == 5) {
         let y = cell5;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 515);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 910);
         cell5 = cell5 + cellspace;
       }
 
       if (col == 6) {
         let y = cell6;
         jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('y', y);
-        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 787);
+        jQuery(`.svg_wrapper .svg_inner > *:nth-child(${svgIndex})`).attr('x', 1231);
         cell6 = cell6 + cellspace;
       }
 
@@ -303,9 +290,7 @@ function defaultColorClass() {
 
     if (list.indexOf(value) === -1) {
       // console.log("index", svgclassinex, "class", value)
-      jQuery(`.svg_wrapper .svg_inner svg.${value} path#white`).attr('style', `fill:${lightColorArray[svgclassinex]}`);
-      jQuery(`.svg_wrapper .svg_inner svg.${value} path#black`).attr('style', `fill:${lightColorArray[svgclassinex]}`);
-      jQuery(`.svg_wrapper .svg_inner svg.${value} path#border`).attr('style', `fill:#000`);
+      jQuery(`.svg_wrapper .svg_inner svg.${value} path`).attr('style', `fill:${lightColorArray[svgclassinex]}`);
       jQuery(`.svg_wrapper .svg_inner svg.${value}`).attr('color', ``);
       list.push(value);
       svgclassinex++

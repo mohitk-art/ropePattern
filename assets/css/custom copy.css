@@ -4,25 +4,6 @@
   .text-primary {
     color: var(--primary) !important; }
   
-
-    /* svg{
-      overflow: initial;
-    } */
-
-    /* .svg_inner > svg{
-      display: none;
-    } */
-
-
-    /* .svg_inner > svg:first-child,
-    .svg_inner > svg:nth-child(2),
-    .svg_inner > svg:nth-child(3),
-    .svg_inner > svg:nth-child(4),
-    .svg_inner > svg:nth-child(5)
-    {
-      display: initial;
-    } */
-
   body {
     font-size: 14px; }
 
@@ -51,7 +32,6 @@
       width: 100%;
     }
     
-
     button#addtocartBtn[disabled="disabled"] {
       padding: 15px 27px;
       }
@@ -74,7 +54,6 @@
       
       .svg_inner, .main_svg {
           position:relative;
-          background-color: antiquewhite;
       }
 
       .svg_inner::before{
@@ -207,7 +186,22 @@
   .vertical__pattren_crousel {
     max-width: 55px; }
    
-
+    
+  
+  path:hover {
+    cursor: pointer; }
+  
+  path {
+    stroke: #000;
+    /* stroke-width: 38px;  */
+    /* stroke-width: 118px; */
+  }
+  
+  .svg_inner g,
+  .svg_inner path {
+    /* fill: inherit; */
+   }
+  
   .svg_wrapper {
     position: relative;
     width: 100%;
